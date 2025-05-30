@@ -2,42 +2,46 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <title>원흥마을 활동 안내</title>
+  <title>사진 갤러리</title>
   <style>
     body {
-      margin: 0;
-      font-family: '맑은 고딕', sans-serif;
-      background-color: #f5f5f5;
+      font-family: Arial, sans-serif;
       text-align: center;
+      padding: 20px;
+      background-color: #f5f9fc;
     }
     h1 {
+      color: #333;
+    }
+    .gallery {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
+    }
+    .gallery img {
+      max-width: 90%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    a {
+      display: inline-block;
       margin-top: 30px;
-      font-size: 2rem;
-    }
-    .image-container {
-      margin: 30px auto;
-      max-width: 900px;
-      padding: 20px;
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.1);
-    }
-    img {
-      width: 100%;
-      border-radius: 12px;
+      text-decoration: none;
+      background-color: #007bff;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
     }
   </style>
 </head>
 <body>
-  <h1>원흥마을 활동 예시</h1>
-
-  <div class="image-container">
-    <img src="thank1.png" alt="활동 안내 이미지">
+  <h1>📷 사진 갤러리</h1>
+  <div class="gallery">
+    <img src="thank1.png" alt="체험 사진 1">
+    <img src="thank2.jpg" alt="체험 사진 2">
   </div>
-<div class="image-container">
-    <img src="thank2.png" alt="활동 안내 이미지">
-  </div>
-  <p>이 페이지는 Canva에서 제작한 활동 소개 이미지를 웹에 테스트로 삽입한 예시입니다.</p>
-
+  <a href="index.html">← 메인으로 돌아가기</a>
 </body>
 </html>
