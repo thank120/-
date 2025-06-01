@@ -19,7 +19,8 @@
 
     .banner-image {
       width: 100%;
-      height: auto;
+      max-height: 400px;
+      object-fit: cover;
       display: block;
     }
 
@@ -29,7 +30,8 @@
     }
 
     .poster-image {
-      max-width: 90%;
+      width: 80%;
+      max-width: 600px;
       height: auto;
       box-shadow: 0 4px 12px rgba(0,0,0,0.15);
       border-radius: 10px;
@@ -47,11 +49,27 @@
     h2 {
       color: #2a7ae2;
     }
+
+    .apply-button {
+      display: inline-block;
+      margin-top: 30px;
+      background-color: #2a7ae2;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 1.1em;
+      transition: background-color 0.3s;
+    }
+
+    .apply-button:hover {
+      background-color: #1e5799;
+    }
   </style>
 </head>
 <body>
 
-  <!-- 상단 타이틀 -->
+  <!-- 타이틀 -->
   <div class="header">
     <h1>원흥마을 농촌 체험 경제학교</h1>
     <p>자연에서 배우는 경제 이야기! 가족과 함께 오감만족 체험을 즐겨보세요.</p>
@@ -65,13 +83,18 @@
     <img class="poster-image" src="포스터.png" alt="원흥마을 포스터">
   </div>
 
-  <!-- 프로그램 정보 섹션 -->
+  <!-- 프로그램 소개 -->
   <div class="section">
     <h2>📍 교육 장소</h2>
     <p>전북 장수군 산서면 원흥길 42</p>
 
     <h2>📅 교육 일자</h2>
     <p>2025년 6월 21일 (토) 오전 10:00 ~ 오후 5:00</p>
+
+    <!-- 신청 버튼 -->
+    <div style="text-align:center;">
+      <a href="https://forms.gle/example" target="_blank" class="apply-button">프로그램 신청하기</a>
+    </div>
   </div>
 
 </body>
