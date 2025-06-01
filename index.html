@@ -36,23 +36,25 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.15);
       border-radius: 10px;
     }
-.gallery-button {
-  display: inline-block;
-  background-color: #2a7ae2;
-  color: white;
-  padding: 10px 18px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: bold;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  transition: all 0.3s ease;
-}
 
-.gallery-button:hover {
-  background-color: #1e63d3;
-  transform: scale(1.05);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-}
+    .gallery-button {
+      display: inline-block;
+      background-color: #2a7ae2;
+      color: white;
+      padding: 10px 18px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+
+    .gallery-button:hover {
+      background-color: #1e63d3;
+      transform: scale(1.05);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+
     .section {
       max-width: 900px;
       margin: 40px auto;
@@ -117,11 +119,19 @@
     <img class="poster-image" src="포스터.png" alt="원흥마을 포스터">
   </div>
 
-  <!-- 교육 장소 및 프로그램 일정표 -->
-  <div class="section">
-    <h2>📍 교육 장소</h2>
-    <p>전북 장수군 산서면 원흥길 42</p>
+  <!-- 교육 장소 & 갤러리 버튼 -->
+  <div class="section" style="display: flex; justify-content: space-between; align-items: center;">
+    <div>
+      <h2>📍 교육 장소</h2>
+      <p>전북 장수군 산서면 원흥길 42</p>
+    </div>
+    <div>
+      <a href="gallery.html" target="_blank" class="gallery-button">📸 사진 갤러리 보기</a>
+    </div>
+  </div>
 
+  <!-- 프로그램 일정표 -->
+  <div class="section">
     <h2>📅 프로그램 일정표</h2>
     <table>
       <thead>
