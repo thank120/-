@@ -2,46 +2,56 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <title>사진 갤러리</title>
+  <title>원흥마을 갤러리</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      text-align: center;
+      font-family: 'Noto Sans KR', sans-serif;
+      background-color: #f5f8fb;
+      margin: 0;
       padding: 20px;
-      background-color: #f5f9fc;
     }
+
     h1 {
-      color: #333;
+      text-align: center;
+      color: #2a7ae2;
+      margin-bottom: 30px;
     }
-    .gallery {
-      display: flex;
-      flex-direction: column;
+
+    .gallery-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 20px;
-      align-items: center;
+      max-width: 1000px;
+      margin: 0 auto;
     }
-    .gallery img {
-      max-width: 90%;
+
+    .gallery-item {
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      background: white;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-item:hover {
+      transform: scale(1.03);
+    }
+
+    .gallery-item img {
+      width: 100%;
       height: auto;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    }
-    a {
-      display: inline-block;
-      margin-top: 30px;
-      text-decoration: none;
-      background-color: #007bff;
-      color: white;
-      padding: 10px 20px;
-      border-radius: 5px;
+      display: block;
     }
   </style>
 </head>
 <body>
-  <h1>📷 사진 갤러리</h1>
-  <div class="gallery">
-    <img src="thank1.png" alt="체험 사진 1">
-    <img src="thank2.jpg" alt="체험 사진 2">
+  <h1>📸 시골 풍경 갤러리</h1>
+
+  <div class="gallery-container">
+    <div class="gallery-item"><img src="시골풍경1.jpg" alt="시골풍경1"></div>
+    <div class="gallery-item"><img src="시골풍경2.jpg" alt="시골풍경2"></div>
+    <div class="gallery-item"><img src="시골풍경3.jpg" alt="시골풍경3"></div>
+    <div class="gallery-item"><img src="시골풍경4.jpg" alt="시골풍경4"></div>
   </div>
-  <a href="index.html">← 메인으로 돌아가기</a>
 </body>
 </html>
