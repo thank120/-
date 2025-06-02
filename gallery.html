@@ -39,11 +39,10 @@
       transform: scale(1.03);
     }
 
-    .gallery-item img {
+    .gallery-item img, .gallery-item video {
       width: 100%;
       height: auto;
       display: block;
-      loading: lazy;
     }
 
     .lightbox {
@@ -60,7 +59,7 @@
       box-sizing: border-box;
     }
 
-    .lightbox img {
+    .lightbox img, .lightbox video {
       max-width: 90%;
       max-height: 70vh;
       border-radius: 12px;
@@ -121,98 +120,30 @@
   </style>
 </head>
 <body>
-  <h1>📸 시골 푸경 게열리리</h1>
+  <h1>📸 시골 푸경 갤러리</h1>
 
   <div class="gallery-container">
-    <div class="gallery-item" data-title="초여름 들판" data-desc="푸른 하늘과 넘가르기 포진된 논밭">
+    <div class="gallery-item" data-title="초여름 들판 이미지" data-desc="푸른 하늘과 넘가르기 포진된 논밭">
       <img src="시골풍경1.jpg" alt="시골풍경1" loading="lazy">
     </div>
-    <div class="gallery-item" data-title="마우르 진입로" data-desc="청록ube44화된 시골 길">
+    <div class="gallery-item" data-title="시골마을 이미지" data-desc="청록빛으로 물든 시골 길">
       <img src="시골풍경2.jpg" alt="시골풍경2" loading="lazy">
     </div>
-    <div class="gallery-item" data-title="목장 푸경" data-desc="양들이 한가로운 초여름 천국">
+    <div class="gallery-item" data-title="목장 풍경 이미지" data-desc="양들이 한가로운 초여름 천국">
       <img src="시골풍경3.jpg" alt="시골풍경3" loading="lazy">
     </div>
-    <div class="gallery-item" data-title="강 따라 걸는 길" data-desc="마리한 하천과 함께 걸는 시골길">
+    <div class="gallery-item" data-title="강 따라 걷는 길 이미지" data-desc="맑은 하천과 함께 걷는 시골길">
       <img src="시골풍경4.jpg" alt="시골풍경4" loading="lazy">
     </div>
-    <div class="gallery-item" data-title="고요한 저녁" data-desc="빡게 물드는 하늘 아래 논밭 푸경">
+    <div class="gallery-item" data-title="고요한 저녁 사진" data-desc="붉게 물드는 하늘 아래 논밭 풍경">
       <img src="시골풍경5.jpg" alt="시골풍경5" loading="lazy">
     </div>
-    <div class="gallery-item" data-title="이른 아침길" data-desc="이슬 맛치 풀임과 조용한 오셰길">
+    <div class="gallery-item" data-title="이른 아침길 사진" data-desc="이슬 맺힌 풀잎과 조용한 오솔길">
       <img src="시골풍경6.jpg" alt="시골풍경6" loading="lazy">
     </div>
-  </div>
-
-  <!-- Lightbox -->
-  <div class="lightbox" id="lightbox">
-    <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
-    <span class="lightbox-prev" onclick="changeSlide(-1)">&#10094;</span>
-    <img id="lightbox-img" src="" alt="preview">
-    <span class="lightbox-next" onclick="changeSlide(1)">&#10095;</span>
-    <div class="lightbox-caption">
-      <h3 id="caption-title"></h3>
-      <p id="caption-desc"></p>
+    <div class="gallery-item" data-title="장수군 볼거리" data-desc="논개 생가로 가는길 짧은 동영상">
+      <video src="원흥마을.mp4" controls muted></video>
     </div>
   </div>
-
-  <script>
-    const galleryItems = document.querySelectorAll('.gallery-item');
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-img');
-    const captionTitle = document.getElementById('caption-title');
-    const captionDesc = document.getElementById('caption-desc');
-    let currentIndex = 0;
-
-    function openLightbox(index) {
-      const item = galleryItems[index];
-      const img = item.querySelector('img');
-      lightboxImg.src = img.src;
-      captionTitle.innerText = item.dataset.title;
-      captionDesc.innerText = item.dataset.desc;
-      lightbox.style.display = 'flex';
-      currentIndex = index;
-    }
-
-    function closeLightbox() {
-      lightbox.style.display = 'none';
-    }
-
-    function changeSlide(direction) {
-      currentIndex += direction;
-      if (currentIndex < 0) currentIndex = galleryItems.length - 1;
-      if (currentIndex >= galleryItems.length) currentIndex = 0;
-      openLightbox(currentIndex);
-    }
-
-    galleryItems.forEach((item, index) => {
-      item.querySelector('img').addEventListener('click', () => openLightbox(index));
-    });
-
-    lightbox.addEventListener('click', (e) => {
-      if (e.target === lightbox) closeLightbox();
-    });
-
-    document.addEventListener('keydown', (e) => {
-      if (lightbox.style.display === 'flex') {
-        if (e.key === 'ArrowLeft') changeSlide(-1);
-        else if (e.key === 'ArrowRight') changeSlide(1);
-        else if (e.key === 'Escape') closeLightbox();
-      }
-    });
-
-    // 미모바일 스와이프
-    let startX = 0;
-    lightbox.addEventListener('touchstart', (e) => {
-      startX = e.changedTouches[0].screenX;
-    });
-
-    lightbox.addEventListener('touchend', (e) => {
-      let endX = e.changedTouches[0].screenX;
-      if (endX - startX > 50) changeSlide(-1);
-      else if (startX - endX > 50) changeSlide(1);
-    });
-  </script>
 </body>
 </html>
-
