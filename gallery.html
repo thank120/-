@@ -31,6 +31,7 @@
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
       background: white;
       transition: transform 0.3s ease;
+      cursor: pointer;
     }
 
     .gallery-item:hover {
@@ -42,18 +43,120 @@
       height: auto;
       display: block;
     }
+
+    /* Lightbox 스타일 */
+    .lightbox {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.8);
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 70vh;
+      border-radius: 12px;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 32px;
+      color: white;
+      cursor: pointer;
+    }
+
+    .lightbox-caption {
+      margin-top: 15px;
+      text-align: center;
+      color: #ffffff;
+    }
+
+    .lightbox-caption h3 {
+      margin: 10px 0 5px;
+      font-size: 20px;
+    }
+
+    .lightbox-caption p {
+      font-size: 15px;
+      color: #ddd;
+    }
   </style>
 </head>
 <body>
   <h1>📸 시골 풍경 갤러리</h1>
 
   <div class="gallery-container">
-    <div class="gallery-item"><img src="시골풍경1.jpg" alt="시골풍경1"></div>
-    <div class="gallery-item"><img src="시골풍경2.jpg" alt="시골풍경2"></div>
-    <div class="gallery-item"><img src="시골풍경3.jpg" alt="시골풍경3"></div>
-    <div class="gallery-item"><img src="시골풍경4.jpg" alt="시골풍경4"></div>
-    <div class="gallery-item"><img src="시골풍경5.jpg" alt="시골풍경5"></div>
-    <div class="gallery-item"><img src="시골풍경6.jpg" alt="시골풍경6"></div>
+    <div class="gallery-item" data-title="초여름 들판" data-desc="푸른 하늘과 끝없이 펼쳐진 논밭">
+      <img src="시골풍경1.jpg" alt="시골풍경1">
+    </div>
+    <div class="gallery-item" data-title="마을 진입로" data-desc="초록빛으로 물든 시골 길">
+      <img src="시골풍경2.jpg" alt="시골풍경2">
+    </div>
+    <div class="gallery-item" data-title="목장 풍경" data-desc="양들이 한가롭게 풀을 뜯는 평화로운 초원">
+      <img src="시골풍경3.jpg" alt="시골풍경3">
+    </div>
+    <div class="gallery-item" data-title="강 따라 걷는 길" data-desc="맑은 하천과 함께 걷는 시골길">
+      <img src="시골풍경4.jpg" alt="시골풍경4">
+    </div>
+    <div class="gallery-item" data-title="놀이터 옆 쉼터" data-desc="가족이 쉬어가는 편안한 공간">
+      <img src="시골풍경5.jpg" alt="시골풍경5">
+    </div>
+    <div class="gallery-item" data-title="장승과 산책길" data-desc="장승이 반겨주는 시골길의 입구">
+      <img src="시골풍경6.jpg" alt="시골풍경6">
+    </div>
   </div>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+    <img id="lightbox-img" src="" alt="preview">
+    <div class="lightbox-caption">
+      <h3 id="caption-title"></h3>
+      <p id="caption-desc"></p>
+    </div>
+  </div>
+
+  <script>
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const captionTitle = document.getElementById('caption-title');
+    const captionDesc = document.getElementById('caption-desc');
+
+    galleryItems.forEach(item => {
+      const img = item.querySelector('img');
+      const title = item.dataset.title;
+      const desc = item.dataset.desc;
+
+      img.addEventListener('click', () => {
+        lightboxImg.src = img.src;
+        captionTitle.innerText = title;
+        captionDesc.innerText = desc;
+        lightbox.style.display = 'flex';
+      });
+    });
+
+    function closeLightbox() {
+      lightbox.style.display = 'none';
+      lightboxImg.src = '';
+      captionTitle.innerText = '';
+      captionDesc.innerText = '';
+    }
+
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) {
+        closeLightbox();
+      }
+    });
+  </script>
 </body>
 </html>
