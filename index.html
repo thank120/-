@@ -3,25 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <title>원흥마을 농촌 체험 경제학교</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    :root {
-      --bg-color: #f5f8fb;
-      --text-color: #000;
-      --overlay-bg: rgba(0, 0, 0, 0.65);
-    }
-    [data-theme="dark"] {
-      --bg-color: #121212;
-      --text-color: #f5f5f5;
-      --overlay-bg: rgba(255, 255, 255, 0.1);
-    }
-
     body {
       font-family: 'Noto Sans KR', sans-serif;
       margin: 0;
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      transition: background-color 0.3s, color 0.3s;
+      background-color: #f5f8fb;
     }
 
     .header {
@@ -29,19 +15,6 @@
       color: white;
       text-align: center;
       padding: 40px 20px;
-    }
-
-    .theme-toggle {
-      position: fixed;
-      top: 10px;
-      right: 10px;
-      background: #2a7ae2;
-      color: white;
-      border: none;
-      padding: 10px 15px;
-      border-radius: 6px;
-      cursor: pointer;
-      z-index: 999;
     }
 
     .banner-container {
@@ -61,37 +34,24 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      background-color: var(--overlay-bg);
-      padding: 40px 60px;
-      width: 100%;
+      background-color: rgba(0, 0, 0, 0.55);
+      padding: 30px;
+      border-radius: 15px;
+      width: 80%;
+      max-width: 900px;
       color: #fff;
-      font-size: 1.2em;
-      line-height: 1.9;
+      line-height: 1.7;
+      font-size: 1.05em;
       text-align: left;
-      box-sizing: border-box;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
       opacity: 0;
-      transition: opacity 1.8s ease-out, transform 1.8s ease-out;
+      transform: translateY(30px);
+      transition: opacity 1.2s ease-out, transform 1.2s ease-out;
     }
 
     .overlay-box.visible {
       opacity: 1;
-      animation: captionSlide 1.8s ease-out forwards;
-    }
-
-    @keyframes captionSlide {
-      0% {
-        opacity: 0;
-        transform: translateY(60px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .mobile-intro {
-      display: none;
+      transform: translateY(0);
     }
 
     .poster-container {
@@ -103,78 +63,204 @@
       width: 100%;
       max-width: 800px;
       height: auto;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
       border-radius: 10px;
     }
 
+    .gallery-button {
+      display: inline-block;
+      background-color: #2a7ae2;
+      color: white;
+      padding: 10px 18px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+
+    .gallery-button:hover {
+      background-color: #1e63d3;
+      transform: scale(1.05);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .section {
+      max-width: 900px;
+      margin: 40px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    }
+
+    h2 {
+      color: #2a7ae2;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: center;
+      font-size: 0.95em;
+    }
+
+    th {
+      background-color: #e8f0fe;
+      color: #2a7ae2;
+    }
+
+    .apply-button {
+      display: inline-block;
+      margin-top: 30px;
+      background-color: #2a7ae2;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 1.1em;
+      transition: background-color 0.3s;
+    }
+
+    .apply-button:hover {
+      background-color: #1e5799;
+    }
+
+    /* 반응형 설정 */
     @media (max-width: 768px) {
       .overlay-box {
-        display: none;
-      }
-      .mobile-intro {
-        display: block;
+        font-size: 0.95em;
         padding: 20px;
-        background-color: var(--overlay-bg);
-        color: #fff;
-        cursor: pointer;
-        font-size: 1em;
-        transition: background-color 0.3s;
+        width: 90%;
       }
-      .mobile-full {
-        display: none;
+
+      .section {
+        margin: 20px 10px;
         padding: 20px;
-        background-color: var(--overlay-bg);
-        color: #fff;
-        line-height: 1.8;
-      }
-      .mobile-full.active {
-        display: block;
       }
     }
   </style>
 </head>
 <body>
-  <button class="theme-toggle" onclick="toggleTheme()">🌗 모드 전환</button>
 
+  <!-- 타이틀 -->
   <div class="header">
     <h1>원흥마을 농촌 체험 경제학교</h1>
     <p>자연에서 배우는 경제 이야기! 가족과 함께 오감만족 체험을 즐겨보세요.</p>
   </div>
 
+  <!-- 배경 이미지 + 소개글 오버레이 -->
   <div class="banner-container">
     <img class="banner-image" src="경제학교메인화면.jpg" alt="경제학교 배경 이미지">
     <div class="overlay-box" id="introBox">
-      <p>전북 장수의 고즈넉한 산골짜기에 자리 잡은 원흥마을은...</p>
-      <!-- (내용 생략 가능, 앞서 입력한 텍스트 이어서 삽입) -->
+      <p>전북 장수의 고즈넉한 산골짜기에 자리 잡은 원흥마을은, 단순한 농촌이 아닙니다. 이곳은 자연 속에서 가족과 함께 삶의 가치를 되새기며, 건강한 공동체를 일구어가는 특별한 마을입니다.</p>
+      <p>원흥마을의 경영 철학은 <strong>'함께'</strong>입니다. 혼자가 아닌 가족이, 마을이, 이웃이 힘을 모아 삶을 만들어갑니다. 단순한 체험이 아닌, 진심 어린 관계와 손끝의 정성이 깃든 활동을 통해 진짜 농촌의 온기를 느낄 수 있죠.</p>
+      <p>당신이 이 마을에 오게 된다면, 어떤 역할이나 정해진 틀은 없습니다. 대신 자연 속에서 마주한 순간과 가족 간의 소통, 마을 사람들과의 교류를 통해 당신만의 이야기를 써 내려가게 됩니다.</p>
+      <p>흙을 만지고, 작물을 수확하고, 요리를 함께하는 그 모든 순간이 당신의 소중한 추억이 됩니다. 사진 한 장, 한 그릇의 음식, 가족의 웃음 한 조각이 이곳에서는 소중한 기술이 되고, 의미가 됩니다.</p>
+      <p>원흥마을은 가족이 함께 배우고 성장하는 공간이자, 삶의 쉼표를 찍을 수 있는 따뜻한 마을입니다. 이곳에서의 하루는 특별한 이벤트보다, 소소한 일상 속 감동이 중심이 됩니다. 공기마저 건강한 이 마을은 당신의 삶에 새로운 숨을 불어넣어 줄 것입니다.</p>
     </div>
   </div>
 
-  <div class="mobile-intro" onclick="toggleMobileIntro()">
-    👉 클릭하여 원흥마을 소개 보기
-  </div>
-  <div class="mobile-full" id="mobileDetail">
-    <p>전북 장수의 고즈넉한 산골짜기에 자리 잡은 원흥마을은...</p>
-    <!-- 위와 동일한 소개 내용 반복 -->
+  <!-- 포스터 이미지 -->
+  <div class="poster-container">
+    <img class="poster-image" src="포스터.png" alt="원흥마을 포스터">
   </div>
 
-  <!-- 나머지 포스터/일정표/신청버튼 등 생략 -->
+  <!-- 교육 장소 & 갤러리 버튼 -->
+  <div class="section" style="display: flex; justify-content: space-between; align-items: center;">
+    <div>
+      <h2>📍 교육 장소</h2>
+      <p>전북 장수군 산서면 원흥길 42</p>
+    </div>
+    <div>
+      <a href="gallery.html" target="_blank" class="gallery-button">📸 사진 갤러리 보기</a>
+    </div>
+  </div>
 
+  <!-- 프로그램 일정표 -->
+  <div class="section">
+    <h2>📅 교육프로그램 일정표</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>시간</th>
+          <th>활동명</th>
+          <th>세부 내용</th>
+          <th>교육 포인트</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>10:00~10:30</td>
+          <td>경제마을 입장식</td>
+          <td>가족 명패 만들기, 일정 안내</td>
+          <td>경제 개념 도입</td>
+        </tr>
+        <tr>
+          <td>10:30~11:30</td>
+          <td>수확 체험</td>
+          <td>작물 수확 (계절에 따라 선택)</td>
+          <td>생산과 노동의 의미</td>
+        </tr>
+        <tr>
+          <td>11:30~12:30</td>
+          <td>가족 요리 미션</td>
+          <td>수확물로 요리 만들기 (뷔페)</td>
+          <td>소비자 체험, 협업</td>
+        </tr>
+        <tr>
+          <td>12:30~13:30</td>
+          <td>점심 식사</td>
+          <td>함께 만든 음식으로 뷔페</td>
+          <td><b style="color:#f57c00;">요리아이</b></td>
+        </tr>
+        <tr>
+          <td>13:30~14:15</td>
+          <td>농업의 미래 이야기</td>
+          <td>스마트팜, 드론 농업 소개</td>
+          <td>4차 산업 기술 이해</td>
+        </tr>
+        <tr>
+          <td>14:15~15:30</td>
+          <td>경제 교육</td>
+          <td>농촌에서 배우는 경제학</td>
+          <td><b>경제교육</b></td>
+        </tr>
+        <tr>
+          <td>15:30~16:15</td>
+          <td>경제 마켓 놀이</td>
+          <td>시장놀이, 가상화폐 체험</td>
+          <td>교환, 가치 판단</td>
+        </tr>
+        <tr>
+          <td>16:15~17:00</td>
+          <td>수료식 & 가족 사진</td>
+          <td>졸업장 수여, 소감 나누기</td>
+          <td>정리 및 동기부여</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- 신청 버튼 -->
+    <div style="text-align:center;">
+      <a href="https://naver.me/x4GzMCaT" target="_blank" class="apply-button">프로그램 신청하기</a>
+    </div>
+  </div>
+
+  <!-- 스크립트: 스크롤 시 글 박스 나타남 -->
   <script>
-    function toggleTheme() {
-      const html = document.documentElement;
-      html.dataset.theme = html.dataset.theme === "dark" ? "light" : "dark";
-    }
-
-    function toggleMobileIntro() {
-      const detail = document.getElementById('mobileDetail');
-      detail.classList.toggle('active');
-    }
-
     window.addEventListener('scroll', function () {
-      const box = document.getElementById('introBox');
-      const rect = box.getBoundingClientRect();
-      if (rect.top < window.innerHeight * 0.85) {
-        box.classList.add('visible');
+      const fadeEl = document.getElementById('introBox');
+      const rect = fadeEl.getBoundingClientRect();
+      const isVisible = rect.top < window.innerHeight * 0.85;
+      if (isVisible) {
+        fadeEl.classList.add('visible');
       }
     });
   </script>
