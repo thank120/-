@@ -1,117 +1,204 @@
-.header {
-  background: linear-gradient(to right, #2db7a3, #1e5799);
-  color: white;
-  text-align: center;
-  padding: 40px 20px;
-}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>원흥마을 농촌 체험 경제학교</title>
+  <style>
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      margin: 0;
+      background-color: #f5f8fb;
+    }
 
-.banner-wrapper {
-  position: relative;
-}
+    .header {
+      background: linear-gradient(to right, #2db7a3, #1e5799);
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+    }
 
-.banner-image {
-  width: 100%;
-  max-height: 400px;
-  object-fit: cover;
-  display: block;
-}
+    .banner-image {
+      width: 100%;
+      max-height: 400px;
+      object-fit: cover;
+      display: block;
+    }
 
-.banner-overlay {
-  position: absolute;
-  top: 20%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80%;
-  background: rgba(255, 255, 255, 0.85);
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  font-size: 1.05em;
-  line-height: 1.6;
-  color: #333;
-}
+    .poster-container {
+      text-align: center;
+      margin: 40px auto;
+    }
 
-@media (max-width: 768px) {
-  .banner-overlay {
-    font-size: 0.95em;
-    padding: 20px;
-  }
-}
+    .poster-image {
+      width: 100%;
+      max-width: 800px;
+      height: auto;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      border-radius: 10px;
+    }
 
-.poster-container {
-  text-align: center;
-  margin: 40px auto;
-}
+    .gallery-button {
+      display: inline-block;
+      background-color: #2a7ae2;
+      color: white;
+      padding: 10px 18px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
 
-.poster-image {
-  width: 100%;
-  max-width: 800px;
-  height: auto;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  border-radius: 10px;
-}
+    .gallery-button:hover {
+      background-color: #1e63d3;
+      transform: scale(1.05);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
 
-.gallery-button {
-  display: inline-block;
-  background-color: #2a7ae2;
-  color: white;
-  padding: 10px 18px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: bold;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  transition: all 0.3s ease;
-}
+    .section {
+      max-width: 900px;
+      margin: 40px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    }
 
-.gallery-button:hover {
-  background-color: #1e63d3;
-  transform: scale(1.05);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-}
+    h2 {
+      color: #2a7ae2;
+    }
 
-.section {
-  max-width: 900px;
-  margin: 40px auto;
-  background: white;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-}
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
 
-h2 {
-  color: #2a7ae2;
-}
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: center;
+      font-size: 0.95em;
+    }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-}
+    th {
+      background-color: #e8f0fe;
+      color: #2a7ae2;
+    }
 
-th, td {
-  border: 1px solid #ccc;
-  padding: 10px;
-  text-align: center;
-  font-size: 0.95em;
-}
+    .apply-button {
+      display: inline-block;
+      margin-top: 30px;
+      background-color: #2a7ae2;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 1.1em;
+      transition: background-color 0.3s;
+    }
 
-th {
-  background-color: #e8f0fe;
-  color: #2a7ae2;
-}
+    .apply-button:hover {
+      background-color: #1e5799;
+    }
+  </style>
+</head>
+<body>
 
-.apply-button {
-  display: inline-block;
-  margin-top: 30px;
-  background-color: #2a7ae2;
-  color: white;
-  padding: 12px 24px;
-  border-radius: 6px;
-  text-decoration: none;
-  font-size: 1.1em;
-  transition: background-color 0.3s;
-}
+  <!-- 타이틀 -->
+  <div class="header">
+    <h1>원흥마을 농촌 체험 경제학교</h1>
+    <p>자연에서 배우는 경제 이야기! 가족과 함께 오감만족 체험을 즐겨보세요.</p>
+  </div>
 
-.apply-button:hover {
-  background-color: #1e5799;
-}
+  <!-- 배경 이미지 -->
+  <img class="banner-image" src="경제학교메인화면.jpg" alt="경제학교 배경 이미지">
+
+  <!-- 포스터 이미지 -->
+  <div class="poster-container">
+    <img class="poster-image" src="포스터.png" alt="원흥마을 포스터">
+  </div>
+
+  <!-- 교육 장소 & 갤러리 버튼 -->
+  <div class="section" style="display: flex; justify-content: space-between; align-items: center;">
+    <div>
+      <h2>📍 교육 장소</h2>
+      <p>전북 장수군 산서면 원흥길 42</p>
+    </div>
+    <div>
+      <a href="gallery.html" target="_blank" class="gallery-button">📸 사진 갤러리 보기</a>
+    </div>
+  </div>
+
+  <!-- 프로그램 일정표 -->
+  <div class="section">
+    <h2>📅 교육프로그램 일정표</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>시간</th>
+          <th>활동명</th>
+          <th>세부 내용</th>
+          <th>교육 포인트</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>10:00~10:30</td>
+          <td>경제마을 입장식</td>
+          <td>가족 명패 만들기, 일정 안내</td>
+          <td>경제 개념 도입</td>
+        </tr>
+        <tr>
+          <td>10:30~11:30</td>
+          <td>수확 체험</td>
+          <td>작물 수확 (계절에 따라 선택)</td>
+          <td>생산과 노동의 의미</td>
+        </tr>
+        <tr>
+          <td>11:30~12:30</td>
+          <td>가족 요리 미션</td>
+          <td>수확물로 요리 만들기 (뷔페)</td>
+          <td>소비자 체험, 협업</td>
+        </tr>
+        <tr>
+          <td>12:30~13:30</td>
+          <td>점심 식사</td>
+          <td>함께 만든 음식으로 뷔페</td>
+          <td><b style="color:#f57c00;">요리아이</b></td>
+        </tr>
+        <tr>
+          <td>13:30~14:15</td>
+          <td>농업의 미래 이야기</td>
+          <td>스마트팜, 드론 농업 소개</td>
+          <td>4차 산업 기술 이해</td>
+        </tr>
+        <tr>
+          <td>14:15~15:30</td>
+          <td>경제 교육</td>
+          <td>농촌에서 배우는 경제학</td>
+          <td><b>경제교육</b></td>
+        </tr>
+        <tr>
+          <td>15:30~16:15</td>
+          <td>경제 마켓 놀이</td>
+          <td>시장놀이, 가상화폐 체험</td>
+          <td>교환, 가치 판단</td>
+        </tr>
+        <tr>
+          <td>16:15~17:00</td>
+          <td>수료식 & 가족 사진</td>
+          <td>졸업장 수여, 소감 나누기</td>
+          <td>정리 및 동기부여</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- 신청 버튼 -->
+    <div style="text-align:center;">
+      <a href="https://naver.me/x4GzMCaT" target="_blank" class="apply-button">프로그램 신청하기</a>
+    </div>
+  </div>
+
+</body>
+</html>
