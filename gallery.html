@@ -81,46 +81,23 @@
       color: #ddd;
     }
 
-    .lightbox-close, .lightbox-prev, .lightbox-next {
+    .lightbox-close {
       position: absolute;
+      top: 20px;
+      right: 30px;
       color: white;
       font-size: 36px;
       cursor: pointer;
       user-select: none;
     }
 
-    .lightbox-close {
-      top: 20px;
-      right: 30px;
-    }
-
-    .lightbox-prev {
-      left: 30px;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-
-    .lightbox-next {
-      right: 30px;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-
     @media (max-width: 600px) {
-      .lightbox-caption h3 {
-        font-size: 16px;
-      }
-      .lightbox-caption p {
-        font-size: 13px;
-      }
-      .lightbox-prev, .lightbox-next {
-        font-size: 28px;
-      }
+      .lightbox-caption h3 { font-size: 16px; }
+      .lightbox-caption p { font-size: 13px; }
     }
   </style>
 </head>
-<body>
-  <h1>📸 시골 푸경 갤러리</h1>
+<body>  <h1>📸 시골 푸경 갤러리</h1>
 
   <div class="gallery-container">
     <div class="gallery-item" data-title="초여름 들판 이미지" data-desc="푸른 하늘과 넘가르기 포진된 논밭">
@@ -145,5 +122,38 @@
       <video src="원흥마을.mp4" controls muted></video>
     </div>
   </div>
+ <div class="lightbox" id="lightbox">
+    <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+    <div id="lightbox-content"></div>
+    <div class="lightbox-caption">
+      <h3 id="lightbox-title"></h3>
+      <p id="lightbox-desc"></p>
+    </div>
+  </div>
+
+  <script>
+    const items = document.querySelectorAll('.gallery-item');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxContent = document.getElementById('lightbox-content');
+    const title = document.getElementById('lightbox-title');
+    const desc = document.getElementById('lightbox-desc');
+
+    items.forEach(item => {
+      item.addEventListener('click', () => {
+        const clone = item.children[0].cloneNode(true);
+        clone.controls = true;
+        title.textContent = item.dataset.title;
+        desc.textContent = item.dataset.desc;
+        lightboxContent.innerHTML = '';
+        lightboxContent.appendChild(clone);
+        lightbox.style.display = 'flex';
+      });
+    });
+
+    function closeLightbox() {
+      lightbox.style.display = 'none';
+      lightboxContent.innerHTML = '';
+    }
+  </script>
 </body>
 </html>
