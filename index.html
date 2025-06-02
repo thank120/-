@@ -19,9 +19,26 @@
 
     .banner-image {
       width: 100%;
-      max-height: 400px;
+      max-height: 500px;
       object-fit: cover;
       display: block;
+    }
+
+    .overlay-box {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: rgba(0, 0, 0, 0.55);
+      padding: 30px;
+      border-radius: 15px;
+      width: 80%;
+      max-width: 900px;
+      color: #fff;
+      line-height: 1.7;
+      font-size: 1.05em;
+      text-align: left;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
     }
 
     .poster-container {
@@ -101,6 +118,12 @@
     .apply-button:hover {
       background-color: #1e5799;
     }
+
+    /* 배너 전체 감싸는 컨테이너 */
+    .banner-container {
+      position: relative;
+      text-align: center;
+    }
   </style>
 </head>
 <body>
@@ -111,8 +134,17 @@
     <p>자연에서 배우는 경제 이야기! 가족과 함께 오감만족 체험을 즐겨보세요.</p>
   </div>
 
-  <!-- 배경 이미지 -->
-  <img class="banner-image" src="경제학교메인화면.jpg" alt="경제학교 배경 이미지">
+  <!-- 배경 이미지 + 소개글 오버레이 -->
+  <div class="banner-container">
+    <img class="banner-image" src="경제학교메인화면.jpg" alt="경제학교 배경 이미지">
+    <div class="overlay-box">
+      <p>전북 장수의 고즈넉한 산골짜기에 자리 잡은 원흥마을은, 단순한 농촌이 아닙니다. 이곳은 자연 속에서 가족과 함께 삶의 가치를 되새기며, 건강한 공동체를 일구어가는 특별한 마을입니다.</p>
+      <p>원흥마을의 경영 철학은 <strong>'함께'</strong>입니다. 혼자가 아닌 가족이, 마을이, 이웃이 힘을 모아 삶을 만들어갑니다. 단순한 체험이 아닌, 진심 어린 관계와 손끝의 정성이 깃든 활동을 통해 진짜 농촌의 온기를 느낄 수 있죠.</p>
+      <p>당신이 이 마을에 오게 된다면, 어떤 역할이나 정해진 틀은 없습니다. 대신 자연 속에서 마주한 순간과 가족 간의 소통, 마을 사람들과의 교류를 통해 당신만의 이야기를 써 내려가게 됩니다.</p>
+      <p>흙을 만지고, 작물을 수확하고, 요리를 함께하는 그 모든 순간이 당신의 소중한 추억이 됩니다. 사진 한 장, 한 그릇의 음식, 가족의 웃음 한 조각이 이곳에서는 소중한 기술이 되고, 의미가 됩니다.</p>
+      <p>원흥마을은 가족이 함께 배우고 성장하는 공간이자, 삶의 쉼표를 찍을 수 있는 따뜻한 마을입니다. 이곳에서의 하루는 특별한 이벤트보다, 소소한 일상 속 감동이 중심이 됩니다. 공기마저 건강한 이 마을은 당신의 삶에 새로운 숨을 불어넣어 줄 것입니다.</p>
+    </div>
+  </div>
 
   <!-- 포스터 이미지 -->
   <div class="poster-container">
