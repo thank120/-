@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>원흥마을 갤러리</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
       font-family: 'Noto Sans KR', sans-serif;
@@ -42,14 +43,14 @@
       width: 100%;
       height: auto;
       display: block;
+      loading: lazy;
     }
 
-    /* Lightbox 스타일 */
     .lightbox {
       position: fixed;
       top: 0; left: 0;
       width: 100vw; height: 100vh;
-      background: rgba(0,0,0,0.8);
+      background: rgba(0,0,0,0.85);
       display: none;
       flex-direction: column;
       justify-content: center;
@@ -65,23 +66,14 @@
       border-radius: 12px;
     }
 
-    .lightbox-close {
-      position: absolute;
-      top: 20px;
-      right: 30px;
-      font-size: 32px;
-      color: white;
-      cursor: pointer;
-    }
-
     .lightbox-caption {
+      color: #fff;
       margin-top: 15px;
       text-align: center;
-      color: #ffffff;
     }
 
     .lightbox-caption h3 {
-      margin: 10px 0 5px;
+      margin: 5px;
       font-size: 20px;
     }
 
@@ -89,36 +81,69 @@
       font-size: 15px;
       color: #ddd;
     }
+
+    .lightbox-close, .lightbox-prev, .lightbox-next {
+      position: absolute;
+      color: white;
+      font-size: 36px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .lightbox-close {
+      top: 20px;
+      right: 30px;
+    }
+
+    .lightbox-prev {
+      left: 30px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .lightbox-next {
+      right: 30px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    @media (max-width: 600px) {
+      .lightbox-caption h3 {
+        font-size: 16px;
+      }
+      .lightbox-caption p {
+        font-size: 13px;
+      }
+      .lightbox-prev, .lightbox-next {
+        font-size: 28px;
+      }
+    }
   </style>
 </head>
 <body>
   <h1>📸 시골 풍경 갤러리</h1>
 
   <div class="gallery-container">
-    <div class="gallery-item" data-title="초여름 들판" data-desc="푸른 하늘과 끝없이 펼쳐진 논밭">
-      <img src="시골풍경1.jpg" alt="시골풍경1">
+    <div class="gallery-item" data-title="초여름 들판" data-desc="푸른 하늘과 넓게 포진된 논밭">
+      <img src="시골풍경1.jpg" alt="시골풍경1" loading="lazy">
     </div>
-    <div class="gallery-item" data-title="마을 진입로" data-desc="초록빛으로 물든 시골 길">
-      <img src="시골풍경2.jpg" alt="시골풍경2">
+    <div class="gallery-item" data-title="마을 진입로" data-desc="청록빛으로 물든 시골 길">
+      <img src="시골풍경2.jpg" alt="시골풍경2" loading="lazy">
     </div>
-    <div class="gallery-item" data-title="목장 풍경" data-desc="양들이 한가롭게 풀을 뜯는 평화로운 초원">
-      <img src="시골풍경3.jpg" alt="시골풍경3">
+    <div class="gallery-item" data-title="목장 풍경" data-desc="양들이 한가로운 초여름 천국">
+      <img src="시골풍경3.jpg" alt="시골풍경3" loading="lazy">
     </div>
-    <div class="gallery-item" data-title="강 따라 걷는 길" data-desc="맑은 하천과 함께 걷는 시골길">
-      <img src="시골풍경4.jpg" alt="시골풍경4">
-    </div>
-    <div class="gallery-item" data-title="놀이터 옆 쉼터" data-desc="가족이 쉬어가는 편안한 공간">
-      <img src="시골풍경5.jpg" alt="시골풍경5">
-    </div>
-    <div class="gallery-item" data-title="장승과 산책길" data-desc="장승이 반겨주는 시골길의 입구">
-      <img src="시골풍경6.jpg" alt="시골풍경6">
+    <div class="gallery-item" data-title="강 따라 걷는 길" data-desc="마리한 하천과 함께 걷는 시골길">
+      <img src="시골풍경4.jpg" alt="시골풍경4" loading="lazy">
     </div>
   </div>
 
   <!-- Lightbox -->
   <div class="lightbox" id="lightbox">
     <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+    <span class="lightbox-prev" onclick="changeSlide(-1)">&#10094;</span>
     <img id="lightbox-img" src="" alt="preview">
+    <span class="lightbox-next" onclick="changeSlide(1)">&#10095;</span>
     <div class="lightbox-caption">
       <h3 id="caption-title"></h3>
       <p id="caption-desc"></p>
@@ -131,31 +156,55 @@
     const lightboxImg = document.getElementById('lightbox-img');
     const captionTitle = document.getElementById('caption-title');
     const captionDesc = document.getElementById('caption-desc');
+    let currentIndex = 0;
 
-    galleryItems.forEach(item => {
+    function openLightbox(index) {
+      const item = galleryItems[index];
       const img = item.querySelector('img');
-      const title = item.dataset.title;
-      const desc = item.dataset.desc;
-
-      img.addEventListener('click', () => {
-        lightboxImg.src = img.src;
-        captionTitle.innerText = title;
-        captionDesc.innerText = desc;
-        lightbox.style.display = 'flex';
-      });
-    });
+      lightboxImg.src = img.src;
+      captionTitle.innerText = item.dataset.title;
+      captionDesc.innerText = item.dataset.desc;
+      lightbox.style.display = 'flex';
+      currentIndex = index;
+    }
 
     function closeLightbox() {
       lightbox.style.display = 'none';
-      lightboxImg.src = '';
-      captionTitle.innerText = '';
-      captionDesc.innerText = '';
     }
 
+    function changeSlide(direction) {
+      currentIndex += direction;
+      if (currentIndex < 0) currentIndex = galleryItems.length - 1;
+      if (currentIndex >= galleryItems.length) currentIndex = 0;
+      openLightbox(currentIndex);
+    }
+
+    galleryItems.forEach((item, index) => {
+      item.querySelector('img').addEventListener('click', () => openLightbox(index));
+    });
+
     lightbox.addEventListener('click', (e) => {
-      if (e.target === lightbox) {
-        closeLightbox();
+      if (e.target === lightbox) closeLightbox();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (lightbox.style.display === 'flex') {
+        if (e.key === 'ArrowLeft') changeSlide(-1);
+        else if (e.key === 'ArrowRight') changeSlide(1);
+        else if (e.key === 'Escape') closeLightbox();
       }
+    });
+
+    // 모바일 스와이프
+    let startX = 0;
+    lightbox.addEventListener('touchstart', (e) => {
+      startX = e.changedTouches[0].screenX;
+    });
+
+    lightbox.addEventListener('touchend', (e) => {
+      let endX = e.changedTouches[0].screenX;
+      if (endX - startX > 50) changeSlide(-1);
+      else if (startX - endX > 50) changeSlide(1);
     });
   </script>
 </body>
