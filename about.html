@@ -1,0 +1,300 @@
+
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8"/>
+  <title>마을 이야기</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #2db7a3;
+      --primary-dark: #1e8b7b;
+      --accent: #2a7ae2;
+      --accent-orange: #f57c00;
+      --text: #333333;
+      --light-bg: #f5f8fb;
+      --white: #ffffff;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: var(--light-bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: var(--primary);
+      z-index: 1000;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 8px 15px;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+    }
+    
+    nav a:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+    
+    .container {
+      max-width: 1000px;
+      margin: 100px auto 60px auto;
+      padding: 40px;
+      background: var(--white);
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    }
+    
+    h1 {
+      color: var(--accent);
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 2.5rem;
+      position: relative;
+      padding-bottom: 15px;
+    }
+    
+    h1::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background-color: var(--primary);
+    }
+    
+    .tagline {
+      text-align: center;
+      font-size: 1.4em;
+      font-weight: 500;
+      color: var(--accent);
+      margin-bottom: 40px;
+      line-height: 1.4;
+    }
+    
+    .image-container {
+      text-align: center;
+      margin: 30px 0 40px;
+      position: relative;
+    }
+    
+    .main-image {
+      max-width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+      transition: transform 0.3s ease;
+    }
+    
+    .main-image:hover {
+      transform: scale(1.02);
+    }
+    
+    .quote {
+      font-style: italic;
+      font-size: 1.15em;
+      border-left: 5px solid var(--primary);
+      padding: 15px 20px;
+      margin: 30px 0;
+      background-color: rgba(45, 183, 163, 0.05);
+      border-radius: 0 10px 10px 0;
+      color: #444;
+    }
+    
+    p {
+      margin-bottom: 20px;
+      font-size: 1.05em;
+    }
+    
+    .highlight {
+      color: var(--accent-orange);
+      font-weight: 700;
+    }
+    
+    .blue-highlight {
+      color: var(--accent);
+      font-weight: 700;
+    }
+    
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin: 40px 0;
+    }
+    
+    .feature-item {
+      background: rgba(45, 183, 163, 0.05);
+      padding: 25px;
+      border-radius: 12px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    
+    .feature-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+    }
+    
+    .feature-icon {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+      color: var(--primary);
+    }
+    
+    .feature-title {
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--accent);
+    }
+    
+    .cta-section {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      padding: 30px;
+      border-radius: 12px;
+      text-align: center;
+      color: white;
+      margin: 40px 0 20px;
+    }
+    
+    .cta-button {
+      display: inline-block;
+      background: var(--white);
+      color: var(--primary);
+      padding: 12px 30px;
+      border-radius: 50px;
+      font-weight: 700;
+      text-decoration: none;
+      margin-top: 20px;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      background: #f9f9f9;
+    }
+    
+    .footer-note {
+      text-align: center;
+      font-style: italic;
+      color: #666;
+      margin-top: 40px;
+      font-size: 0.95em;
+    }
+    
+    @media (max-width: 768px) {
+      .container {
+        padding: 30px 20px;
+        margin-top: 80px;
+      }
+      
+      h1 {
+        font-size: 2rem;
+      }
+      
+      .tagline {
+        font-size: 1.2em;
+      }
+      
+      nav {
+        padding: 10px;
+      }
+      
+      nav a {
+        padding: 6px 10px;
+        font-size: 0.9em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html">홈</a>
+    <a href="index.html#program">체험 프로그램</a>
+    <a href="gallery.html">갤러리</a>
+    <a href="about.html">마을 이야기</a>
+    <a href="contact.html">오시는 길</a>
+    <a href="https://naver.me/x4GzMCaT" style="color: yellow;" target="_blank">참가 신청</a>
+  </nav>
+  
+  <div class="container">
+    <h1>마을 이야기</h1>
+    
+    <p class="tagline">
+      "자연이 들려주는 삶의 이야기, 원흥마을에서 시작됩니다."
+    </p>
+    
+    <div class="image-container">
+      <img class="main-image" alt="원흥마을 전경" src="마을전경.jpg"/>
+    </div>
+    
+    <div class="quote">
+      전북 장수의 고즈넉한 산골짜기에 자리 잡은 원흥마을은, 단순한 농촌이 아닙니다. 이곳은 자연 속에서 가족과 함께 삶의 가치를 되새기며, 건강한 공동체를 일구어가는 특별한 마을입니다.
+    </div>
+    
+    <p>원흥마을에서 진행하는 오감만족 농촌 체험 경제학교의 운영 철학은 <span class="highlight">'함께'</span>입니다. 혼자가 아닌 가족이, <strong>마을</strong>이, <strong>이웃</strong>이 힘을 모아 삶을 만들어갑니다. 단순한 체험이 아닌, 진심 어린 관계와 손끝의 정성이 깃든 활동을 통해 진짜 농촌의 <span class="highlight">온기</span>를 느낄 수 있죠.</p>
+    
+    <p>여러분이 이 교육에 참여하게 된다면, 어떤 역할이나 정해진 틀이 있는 것은 아닙니다. 대신 자연 속에서 마주한 순간과 가족 간의 소통, 마을 사람들과의 교류를 통해서 여러분만의 이야기를 써 내려가게 됩니다.</p>
+    
+    <div class="feature-grid">
+      <div class="feature-item">
+        <div class="feature-icon">🌱</div>
+        <div class="feature-title">자연과의 교감</div>
+        <p>흙을 만지고, 작물을 수확하며 자연의 리듬을 느껴보세요.</p>
+      </div>
+      
+      <div class="feature-item">
+        <div class="feature-icon">👨‍👩‍👧‍👦</div>
+        <div class="feature-title">가족의 시간</div>
+        <p>바쁜 일상에서 벗어나 가족과 함께하는 특별한 순간을 만들어보세요.</p>
+      </div>
+      
+      <div class="feature-item">
+        <div class="feature-icon">🍲</div>
+        <div class="feature-title">정성의 맛</div>
+        <p>직접 수확한 재료로 요리하는 과정에서 음식의 진정한 가치를 발견하세요.</p>
+      </div>
+    </div>
+    
+    <p>흙을 만지고, 작물을 수확하고, 요리를 함께하는 그 모든 순간이 여러분의 소중한 추억이 됩니다. 사진 한 장, 한 그릇의 음식, 가족의 웃음 한 조각이 이곳에서는 소중한 기술이 되고, 의미가 됩니다.</p>
+    
+    <p><span class="blue-highlight">오감만족 농촌 체험 경제학교</span>는 가족이 함께 배우고 성장하는 공간이자, <span class="blue-highlight">삶의 쉼표</span>를 찍을 수 있는 따뜻한 마을입니다. 이곳에서의 하루는 특별한 이벤트보다, 소소한 일상 속 감동이 중심이 됩니다. 공기마저 건강한 이 마을은 당신의 삶에 새로운 숨을 불어넣어 줄 것입니다.</p>
+    
+    <div class="cta-section">
+      <h2>원흥마을에서 특별한 추억을 만들어보세요</h2>
+      <p>가족과 함께하는 농촌 체험으로 잊지 못할 경험을 선사합니다</p>
+      <a href="https://naver.me/x4GzMCaT" class="cta-button" target="_blank">지금 참가 신청하기</a>
+    </div>
+    
+    <p class="footer-note">원흥마을은 여러분의 방문을 언제나 환영합니다. 자연 속에서 진정한 휴식과 배움의 시간을 경험해보세요.</p>
+  </div>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'952bfe65427fc7ea',t:'MTc1MDQzMDEzNy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

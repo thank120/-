@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>교육 프로그램</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      margin: 0;
+      background-color: #f5f8fb;
+      color: #333;
+    }
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: #2db7a3;
+      z-index: 1000;
+      padding: 12px 20px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 100px auto 40px;
+      padding: 20px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    }
+    h2 {
+      color: #1976d2;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 40px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 12px;
+      text-align: center;
+      font-size: 0.95em;
+    }
+    th {
+      background-color: #e3f2fd;
+      color: #1565c0;
+    }
+    .button-box {
+      margin-top: 30px;
+      text-align: center;
+    }
+    .apply-button {
+      background-color: #2a7ae2;
+      color: white;
+      padding: 14px 32px;
+      border-radius: 50px;
+      font-size: 1.1em;
+      font-weight: bold;
+      text-decoration: none;
+      box-shadow: 0 4px 12px rgba(42,122,226,0.3);
+      transition: 0.3s;
+    }
+    .apply-button:hover {
+      background-color: #1e5799;
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="index.html">홈</a>
+  <a href="program.html">체험 프로그램</a>
+  <a href="gallery.html">갤러리</a>
+  <a href="about.html">마을 이야기</a>
+  <a href="contact.html">오시는 길</a>
+  <a href="https://naver.me/x4GzMCaT" target="_blank" style="color: yellow;">참가 신청</a>
+</nav>
+<div class="container">
+  <h2>📅 교육프로그램 일정표</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>시간</th><th>활동명</th><th>세부 내용</th><th>교육 포인트</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>10:00~10:30</td><td>경제마을 입장식</td><td>가족 명패 만들기, 일정 안내</td><td>경제 개념 도입</td></tr>
+      <tr><td>10:30~11:30</td><td>수확 체험</td><td>작물 수확 (계절에 따라 선택)</td><td>생산과 노동의 의미</td></tr>
+      <tr><td>11:30~12:30</td><td>가족 요리 미션</td><td>수확물로 요리 만들기 (뷔페)</td><td>소비자 체험, 협업</td></tr>
+      <tr><td>12:30~13:30</td><td>점심 식사</td><td>함께 만든 음식으로 뷔페</td><td>요리하는 우리 아이</td></tr>
+      <tr><td>13:30~14:30</td><td>양파깍두기 키트 만들기</td><td>손질된 양파로 깍두기 담기, 라벨 만들기 체험</td><td>가공·포장·브랜딩 체험</td></tr>
+      <tr><td>14:30~15:30</td><td>우리 브랜드 마켓 놀이</td><td>포장된 깍두기 전시·모의 판매·가족 브랜드 발표</td><td>유통·소비자 체험</td></tr>
+      <tr><td>15:30~16:00</td><td>수료식 & 가족 사진</td><td>졸업장 수여, 소감 나누기</td><td>정리 및 동기부여</td></tr>
+    </tbody>
+  </table>
+
+  <div class="button-box">
+    <a class="apply-button" href="https://naver.me/x4GzMCaT" target="_blank">프로그램 신청하기</a>
+  </div>
+
+  <h2>📚 활동 흐름 예시 (비수확기 버전)</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>시간</th><th>활동명</th><th>세부 내용</th><th>교육 포인트</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>10:30~11:10</td><td>💻 가상 수확 체험</td><td>수확 영상 시청 + 역할극 / 수확 퀴즈</td><td>생산의 의미, 노동의 가치</td></tr>
+      <tr><td>11:10~11:30</td><td>🧑‍🔬 양파탐험 워크숍</td><td>양파 해부, 종류 비교, 유통 퀴즈</td><td>식품 과학, 유통 이해</td></tr>
+      <tr><td>11:30~12:30</td><td>🍽️ 양파깍두기 만들기 체험</td><td>절임, 버무리기, 포장, 브랜드 라벨 제작</td><td>가공, 포장, 브랜딩</td></tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

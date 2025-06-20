@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<title>원흥마을 참가 신청</title>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<style>
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background-color: #f5f8fb;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 700px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+      color: #2a7ae2;
+    }
+    p.description {
+      text-align: center;
+      font-size: 1.05em;
+      color: #555;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    label {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    input, select, textarea {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1em;
+    }
+    button {
+      background-color: #2a7ae2;
+      color: white;
+      padding: 12px;
+      font-size: 1.1em;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #1e5799;
+    }
+    .footer-msg {
+      text-align: center;
+      font-size: 0.95em;
+      margin-top: 20px;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+<h1>🌿 참가 신청서</h1>
+<p class="description">원흥마을 오감만족 경제학교에 지금 신청하세요!<br/>자연 속 경제 체험, 가족의 특별한 하루가 기다립니다.</p>
+<form action="https://formspree.io/f/your-form-id" method="POST" onsubmit="return handleSubmit(event);">
+<label for="name">신청자 성함</label>
+<input id="name" name="name" required="" style="max-width: 400px; margin: 0 auto; display: block;" type="text"/>
+<label for="phone">연락처</label>
+<input id="phone" name="phone" placeholder="010-1234-5678" required="" type="tel"/>
+<label for="email">이메일</label>
+<input id="email" name="email" required="" type="email"/>
+<label for="people">참여 인원</label>
+<input id="people" name="people" placeholder="예: 보호자 2명 / 초3, 초6 각 1명" required="" type="text"/>
+<label for="date">희망 날짜</label>
+<input id="date" name="date" required="" type="date"/>
+<label for="motivation">신청 동기 / 전하고 싶은 말</label>
+<textarea id="motivation" name="motivation" placeholder="예: 아이들과 농촌 체험을 해보고 싶어요!" rows="4"></textarea>
+<label>
+<input name="agree" required="" type="checkbox"/> 개인정보 수집 및 이용에 동의합니다.
+      </label>
+<button type="submit">📨 신청하기</button>
+</form>
+<p class="footer-msg">제출 후 담당자가 개별 연락을 드립니다. 감사합니다!</p>
+</div>
+<script>
+function handleSubmit(event) {
+  event.preventDefault();
+  const form = event.target;
+  form.style.display = "none";
+  const message = document.createElement("div");
+  message.style.padding = "30px";
+  message.style.textAlign = "center";
+  message.innerHTML = `
+    <h2 style='color: #2a7ae2;'>✅ 신청이 완료되었습니다!</h2>
+    <p>확인 후 담당자가 연락드릴 예정입니다.<br>참여해 주셔서 감사합니다 🌿</p>
+  `;
+  form.parentNode.appendChild(message);
+  // 실제 제출
+  fetch(form.action, {
+    method: "POST",
+    body: new FormData(form),
+    headers: { 'Accept': 'application/json' }
+  });
+  return false;
+}
+</script></body>
+</html>
