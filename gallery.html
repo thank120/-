@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <title>원흥마을 갤러리</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
+<meta charset="utf-8"/>
+<title>원흥마을 갤러리</title>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<style>
     body {
       font-family: 'Noto Sans KR', sans-serif;
       background-color: #f5f8fb;
@@ -97,45 +98,57 @@
     }
   </style>
 </head>
-<body>  <h1>📸 원흥마을 갤러리</h1>
-
-  <div class="gallery-container">
-    <div class="gallery-item" data-title="초여름 들판 이미지" data-desc="푸른 하늘과 넘가르기 포진된 논밭">
-      <img src="시골풍경1.jpg" alt="시골풍경1" loading="lazy">
-    </div>
-    <div class="gallery-item" data-title="시골마을 이미지" data-desc="청록빛으로 물든 시골 길">
-      <img src="시골풍경2.jpg" alt="시골풍경2" loading="lazy">
-    </div>
-    <div class="gallery-item" data-title="목장 풍경 이미지" data-desc="양들이 한가로운 초여름 천국">
-      <img src="시골풍경3.jpg" alt="시골풍경3" loading="lazy">
-    </div>
-    <div class="gallery-item" data-title="강 따라 걷는 길 이미지" data-desc="맑은 하천과 함께 걷는 시골길">
-      <img src="시골풍경4.jpg" alt="시골풍경4" loading="lazy">
-    </div>
-    <div class="gallery-item" data-title="도깨비 권역" data-desc="장수군에 있는 어린이를 위한 관광지">
-      <img src="시골풍경5.jpg" alt="시골풍경5" loading="lazy">
-    </div>
-    <div class="gallery-item" data-title="내동고을" data-desc="도깨비 권역 근처 볼거리">
-      <img src="시골풍경6.jpg" alt="시골풍경6" loading="lazy">
-    </div>
-    <div class="gallery-item" data-title="도깨비 권역" data-desc="어린이를 위한 놀이 공간">
-      <img src="시골풍경7.jpg" alt="시골풍경7" loading="lazy">
-    </div>
-    <div class="gallery-item" data-title="원흥마을" data-desc="비오는 날 마을의 전경">
-      <img src="시골풍경8.jpg" alt="시골풍경8" loading="lazy">
-    </div>
-    
-  </div>
- <div class="lightbox" id="lightbox">
-    <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
-    <div id="lightbox-content"></div>
-    <div class="lightbox-caption">
-      <h3 id="lightbox-title"></h3>
-      <p id="lightbox-desc"></p>
-    </div>
-  </div>
-
-  <script>
+<body>
+<a href="index.html" style="
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: #2a7ae2;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    font-size: 0.9em;
+    z-index: 10000;
+  ">🏠 홈으로</a>
+ <h1>📸 원흥마을 갤러리</h1>
+<div class="gallery-container">
+<div class="gallery-item" data-desc="푸른 하늘과 넘가르기 포진된 논밭" data-title="초여름 들판 이미지">
+<img alt="시골풍경1" loading="lazy" src="시골풍경1.jpg"/>
+</div>
+<div class="gallery-item" data-desc="청록빛으로 물든 시골 길" data-title="시골마을 이미지">
+<img alt="시골풍경2" loading="lazy" src="시골풍경2.jpg"/>
+</div>
+<div class="gallery-item" data-desc="양들이 한가로운 초여름 천국" data-title="목장 풍경 이미지">
+<img alt="시골풍경3" loading="lazy" src="시골풍경3.jpg"/>
+</div>
+<div class="gallery-item" data-desc="맑은 하천과 함께 걷는 시골길" data-title="강 따라 걷는 길 이미지">
+<img alt="시골풍경4" loading="lazy" src="시골풍경4.jpg"/>
+</div>
+<div class="gallery-item" data-desc="장수군에 있는 어린이를 위한 관광지" data-title="도깨비 권역">
+<img alt="시골풍경5" loading="lazy" src="시골풍경5.jpg"/>
+</div>
+<div class="gallery-item" data-desc="도깨비 권역 근처 볼거리" data-title="내동고을">
+<img alt="시골풍경6" loading="lazy" src="시골풍경6.jpg"/>
+</div>
+<div class="gallery-item" data-desc="어린이를 위한 놀이 공간" data-title="도깨비 권역">
+<img alt="시골풍경7" loading="lazy" src="시골풍경7.jpg"/>
+</div>
+<div class="gallery-item" data-desc="비오는 날 마을의 전경" data-title="원흥마을">
+<img alt="시골풍경8" loading="lazy" src="시골풍경8.jpg"/>
+</div>
+</div>
+<div class="lightbox" id="lightbox">
+<span class="lightbox-close" onclick="closeLightbox()">×</span>
+<div id="lightbox-content"></div>
+<div class="lightbox-caption">
+<h3 id="lightbox-title"></h3>
+<p id="lightbox-desc"></p>
+</div>
+</div>
+<script>
     const items = document.querySelectorAll('.gallery-item');
     const lightbox = document.getElementById('lightbox');
     const lightboxContent = document.getElementById('lightbox-content');
@@ -159,5 +172,22 @@
       lightboxContent.innerHTML = '';
     }
   </script>
+
+<div style="text-align:center; margin-top: 40px;">
+<a href="videos.html" onmouseout="this.style.backgroundColor='#f57c00'" onmouseover="this.style.backgroundColor='#e66a00'" style="
+      display: inline-block;
+      background-color: #f57c00;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1em;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      transition: background-color 0.3s ease;
+    ">
+      🎬 동영상 보러가기
+    </a>
+</div>
 </body>
 </html>
