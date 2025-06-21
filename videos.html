@@ -1,116 +1,76 @@
-<!DOCTYPE html>
 
+<!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="utf-8"/>
-<title>
-   원흥마을 - 동영상 모음
-  </title>
-<style>
-nav {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 14px;
-  padding: 16px 12px;
-  background: #2db7a3;
-  font-size: 1.05em;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
-}
-nav a {
-  padding: 8px 16px;
-  font-weight: bold;
-  color: white;
-  text-decoration: none;
-  border-radius: 6px;
-}
-nav a.highlight {
-  color: yellow;
-  background-color: rgba(255, 255, 255, 0.1);
-}
-.menu-toggle {
-  display: none;
-  background-color: #2db7a3;
-  border: none;
-  color: white;
-  font-size: 1.2em;
-  padding: 10px;
-  position: fixed;
-  top: 10px;
-  right: 10px;
-  z-index: 1001;
-}
-@media (max-width: 768px) {
-  nav {
-    display: none;
-    flex-direction: column;
-    align-items: flex-start;
-    background: #2db7a3;
-  }
-  nav.show {
-    display: flex;
-  }
-  .menu-toggle {
-    display: block;
-  }
-  body {
-    padding-top: 80px;
-  }
-}
-body {
-  padding-top: 80px;
-}
-
-
-   nav {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 12px;
-  padding: 14px 10px;
-  background: #2db7a3;
-  font-size: 1.05em;
-}
-nav a {
-  padding: 8px 14px;
-  white-space: nowrap;
-  font-weight: bold;
-  color: white;
-  text-decoration: none;
-  border-radius: 6px;
-  background: transparent;
-}
-nav a.highlight {
-  color: yellow;
-  font-weight: bold;
-  background-color: rgba(255, 255, 255, 0.1);
-}
-@media (max-width: 480px) {
-  nav {
-    font-size: 0.95em;
-    gap: 8px;
-    padding: 10px 8px;
-  }
-  nav a {
-    padding: 6px 10px;
-  }
-}
-
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>원흥마을 - 동영상 모음</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet"/>
+  <style>
     body {
       font-family: 'Noto Sans KR', sans-serif;
       margin: 0;
       padding: 20px;
       background-color: #f5f8fb;
+      padding-top: 80px;
+      color: #333;
+    }
+    .menu-toggle {
+      display: none;
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      background-color: #2db7a3;
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      font-size: 1.2em;
+      border-radius: 6px;
+      z-index: 1001;
+    }
+    nav.main-nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: #2db7a3;
+      z-index: 1000;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px;
+      padding: 12px;
+    }
+    nav.main-nav a {
+      color: white;
+      font-weight: bold;
+      padding: 8px 14px;
+      text-decoration: none;
+      border-radius: 6px;
+    }
+    nav.main-nav a.highlight {
+      color: yellow;
+      background-color: rgba(255,255,255,0.1);
+    }
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+      nav.main-nav {
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 12px 20px;
+      }
+      nav.main-nav.show {
+        display: flex !important;
+      }
     }
 
     h1 {
       text-align: center;
       color: #2a7ae2;
+      font-size: 1.8em;
+      margin-top: 20px;
     }
 
     .video-container {
@@ -143,138 +103,57 @@ nav a.highlight {
       font-size: 0.95em;
       color: #555;
     }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 16px;
+        padding-top: 80px;
+      }
+      h1 {
+        font-size: 1.4em;
+      }
+      iframe {
+        height: 200px;
+      }
+      .video-box {
+        padding: 10px;
+      }
+    }
   </style>
-
-<style>
-nav {
-    height: 70px;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    background-color: #26c6da;
-    font-size: 1.1rem;
-}
-body {
-    padding-top: 70px;
-    margin: 0;
-}
-@media (max-width: 768px) {
-    nav ul {
-        display: none;
-    }
-    nav ul.hidden {
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        top: 70px;
-        left: 0;
-        background-color: #26c6da;
-        width: 100%;
-        padding: 1rem 0;
-        z-index: 999;
-    }
-}
-</style>
-
-<script>
-function toggleMenu() {
-    const nav = document.querySelector("nav ul");
-    nav.classList.toggle("hidden");
-}
-</script>
-
-<style id="main-nav-style">
-  nav.main-nav {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background: #2db7a3;
-    z-index: 1000;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 14px;
-    padding: 12px;
-  }
-  nav.main-nav a {
-    color: white;
-    font-weight: bold;
-    padding: 8px 14px;
-    text-decoration: none;
-    border-radius: 6px;
-  }
-  nav.main-nav a.highlight {
-    color: yellow;
-    background-color: rgba(255,255,255,0.1);
-  }
-  .menu-toggle {
-    display: none;
-    background-color: #2db7a3;
-    color: white;
-    border: none;
-    font-size: 1.2em;
-    padding: 10px;
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    z-index: 1001;
-  }
-  @media (max-width: 768px) {
-    nav.main-nav {
-      display: none;
-      flex-direction: column;
-      align-items: flex-start;
-    }
-    nav.main-nav.show {
-      display: flex;
-    }
-    .menu-toggle {
-      display: block;
-    }
-    body {
-      padding-top: 80px;
-    }
-  }
-</style>
-
 </head>
-<body style="padding-top: 70px; margin: 0;"><button class="menu-toggle" onclick="document.querySelector('nav').classList.toggle('show')">☰ 메뉴</button>
+<body>
+  <button class="menu-toggle" id="menu-toggle">☰ 메뉴</button>
+  <nav class="main-nav">
+    <a href="index.html">홈</a>
+    <a href="program.html">체험 프로그램</a>
+    <a href="gallery.html">갤러리</a>
+    <a href="about.html">마을 이야기</a>
+    <a href="contact.html">오시는 길</a>
+    <a href="apply.html" class="highlight">참가 신청</a>
+  </nav>
 
-<nav class="main-nav">
-  <button class="menu-toggle" onclick="document.querySelector('nav').classList.toggle('show')">☰ 메뉴</button>
-  <a href="index.html">홈</a>
-  <a href="program.html">체험 프로그램</a>
-  <a href="gallery.html">갤러리</a>
-  <a href="about.html">마을 이야기</a>
-  <a href="contact.html">오시는 길</a>
-  <a href="apply.html" class="highlight" target="_blank">참가 신청</a>
-</nav>
-    
-<h1>
-   🎥 원흥마을 동영상 모음
-  </h1>
-<div class="video-container">
-<div class="video-box">
-<iframe allowfullscreen="" src="https://www.youtube.com/embed/twnqy4NLlkE">
-</iframe>
-<p class="video-caption">
-     🌱 경제학교에서 AI코딩으로 만든 곡입니다
-    </p>
-</div>
-<div class="video-box">
-<iframe allowfullscreen="" src="https://www.youtube.com/embed/NU2L2AJDAeA">
-</iframe>
-<p class="video-caption">
-     🎥 장수군에 있는 논개 생가로 가는 길목에서
-    </p>
-</div>
-<div class="video-box">
-<iframe allowfullscreen="" src="https://www.youtube.com/embed/P31ws-ivBXU">
-</iframe>
-<p class="video-caption">
-     🌱 경제학교에서 AI코딩으로 만든 곡입니다
-    </p>
-</div>
-</div>
+  <h1>🎥 원흥마을 동영상 모음</h1>
+  <div class="video-container">
+    <div class="video-box">
+      <iframe src="https://www.youtube.com/embed/twnqy4NLlkE" allowfullscreen></iframe>
+      <p class="video-caption">🌱 경제학교에서 AI코딩으로 만든 곡입니다</p>
+    </div>
+    <div class="video-box">
+      <iframe src="https://www.youtube.com/embed/NU2L2AJDAeA" allowfullscreen></iframe>
+      <p class="video-caption">🎥 장수군에 있는 논개 생가로 가는 길목에서</p>
+    </div>
+    <div class="video-box">
+      <iframe src="https://www.youtube.com/embed/P31ws-ivBXU" allowfullscreen></iframe>
+      <p class="video-caption">🌱 경제학교에서 AI코딩으로 만든 곡입니다</p>
+    </div>
+  </div>
+
+  <script>
+    const menuBtn = document.getElementById('menu-toggle');
+    const nav = document.querySelector('nav.main-nav');
+    menuBtn.addEventListener('click', function () {
+      nav.classList.toggle('show');
+    });
+  </script>
 </body>
 </html>
