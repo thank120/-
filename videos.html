@@ -182,30 +182,74 @@ function toggleMenu() {
     nav.classList.toggle("hidden");
 }
 </script>
+
+<style id="main-nav-style">
+  nav.main-nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: #2db7a3;
+    z-index: 1000;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+    padding: 12px;
+  }
+  nav.main-nav a {
+    color: white;
+    font-weight: bold;
+    padding: 8px 14px;
+    text-decoration: none;
+    border-radius: 6px;
+  }
+  nav.main-nav a.highlight {
+    color: yellow;
+    background-color: rgba(255,255,255,0.1);
+  }
+  .menu-toggle {
+    display: none;
+    background-color: #2db7a3;
+    color: white;
+    border: none;
+    font-size: 1.2em;
+    padding: 10px;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 1001;
+  }
+  @media (max-width: 768px) {
+    nav.main-nav {
+      display: none;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    nav.main-nav.show {
+      display: flex;
+    }
+    .menu-toggle {
+      display: block;
+    }
+    body {
+      padding-top: 80px;
+    }
+  }
+</style>
+
 </head>
 <body style="padding-top: 70px; margin: 0;"><button class="menu-toggle" onclick="document.querySelector('nav').classList.toggle('show')">☰ 메뉴</button>
-<nav>
-<button class="md:hidden absolute top-5 right-5 text-white bg-gray-800 px-2 py-1 rounded" onclick="toggleMenu()">☰ 메뉴</button>
 
-<a href="index.html">
-    홈
-   </a>
-<a href="program.html">
-    체험 프로그램
-   </a>
-<a href="gallery.html">
-    갤러리
-   </a>
-<a href="about.html">
-    마을 이야기
-   </a>
-<a href="contact.html">
-    오시는 길
-   </a>
-<a class="highlight" href="apply.html" style="color: yellow;" target="_blank">
-    참가 신청
-   </a>
+<nav class="main-nav">
+  <button class="menu-toggle" onclick="document.querySelector('nav').classList.toggle('show')">☰ 메뉴</button>
+  <a href="index.html">홈</a>
+  <a href="program.html">체험 프로그램</a>
+  <a href="gallery.html">갤러리</a>
+  <a href="about.html">마을 이야기</a>
+  <a href="contact.html">오시는 길</a>
+  <a href="apply.html" class="highlight" target="_blank">참가 신청</a>
 </nav>
+    
 <h1>
    🎥 원흥마을 동영상 모음
   </h1>
