@@ -1,12 +1,13 @@
 <!DOCTYPE html>
+
 <html lang="ko">
- <head>
-  <meta charset="utf-8"/>
-  <title>
+<head>
+<meta charset="utf-8"/>
+<title>
    원흥마을 갤러리
   </title>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <style>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<style>
    nav {
   display: flex;
   flex-wrap: wrap;
@@ -133,29 +134,84 @@ nav a.highlight {
       .lightbox-caption p { font-size: 13px; }
     }
   </style>
- </head>
- <body>
-  <nav>
-   <a href="index.html">
+<style>
+    body {
+        font-family: 'Noto Sans KR', sans-serif;
+        font-size: 17px;
+    }
+    nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 14px;
+        padding: 16px 12px;
+        background: #2db7a3;
+        font-size: 1.05em;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+    }
+    nav a {
+        padding: 8px 16px;
+        font-weight: bold;
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+    }
+    nav a.highlight {
+        color: yellow;
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+    .menu-toggle {
+        display: none;
+        background-color: #2db7a3;
+        border: none;
+        color: white;
+        font-size: 1.2em;
+        padding: 10px;
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        z-index: 1001;
+    }
+    @media (max-width: 768px) {
+        nav {
+            flex-direction: column;
+            align-items: flex-start;
+            display: none;
+        }
+        nav.show {
+            display: flex;
+        }
+        .menu-toggle {
+            display: block;
+        }
+    }
+    </style></head>
+<body><button class="menu-toggle" onclick="document.querySelector('nav').classList.toggle('show')">☰ 메뉴</button>
+<nav>
+<a href="index.html">
     홈
    </a>
-   <a href="program.html">
+<a href="program.html">
     체험 프로그램
    </a>
-   <a href="gallery.html">
+<a href="gallery.html">
     갤러리
    </a>
-   <a href="about.html">
+<a href="about.html">
     마을 이야기
    </a>
-   <a href="contact.html">
+<a href="contact.html">
     오시는 길
    </a>
-   <a class="highlight" href="apply.html">
+<a class="highlight" href="apply.html">
     참가 신청
    </a>
-  </nav>
-  <a href="index.html" style="
+</nav>
+<a href="index.html" style="
     position: absolute;
     top: 20px;
     left: 20px;
@@ -171,49 +227,49 @@ nav a.highlight {
   ">
    🏠 홈으로
   </a>
-  <h1>
+<h1>
    📸 원흥마을 갤러리
   </h1>
-  <div class="gallery-container">
-   <div class="gallery-item" data-desc="푸른 하늘과 넘가르기 포진된 논밭" data-title="초여름 들판 이미지">
-    <img alt="시골풍경1" loading="lazy" src="시골풍경1.jpg"/>
-   </div>
-   <div class="gallery-item" data-desc="청록빛으로 물든 시골 길" data-title="시골마을 이미지">
-    <img alt="시골풍경2" loading="lazy" src="시골풍경2.jpg"/>
-   </div>
-   <div class="gallery-item" data-desc="양들이 한가로운 초여름 천국" data-title="목장 풍경 이미지">
-    <img alt="시골풍경3" loading="lazy" src="시골풍경3.jpg"/>
-   </div>
-   <div class="gallery-item" data-desc="맑은 하천과 함께 걷는 시골길" data-title="강 따라 걷는 길 이미지">
-    <img alt="시골풍경4" loading="lazy" src="시골풍경4.jpg"/>
-   </div>
-   <div class="gallery-item" data-desc="장수군에 있는 어린이를 위한 관광지" data-title="도깨비 권역">
-    <img alt="시골풍경5" loading="lazy" src="시골풍경5.jpg"/>
-   </div>
-   <div class="gallery-item" data-desc="도깨비 권역 근처 볼거리" data-title="내동고을">
-    <img alt="시골풍경6" loading="lazy" src="시골풍경6.jpg"/>
-   </div>
-   <div class="gallery-item" data-desc="어린이를 위한 놀이 공간" data-title="도깨비 권역">
-    <img alt="시골풍경7" loading="lazy" src="시골풍경7.jpg"/>
-   </div>
-   <div class="gallery-item" data-desc="비오는 날 마을의 전경" data-title="원흥마을">
-    <img alt="시골풍경8" loading="lazy" src="시골풍경8.jpg"/>
-   </div>
-  </div>
-  <div class="lightbox" id="lightbox">
-   <span class="lightbox-close" onclick="closeLightbox()">
+<div class="gallery-container">
+<div class="gallery-item" data-desc="푸른 하늘과 넘가르기 포진된 논밭" data-title="초여름 들판 이미지">
+<img alt="시골풍경1" loading="lazy" src="시골풍경1.jpg"/>
+</div>
+<div class="gallery-item" data-desc="청록빛으로 물든 시골 길" data-title="시골마을 이미지">
+<img alt="시골풍경2" loading="lazy" src="시골풍경2.jpg"/>
+</div>
+<div class="gallery-item" data-desc="양들이 한가로운 초여름 천국" data-title="목장 풍경 이미지">
+<img alt="시골풍경3" loading="lazy" src="시골풍경3.jpg"/>
+</div>
+<div class="gallery-item" data-desc="맑은 하천과 함께 걷는 시골길" data-title="강 따라 걷는 길 이미지">
+<img alt="시골풍경4" loading="lazy" src="시골풍경4.jpg"/>
+</div>
+<div class="gallery-item" data-desc="장수군에 있는 어린이를 위한 관광지" data-title="도깨비 권역">
+<img alt="시골풍경5" loading="lazy" src="시골풍경5.jpg"/>
+</div>
+<div class="gallery-item" data-desc="도깨비 권역 근처 볼거리" data-title="내동고을">
+<img alt="시골풍경6" loading="lazy" src="시골풍경6.jpg"/>
+</div>
+<div class="gallery-item" data-desc="어린이를 위한 놀이 공간" data-title="도깨비 권역">
+<img alt="시골풍경7" loading="lazy" src="시골풍경7.jpg"/>
+</div>
+<div class="gallery-item" data-desc="비오는 날 마을의 전경" data-title="원흥마을">
+<img alt="시골풍경8" loading="lazy" src="시골풍경8.jpg"/>
+</div>
+</div>
+<div class="lightbox" id="lightbox">
+<span class="lightbox-close" onclick="closeLightbox()">
     ×
    </span>
-   <div id="lightbox-content">
-   </div>
-   <div class="lightbox-caption">
-    <h3 id="lightbox-title">
-    </h3>
-    <p id="lightbox-desc">
-    </p>
-   </div>
-  </div>
-  <script>
+<div id="lightbox-content">
+</div>
+<div class="lightbox-caption">
+<h3 id="lightbox-title">
+</h3>
+<p id="lightbox-desc">
+</p>
+</div>
+</div>
+<script>
    const items = document.querySelectorAll('.gallery-item');
     const lightbox = document.getElementById('lightbox');
     const lightboxContent = document.getElementById('lightbox-content');
@@ -237,8 +293,8 @@ nav a.highlight {
       lightboxContent.innerHTML = '';
     }
   </script>
-  <div style="text-align:center; margin-top: 40px;">
-   <a href="videos.html" onmouseout="this.style.backgroundColor='#f57c00'" onmouseover="this.style.backgroundColor='#e66a00'" style="
+<div style="text-align:center; margin-top: 40px;">
+<a href="videos.html" onmouseout="this.style.backgroundColor='#f57c00'" onmouseover="this.style.backgroundColor='#e66a00'" style="
       display: inline-block;
       background-color: #f57c00;
       color: white;
@@ -252,6 +308,6 @@ nav a.highlight {
     ">
     🎬 동영상 보러가기
    </a>
-  </div>
- </body>
+</div>
+</body>
 </html>

@@ -1,12 +1,13 @@
 <!DOCTYPE html>
+
 <html lang="ko">
- <head>
-  <meta charset="utf-8"/>
-  <title>
+<head>
+<meta charset="utf-8"/>
+<title>
    원흥마을 참가 신청
   </title>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <style>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<style>
    nav {
   display: flex;
   flex-wrap: wrap;
@@ -101,75 +102,130 @@ nav a.highlight {
       color: #888;
     }
   </style>
- </head>
- <body>
-  <nav>
-   <a href="index.html">
+<style>
+    body {
+        font-family: 'Noto Sans KR', sans-serif;
+        font-size: 17px;
+    }
+    nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 14px;
+        padding: 16px 12px;
+        background: #2db7a3;
+        font-size: 1.05em;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+    }
+    nav a {
+        padding: 8px 16px;
+        font-weight: bold;
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+    }
+    nav a.highlight {
+        color: yellow;
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+    .menu-toggle {
+        display: none;
+        background-color: #2db7a3;
+        border: none;
+        color: white;
+        font-size: 1.2em;
+        padding: 10px;
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        z-index: 1001;
+    }
+    @media (max-width: 768px) {
+        nav {
+            flex-direction: column;
+            align-items: flex-start;
+            display: none;
+        }
+        nav.show {
+            display: flex;
+        }
+        .menu-toggle {
+            display: block;
+        }
+    }
+    </style></head>
+<body><button class="menu-toggle" onclick="document.querySelector('nav').classList.toggle('show')">☰ 메뉴</button>
+<nav>
+<a href="index.html">
     홈
    </a>
-   <a href="program.html">
+<a href="program.html">
     체험 프로그램
    </a>
-   <a href="gallery.html">
+<a href="gallery.html">
     갤러리
    </a>
-   <a href="about.html">
+<a href="about.html">
     마을 이야기
    </a>
-   <a href="contact.html">
+<a href="contact.html">
     오시는 길
    </a>
-   <a class="highlight" href="apply.html">
+<a class="highlight" href="apply.html">
     참가 신청
    </a>
-  </nav>
-  <div class="container">
-   <h1>
+</nav>
+<div class="container">
+<h1>
     🌿 참가 신청서
    </h1>
-   <p class="description">
+<p class="description">
     원흥마을 오감만족 경제학교에 지금 신청하세요!
     <br/>
     자연 속 경제 체험, 가족의 특별한 하루가 기다립니다.
    </p>
-   <form action="https://formspree.io/f/your-form-id" method="POST" onsubmit="return handleSubmit(event);">
-    <label for="name">
+<form action="https://formspree.io/f/your-form-id" method="POST" onsubmit="return handleSubmit(event);">
+<label for="name">
      신청자 성함
     </label>
-    <input id="name" name="name" required="" style="max-width: 400px; margin: 0 auto; display: block;" type="text"/>
-    <label for="phone">
+<input id="name" name="name" required="" style="max-width: 400px; margin: 0 auto; display: block;" type="text"/>
+<label for="phone">
      연락처
     </label>
-    <input id="phone" name="phone" placeholder="010-1234-5678" required="" type="tel"/>
-    <label for="email">
+<input id="phone" name="phone" placeholder="010-1234-5678" required="" type="tel"/>
+<label for="email">
      이메일
     </label>
-    <input id="email" name="email" required="" type="email"/>
-    <label for="people">
+<input id="email" name="email" required="" type="email"/>
+<label for="people">
      참여 인원
     </label>
-    <input id="people" name="people" placeholder="예: 보호자 2명 / 초3, 초6 각 1명" required="" type="text"/>
-    <label for="date">
+<input id="people" name="people" placeholder="예: 보호자 2명 / 초3, 초6 각 1명" required="" type="text"/>
+<label for="date">
      희망 날짜
     </label>
-    <input id="date" name="date" required="" type="date"/>
-    <label for="motivation">
+<input id="date" name="date" required="" type="date"/>
+<label for="motivation">
      신청 동기 / 전하고 싶은 말
     </label>
-    <textarea id="motivation" name="motivation" placeholder="예: 아이들과 농촌 체험을 해보고 싶어요!" rows="4"></textarea>
-    <label>
-     <input name="agree" required="" type="checkbox"/>
+<textarea id="motivation" name="motivation" placeholder="예: 아이들과 농촌 체험을 해보고 싶어요!" rows="4"></textarea>
+<label>
+<input name="agree" required="" type="checkbox"/>
      개인정보 수집 및 이용에 동의합니다.
     </label>
-    <button type="submit">
+<button type="submit">
      📨 신청하기
     </button>
-   </form>
-   <p class="footer-msg">
+</form>
+<p class="footer-msg">
     제출 후 담당자가 개별 연락을 드립니다. 감사합니다!
    </p>
-  </div>
-  <script>
+</div>
+<script>
    function handleSubmit(event) {
   event.preventDefault();
   const form = event.target;
@@ -191,5 +247,5 @@ nav a.highlight {
   return false;
 }
   </script>
- </body>
+</body>
 </html>

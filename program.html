@@ -1,12 +1,13 @@
 <!DOCTYPE html>
+
 <html lang="ko">
- <head>
-  <meta charset="utf-8"/>
-  <title>
+<head>
+<meta charset="utf-8"/>
+<title>
    교육 프로그램
   </title>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <style>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<style>
    nav {
   display: flex;
   flex-wrap: wrap;
@@ -118,220 +119,275 @@ nav a.highlight {
       transform: translateY(-2px);
     }
   </style>
- </head>
- <body>
-  <nav>
-   <a href="index.html">
+<style>
+    body {
+        font-family: 'Noto Sans KR', sans-serif;
+        font-size: 17px;
+    }
+    nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 14px;
+        padding: 16px 12px;
+        background: #2db7a3;
+        font-size: 1.05em;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+    }
+    nav a {
+        padding: 8px 16px;
+        font-weight: bold;
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+    }
+    nav a.highlight {
+        color: yellow;
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+    .menu-toggle {
+        display: none;
+        background-color: #2db7a3;
+        border: none;
+        color: white;
+        font-size: 1.2em;
+        padding: 10px;
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        z-index: 1001;
+    }
+    @media (max-width: 768px) {
+        nav {
+            flex-direction: column;
+            align-items: flex-start;
+            display: none;
+        }
+        nav.show {
+            display: flex;
+        }
+        .menu-toggle {
+            display: block;
+        }
+    }
+    </style></head>
+<body><button class="menu-toggle" onclick="document.querySelector('nav').classList.toggle('show')">☰ 메뉴</button>
+<nav>
+<a href="index.html">
     홈
    </a>
-   <a href="program.html">
+<a href="program.html">
     체험 프로그램
    </a>
-   <a href="gallery.html">
+<a href="gallery.html">
     갤러리
    </a>
-   <a href="about.html">
+<a href="about.html">
     마을 이야기
    </a>
-   <a href="contact.html">
+<a href="contact.html">
     오시는 길
    </a>
-   <a href="apply.html" style="color: yellow;" target="_blank">
+<a href="apply.html" style="color: yellow;" target="_blank">
     참가 신청
    </a>
-  </nav>
-  <div class="container">
-   <h2>
+</nav>
+<div class="container">
+<h2>
     📅 교육프로그램 일정표
    </h2>
-   <table>
-    <thead>
-     <tr>
-      <th>
+<table>
+<thead>
+<tr>
+<th>
        시간
       </th>
-      <th>
+<th>
        활동명
       </th>
-      <th>
+<th>
        세부 내용
       </th>
-      <th>
+<th>
        교육 포인트
       </th>
-     </tr>
-    </thead>
-    <tbody>
-     <tr>
-      <td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
        10:00~10:30
       </td>
-      <td>
+<td>
        경제마을 입장식
       </td>
-      <td>
+<td>
        가족 명패 만들기, 일정 안내
       </td>
-      <td>
+<td>
        경제 개념 도입
       </td>
-     </tr>
-     <tr>
-      <td>
+</tr>
+<tr>
+<td>
        10:30~11:30
       </td>
-      <td>
+<td>
        수확 체험
       </td>
-      <td>
+<td>
        작물 수확 (계절에 따라 선택)
       </td>
-      <td>
+<td>
        생산과 노동의 의미
       </td>
-     </tr>
-     <tr>
-      <td>
+</tr>
+<tr>
+<td>
        11:30~12:30
       </td>
-      <td>
+<td>
        가족 요리 미션
       </td>
-      <td>
+<td>
        수확물로 요리 만들기 (뷔페)
       </td>
-      <td>
+<td>
        소비자 체험, 협업
       </td>
-     </tr>
-     <tr>
-      <td>
+</tr>
+<tr>
+<td>
        12:30~13:30
       </td>
-      <td>
+<td>
        점심 식사
       </td>
-      <td>
+<td>
        함께 만든 음식으로 뷔페
       </td>
-      <td>
+<td>
        요리하는 우리 아이
       </td>
-     </tr>
-     <tr>
-      <td>
+</tr>
+<tr>
+<td>
        13:30~14:30
       </td>
-      <td>
+<td>
        양파깍두기 키트 만들기
       </td>
-      <td>
+<td>
        손질된 양파로 깍두기 담기, 라벨 만들기 체험
       </td>
-      <td>
+<td>
        가공·포장·브랜딩 체험
       </td>
-     </tr>
-     <tr>
-      <td>
+</tr>
+<tr>
+<td>
        14:30~15:30
       </td>
-      <td>
+<td>
        우리 브랜드 마켓 놀이
       </td>
-      <td>
+<td>
        포장된 깍두기 전시·모의 판매·가족 브랜드 발표
       </td>
-      <td>
+<td>
        유통·소비자 체험
       </td>
-     </tr>
-     <tr>
-      <td>
+</tr>
+<tr>
+<td>
        15:30~16:00
       </td>
-      <td>
+<td>
        수료식 &amp; 가족 사진
       </td>
-      <td>
+<td>
        졸업장 수여, 소감 나누기
       </td>
-      <td>
+<td>
        정리 및 동기부여
       </td>
-     </tr>
-    </tbody>
-   </table>
-   <div class="button-box">
-    <a class="apply-button" href="apply.html" target="_blank">
+</tr>
+</tbody>
+</table>
+<div class="button-box">
+<a class="apply-button" href="apply.html" target="_blank">
      프로그램 신청하기
     </a>
-   </div>
-   <h2>
+</div>
+<h2>
     📚 활동 흐름 예시 (비수확기 버전)
    </h2>
-   <table>
-    <thead>
-     <tr>
-      <th>
+<table>
+<thead>
+<tr>
+<th>
        시간
       </th>
-      <th>
+<th>
        활동명
       </th>
-      <th>
+<th>
        세부 내용
       </th>
-      <th>
+<th>
        교육 포인트
       </th>
-     </tr>
-    </thead>
-    <tbody>
-     <tr>
-      <td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
        10:30~11:10
       </td>
-      <td>
+<td>
        💻 가상 수확 체험
       </td>
-      <td>
+<td>
        수확 영상 시청 + 역할극 / 수확 퀴즈
       </td>
-      <td>
+<td>
        생산의 의미, 노동의 가치
       </td>
-     </tr>
-     <tr>
-      <td>
+</tr>
+<tr>
+<td>
        11:10~11:30
       </td>
-      <td>
+<td>
        🧑‍🔬 양파탐험 워크숍
       </td>
-      <td>
+<td>
        양파 해부, 종류 비교, 유통 퀴즈
       </td>
-      <td>
+<td>
        식품 과학, 유통 이해
       </td>
-     </tr>
-     <tr>
-      <td>
+</tr>
+<tr>
+<td>
        11:30~12:30
       </td>
-      <td>
+<td>
        🍽️ 양파깍두기 만들기 체험
       </td>
-      <td>
+<td>
        절임, 버무리기, 포장, 브랜드 라벨 제작
       </td>
-      <td>
+<td>
        가공, 포장, 브랜딩
       </td>
-     </tr>
-    </tbody>
-   </table>
-  </div>
- </body>
+</tr>
+</tbody>
+</table>
+</div>
+</body>
 </html>

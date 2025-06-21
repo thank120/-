@@ -1,12 +1,13 @@
 <!DOCTYPE html>
+
 <html lang="ko">
- <head>
-  <meta charset="utf-8"/>
-  <title>
+<head>
+<meta charset="utf-8"/>
+<title>
    오시는 길
   </title>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <style>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<style>
    nav {
   display: flex;
   flex-wrap: wrap;
@@ -82,77 +83,132 @@ nav a.highlight {
       color: #2a7ae2;
     }
   </style>
- </head>
- <body>
-  <nav>
-   <a href="index.html">
+<style>
+    body {
+        font-family: 'Noto Sans KR', sans-serif;
+        font-size: 17px;
+    }
+    nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 14px;
+        padding: 16px 12px;
+        background: #2db7a3;
+        font-size: 1.05em;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+    }
+    nav a {
+        padding: 8px 16px;
+        font-weight: bold;
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+    }
+    nav a.highlight {
+        color: yellow;
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+    .menu-toggle {
+        display: none;
+        background-color: #2db7a3;
+        border: none;
+        color: white;
+        font-size: 1.2em;
+        padding: 10px;
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        z-index: 1001;
+    }
+    @media (max-width: 768px) {
+        nav {
+            flex-direction: column;
+            align-items: flex-start;
+            display: none;
+        }
+        nav.show {
+            display: flex;
+        }
+        .menu-toggle {
+            display: block;
+        }
+    }
+    </style></head>
+<body><button class="menu-toggle" onclick="document.querySelector('nav').classList.toggle('show')">☰ 메뉴</button>
+<nav>
+<a href="index.html">
     홈
    </a>
-   <a href="index.html#program">
+<a href="index.html#program">
     체험 프로그램
    </a>
-   <a href="gallery.html">
+<a href="gallery.html">
     갤러리
    </a>
-   <a href="about.html">
+<a href="about.html">
     마을 이야기
    </a>
-   <a href="contact.html">
+<a href="contact.html">
     오시는 길
    </a>
-   <a href="https://naver.me/x4GzMCaT" style="color: yellow;" target="_blank">
+<a href="https://naver.me/x4GzMCaT" style="color: yellow;" target="_blank">
     참가 신청
    </a>
-  </nav>
-  <div class="container">
-   <h1 style="text-align: center; color: #2a7ae2;">
+</nav>
+<div class="container">
+<h1 style="text-align: center; color: #2a7ae2;">
     오시는 길
    </h1>
-   <p style="text-align: center; font-size: 1.1em; color: #444; max-width: 600px; margin: 0 auto;">
+<p style="text-align: center; font-size: 1.1em; color: #444; max-width: 600px; margin: 0 auto;">
     원흥마을은 전북 장수군 산서면의 고즈넉한 자연 속에 위치해 있습니다. 가족과 함께 힐링하며 경제를 배우는 오감만족 체험이 기다리고 있어요.
    </p>
-   <div style="margin: 30px 0;">
-    <iframe allowfullscreen="" height="350" loading="lazy" src="https://map.kakao.com/?q=전북 장수군 산서면 원흥길 42" style="border:0; border-radius: 10px;" width="100%">
-    </iframe>
-    <div style="margin-top: 20px;">
-     <iframe allowfullscreen="" height="350" loading="lazy" src="https://map.naver.com/v5/search/전북%20장수군%20산서면%20원흥길%2042" style="border:0; border-radius: 10px;" width="100%">
-     </iframe>
-    </div>
-   </div>
-   <div style="background-color: #e3f2fd; padding: 20px; border-radius: 10px; margin-bottom: 30px; font-size: 1.05em;">
-    <p>
-     <strong>
+<div style="margin: 30px 0;">
+<iframe allowfullscreen="" height="350" loading="lazy" src="https://map.kakao.com/?q=전북 장수군 산서면 원흥길 42" style="border:0; border-radius: 10px;" width="100%">
+</iframe>
+<div style="margin-top: 20px;">
+<iframe allowfullscreen="" height="350" loading="lazy" src="https://map.naver.com/v5/search/전북%20장수군%20산서면%20원흥길%2042" style="border:0; border-radius: 10px;" width="100%">
+</iframe>
+</div>
+</div>
+<div style="background-color: #e3f2fd; padding: 20px; border-radius: 10px; margin-bottom: 30px; font-size: 1.05em;">
+<p>
+<strong>
       📍 주소:
      </strong>
      전북 장수군 산서면 원흥길 42
     </p>
-    <p>
+<p>
      📞 연락처: 010-9882-2605
     </p>
-    <p>
+<p>
      📆 운영일: 매월 마지막 주 토요일 오전 10시 ~ 오후 4시
     </p>
-   </div>
-   <h2 style="color:#2a7ae2;">
+</div>
+<h2 style="color:#2a7ae2;">
     🚗 오시는 방법
    </h2>
-   <ul style="line-height: 1.8;">
-    <li>
-     <strong>
+<ul style="line-height: 1.8;">
+<li>
+<strong>
       자가용:
      </strong>
      장수 IC에서 15분 거리 또는 오수 IC → 산서면 방면 진입 후 20분 거리. 마을 입구 주차장 완비.
     </li>
-    <li>
-     <strong>
+<li>
+<strong>
       대중교통:
      </strong>
      장수터미널 → 산서면 방면 군내버스 이용 → 원흥 정류장 하차 (도보 5분)
     </li>
-   </ul>
-   <p style="text-align:center; font-size: 1.1em; margin-top: 40px; color: #2a7ae2;">
+</ul>
+<p style="text-align:center; font-size: 1.1em; margin-top: 40px; color: #2a7ae2;">
     마을 입구에서 반갑게 인사드릴게요. 안전하게 오세요 🌿
    </p>
-  </div>
- </body>
+</div>
+</body>
 </html>
