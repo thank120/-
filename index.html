@@ -534,5 +534,32 @@
     music.muted = false;
   };
 </script>
+
+<!-- 안내 팝업 -->
+<div id="notice-popup" style="display:none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+    background-color: rgba(0,0,0,0.6); z-index: 9999; justify-content: center; align-items: center;">
+  <div style="background: white; padding: 30px 40px; border-radius: 12px; max-width: 600px; width: 90%; box-shadow: 0 4px 20px rgba(0,0,0,0.3); text-align: center; position: relative;">
+    <h2 style="color: #2a7ae2;">📢 프로그램 안내</h2>
+    <p style="font-size: 1.05em; color: #333; line-height: 1.8;">
+      오감만족 농촌 체험 경제학교는 매월 <strong>마지막 주 토요일</strong>에 운영됩니다.<br/>
+      <strong>이번 달 일정:</strong><br/>
+      ▶️ <strong>6월 29일(토) 오전 10시 ~ 오후 4시</strong><br/><br/>
+      계절과 수확 상황에 따라 세부 프로그램이 달라질 수 있습니다.<br/>
+      자세한 내용은 <a href="program.html" style="color: #2a7ae2; font-weight: bold;">체험 프로그램</a>에서 확인해주세요!
+    </p>
+    <button onclick="document.getElementById('notice-popup').style.display='none';" 
+            style="margin-top: 20px; padding: 10px 24px; font-size: 1em; background-color: #2a7ae2; color: white; border: none; border-radius: 8px; cursor: pointer;">
+      확인했어요
+    </button>
+  </div>
+</div>
+<script>
+  window.addEventListener('load', function() {
+    setTimeout(function() {
+      document.getElementById('notice-popup').style.display = 'flex';
+    }, 1000);
+  });
+</script>
+
 </body>
 </html>
