@@ -7,7 +7,42 @@
   </title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <style>
-   body {
+   nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 10px;
+  background: #2db7a3;
+  font-size: 1.05em;
+}
+nav a {
+  padding: 8px 14px;
+  white-space: nowrap;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  background: transparent;
+}
+nav a.highlight {
+  color: yellow;
+  font-weight: bold;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+@media (max-width: 480px) {
+  nav {
+    font-size: 0.95em;
+    gap: 8px;
+    padding: 10px 8px;
+  }
+  nav a {
+    padding: 6px 10px;
+  }
+}
+
+    body {
       font-family: 'Noto Sans KR', sans-serif;
       margin: 0;
       background-color: #f5f8fb;
@@ -228,7 +263,7 @@
     </tbody>
    </table>
    <div class="button-box">
-    <a class="apply-button" href="apply.html">
+    <a class="apply-button" href="apply.html" target="_blank">
      프로그램 신청하기
     </a>
    </div>
