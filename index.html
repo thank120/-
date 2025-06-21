@@ -1,14 +1,14 @@
-
 <!DOCTYPE html>
-
 <html lang="ko">
-<head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>오감만족 농촌 체험 경제학교</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
-<style>
-    body {
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   오감만족 농촌 체험 경제학교
+  </title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+  <style>
+   body {
       font-family: 'Noto Sans KR', sans-serif;
       margin: 0;
       background-color: #f5f8fb;
@@ -350,140 +350,235 @@
       }
     }
   </style>
-</head>
-<body>
-<nav style="position: fixed; top: 0; width: 100%; background: #2db7a3; z-index: 1000; padding: 10px 20px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-<a href="index.html" style="color: white; text-decoration: none; font-weight: bold;">홈</a>
-<a href="program.html" style="color: white; text-decoration: none; font-weight: bold;">체험 프로그램</a>
-<a href="gallery.html" style="color: white; text-decoration: none; font-weight: bold;">갤러리</a>
-<a href="about.html" style="color: white; text-decoration: none; font-weight: bold;">마을 이야기</a>
-<a href="contact.html" style="color: white; text-decoration: none; font-weight: bold;">오시는 길</a>
-<a href="apply.html" style="color: yellow; text-decoration: none; font-weight: bold;">참가 신청</a>
-</nav>
-<div style="height: 60px;"></div>
-<div class="header">
-<h1>오감만족 농촌 체험 경제학교</h1>
-<p>자연에서 배우는 경제 이야기! 가족과 함께 오감만족 체험을 즐겨보세요.</p>
-</div>
-<div class="banner-container">
-<!-- Using a placeholder farm image since the original image isn't available -->
-<svg class="banner-image" viewbox="0 0 1200 500" xmlns="http://www.w3.org/2000/svg">
-<defs>
-<lineargradient id="skyGradient" x1="0%" x2="0%" y1="0%" y2="100%">
-<stop offset="0%" style="stop-color:#64b5f6;stop-opacity:1"></stop>
-<stop offset="100%" style="stop-color:#bbdefb;stop-opacity:1"></stop>
-</lineargradient>
-</defs>
-<!-- Sky -->
-<rect fill="url(#skyGradient)" height="300" width="1200"></rect>
-<!-- Sun -->
-<circle cx="900" cy="100" fill="#ffeb3b" r="60"></circle>
-<!-- Mountains -->
-<polygon fill="#4caf50" points="0,300 200,150 400,250 600,100 800,200 1000,150 1200,250 1200,300"></polygon>
-<!-- Fields -->
-<rect fill="#8bc34a" height="200" width="1200" x="0" y="300"></rect>
-<!-- Farm house -->
-<rect fill="#d7ccc8" height="100" width="150" x="300" y="250"></rect>
-<polygon fill="#795548" points="275,250 475,250 375,180"></polygon>
-<rect fill="#5d4037" height="50" width="40" x="340" y="300"></rect>
-<rect fill="#90caf9" height="30" width="30" x="360" y="270"></rect>
-<!-- Trees -->
-<circle cx="150" cy="280" fill="#2e7d32" r="40"></circle>
-<rect fill="#5d4037" height="50" width="10" x="145" y="280"></rect>
-<circle cx="600" cy="280" fill="#2e7d32" r="35"></circle>
-<rect fill="#5d4037" height="45" width="10" x="595" y="280"></rect>
-<circle cx="900" cy="290" fill="#2e7d32" r="45"></circle>
-<rect fill="#5d4037" height="55" width="10" x="895" y="290"></rect>
-<!-- Rice fields -->
-<rect fill="#81c784" height="100" stroke="#4caf50" stroke-width="2" width="200" x="50" y="350"></rect>
-<line stroke="#4caf50" stroke-width="2" x1="50" x2="250" y1="370" y2="370"></line>
-<line stroke="#4caf50" stroke-width="2" x1="50" x2="250" y1="390" y2="390"></line>
-<line stroke="#4caf50" stroke-width="2" x1="50" x2="250" y1="410" y2="410"></line>
-<line stroke="#4caf50" stroke-width="2" x1="50" x2="250" y1="430" y2="430"></line>
-<!-- People -->
-<circle cx="500" cy="400" fill="#ffcc80" r="15"></circle>
-<rect fill="#1976d2" height="20" width="10" x="495" y="415"></rect>
-<line stroke="#1976d2" stroke-width="3" x1="505" x2="520" y1="420" y2="410"></line>
-<line stroke="#1976d2" stroke-width="3" x1="495" x2="480" y1="420" y2="410"></line>
-<circle cx="540" cy="410" fill="#ffcc80" r="12"></circle>
-<rect fill="#e91e63" height="15" width="8" x="536" y="422"></rect>
-<line stroke="#e91e63" stroke-width="2" x1="544" x2="555" y1="425" y2="418"></line>
-<line stroke="#e91e63" stroke-width="2" x1="536" x2="525" y1="425" y2="418"></line>
-</svg>
-</div>
-<div class="main-content">
-<div class="poster-container">
-<!-- Using a placeholder poster image -->
-<svg class="poster-image" viewbox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
-<rect fill="#f5f5f5" height="500" width="800"></rect>
-<rect fill="#fff" height="460" rx="10" stroke="#2a7ae2" stroke-width="3" width="760" x="20" y="20"></rect>
-<!-- Title -->
-<text fill="#2a7ae2" font-family="'Noto Sans KR', sans-serif" font-size="36" font-weight="bold" text-anchor="middle" x="400" y="80">오감만족 농촌 체험 경제학교</text>
-<!-- Subtitle -->
-<text fill="#333" font-family="'Noto Sans KR', sans-serif" font-size="20" text-anchor="middle" x="400" y="120">자연에서 배우는 경제 이야기</text>
-<!-- Divider -->
-<line stroke="#2a7ae2" stroke-width="2" x1="200" x2="600" y1="140" y2="140"></line>
-<!-- Farm illustration -->
-<rect fill="#d7ccc8" height="120" width="200" x="300" y="180"></rect>
-<polygon fill="#795548" points="280,180 520,180 400,120"></polygon>
-<rect fill="#5d4037" height="80" width="40" x="350" y="220"></rect>
-<rect fill="#90caf9" height="40" width="40" x="380" y="200"></rect>
-<circle cx="200" fill="#2e7d32" r="40" y="220"></circle>
-<rect fill="#5d4037" height="50" width="10" x="195" y="220"></rect>
-<circle cx="600" fill="#2e7d32" r="40" y="220"></circle>
-<rect fill="#5d4037" height="50" width="10" x="595" y="220"></rect>
-<!-- Details -->
-<text fill="#333" font-family="'Noto Sans KR', sans-serif" font-size="18" text-anchor="middle" x="400" y="350">일시: 2023년 봄~가을 시즌</text>
-<text fill="#333" font-family="'Noto Sans KR', sans-serif" font-size="18" text-anchor="middle" x="400" y="380">장소: 전북 장수 원흥마을</text>
-<text fill="#333" font-family="'Noto Sans KR', sans-serif" font-size="18" text-anchor="middle" x="400" y="410">대상: 가족 단위 참가자</text>
-<!-- Contact -->
-<text fill="#2a7ae2" font-family="'Noto Sans KR', sans-serif" font-size="16" text-anchor="middle" x="400" y="450">문의: 063-123-4567</text>
-</svg>
-</div>
-<div class="section">
-<h2>프로그램 소개</h2>
-<p>오감만족 농촌 체험 경제학교는 가족 단위로 참여하여 농촌 생활과 경제 원리를 함께 배우는 체험형 교육 프로그램입니다. 자연 속에서 오감을 만족시키는 다양한 활동을 통해 경제 개념을 쉽고 재미있게 이해할 수 있습니다.</p>
-<div class="highlight-box">
-<h3>프로그램 특징</h3>
-<div class="icon-feature">
-<svg fill="none" height="24" stroke="#4caf50" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-</svg>
-<span>안전하고 건강한 농촌 체험 환경</span>
-</div>
-<div class="icon-feature">
-<svg fill="none" height="24" stroke="#4caf50" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-<circle cx="9" cy="7" r="4"></circle>
-<path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-<path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-</svg>
-<span>가족 간 소통과 협력을 강화하는 활동</span>
-</div>
-<div class="icon-feature">
-<svg fill="none" height="24" stroke="#4caf50" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-<circle cx="12" cy="12" r="10"></circle>
-<line x1="12" x2="12" y1="8" y2="12"></line>
-<line x1="12" x2="12.01" y1="16" y2="16"></line>
-</svg>
-<span>실생활에 적용 가능한 경제 교육</span>
-</div>
-</div>
-</div>
-<div style="text-align: center; margin: 40px 0;">
-<a href="apply.html" style="display: inline-block; background-color: #2a7ae2; color: white; padding: 16px 36px; font-size: 1.2em; font-weight: bold;
+ </head>
+ <body>
+  <nav style="position: fixed; top: 0; width: 100%; background: #2db7a3; z-index: 1000; padding: 10px 20px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+   <a href="index.html" style="color: white; text-decoration: none; font-weight: bold;">
+    홈
+   </a>
+   <a href="program.html" style="color: white; text-decoration: none; font-weight: bold;">
+    체험 프로그램
+   </a>
+   <a href="gallery.html" style="color: white; text-decoration: none; font-weight: bold;">
+    갤러리
+   </a>
+   <a href="about.html" style="color: white; text-decoration: none; font-weight: bold;">
+    마을 이야기
+   </a>
+   <a href="contact.html" style="color: white; text-decoration: none; font-weight: bold;">
+    오시는 길
+   </a>
+   <a href="apply.html" style="color: yellow; text-decoration: none; font-weight: bold;">
+    참가 신청
+   </a>
+  </nav>
+  <div style="height: 60px;">
+  </div>
+  <div class="header">
+   <h1>
+    오감만족 농촌 체험 경제학교
+   </h1>
+   <p>
+    자연에서 배우는 경제 이야기! 가족과 함께 오감만족 체험을 즐겨보세요.
+   </p>
+  </div>
+  <div class="banner-container">
+   <!-- Using a placeholder farm image since the original image isn't available -->
+   <svg class="banner-image" viewbox="0 0 1200 500" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+     <lineargradient id="skyGradient" x1="0%" x2="0%" y1="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#64b5f6;stop-opacity:1">
+      </stop>
+      <stop offset="100%" style="stop-color:#bbdefb;stop-opacity:1">
+      </stop>
+     </lineargradient>
+    </defs>
+    <!-- Sky -->
+    <rect fill="url(#skyGradient)" height="300" width="1200">
+    </rect>
+    <!-- Sun -->
+    <circle cx="900" cy="100" fill="#ffeb3b" r="60">
+    </circle>
+    <!-- Mountains -->
+    <polygon fill="#4caf50" points="0,300 200,150 400,250 600,100 800,200 1000,150 1200,250 1200,300">
+    </polygon>
+    <!-- Fields -->
+    <rect fill="#8bc34a" height="200" width="1200" x="0" y="300">
+    </rect>
+    <!-- Farm house -->
+    <rect fill="#d7ccc8" height="100" width="150" x="300" y="250">
+    </rect>
+    <polygon fill="#795548" points="275,250 475,250 375,180">
+    </polygon>
+    <rect fill="#5d4037" height="50" width="40" x="340" y="300">
+    </rect>
+    <rect fill="#90caf9" height="30" width="30" x="360" y="270">
+    </rect>
+    <!-- Trees -->
+    <circle cx="150" cy="280" fill="#2e7d32" r="40">
+    </circle>
+    <rect fill="#5d4037" height="50" width="10" x="145" y="280">
+    </rect>
+    <circle cx="600" cy="280" fill="#2e7d32" r="35">
+    </circle>
+    <rect fill="#5d4037" height="45" width="10" x="595" y="280">
+    </rect>
+    <circle cx="900" cy="290" fill="#2e7d32" r="45">
+    </circle>
+    <rect fill="#5d4037" height="55" width="10" x="895" y="290">
+    </rect>
+    <!-- Rice fields -->
+    <rect fill="#81c784" height="100" stroke="#4caf50" stroke-width="2" width="200" x="50" y="350">
+    </rect>
+    <line stroke="#4caf50" stroke-width="2" x1="50" x2="250" y1="370" y2="370">
+    </line>
+    <line stroke="#4caf50" stroke-width="2" x1="50" x2="250" y1="390" y2="390">
+    </line>
+    <line stroke="#4caf50" stroke-width="2" x1="50" x2="250" y1="410" y2="410">
+    </line>
+    <line stroke="#4caf50" stroke-width="2" x1="50" x2="250" y1="430" y2="430">
+    </line>
+    <!-- People -->
+    <circle cx="500" cy="400" fill="#ffcc80" r="15">
+    </circle>
+    <rect fill="#1976d2" height="20" width="10" x="495" y="415">
+    </rect>
+    <line stroke="#1976d2" stroke-width="3" x1="505" x2="520" y1="420" y2="410">
+    </line>
+    <line stroke="#1976d2" stroke-width="3" x1="495" x2="480" y1="420" y2="410">
+    </line>
+    <circle cx="540" cy="410" fill="#ffcc80" r="12">
+    </circle>
+    <rect fill="#e91e63" height="15" width="8" x="536" y="422">
+    </rect>
+    <line stroke="#e91e63" stroke-width="2" x1="544" x2="555" y1="425" y2="418">
+    </line>
+    <line stroke="#e91e63" stroke-width="2" x1="536" x2="525" y1="425" y2="418">
+    </line>
+   </svg>
+  </div>
+  <div class="main-content">
+   <div class="poster-container">
+    <!-- Using a placeholder poster image -->
+    <svg class="poster-image" viewbox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+     <rect fill="#f5f5f5" height="500" width="800">
+     </rect>
+     <rect fill="#fff" height="460" rx="10" stroke="#2a7ae2" stroke-width="3" width="760" x="20" y="20">
+     </rect>
+     <!-- Title -->
+     <text fill="#2a7ae2" font-family="'Noto Sans KR', sans-serif" font-size="36" font-weight="bold" text-anchor="middle" x="400" y="80">
+      오감만족 농촌 체험 경제학교
+     </text>
+     <!-- Subtitle -->
+     <text fill="#333" font-family="'Noto Sans KR', sans-serif" font-size="20" text-anchor="middle" x="400" y="120">
+      자연에서 배우는 경제 이야기
+     </text>
+     <!-- Divider -->
+     <line stroke="#2a7ae2" stroke-width="2" x1="200" x2="600" y1="140" y2="140">
+     </line>
+     <!-- Farm illustration -->
+     <rect fill="#d7ccc8" height="120" width="200" x="300" y="180">
+     </rect>
+     <polygon fill="#795548" points="280,180 520,180 400,120">
+     </polygon>
+     <rect fill="#5d4037" height="80" width="40" x="350" y="220">
+     </rect>
+     <rect fill="#90caf9" height="40" width="40" x="380" y="200">
+     </rect>
+     <circle cx="200" fill="#2e7d32" r="40" y="220">
+     </circle>
+     <rect fill="#5d4037" height="50" width="10" x="195" y="220">
+     </rect>
+     <circle cx="600" fill="#2e7d32" r="40" y="220">
+     </circle>
+     <rect fill="#5d4037" height="50" width="10" x="595" y="220">
+     </rect>
+     <!-- Details -->
+     <text fill="#333" font-family="'Noto Sans KR', sans-serif" font-size="18" text-anchor="middle" x="400" y="350">
+      일시: 2023년 봄~가을 시즌
+     </text>
+     <text fill="#333" font-family="'Noto Sans KR', sans-serif" font-size="18" text-anchor="middle" x="400" y="380">
+      장소: 전북 장수 원흥마을
+     </text>
+     <text fill="#333" font-family="'Noto Sans KR', sans-serif" font-size="18" text-anchor="middle" x="400" y="410">
+      대상: 가족 단위 참가자
+     </text>
+     <!-- Contact -->
+     <text fill="#2a7ae2" font-family="'Noto Sans KR', sans-serif" font-size="16" text-anchor="middle" x="400" y="450">
+      문의: 063-123-4567
+     </text>
+    </svg>
+   </div>
+   <div class="section">
+    <h2>
+     프로그램 소개
+    </h2>
+    <p>
+     오감만족 농촌 체험 경제학교는 가족 단위로 참여하여 농촌 생활과 경제 원리를 함께 배우는 체험형 교육 프로그램입니다. 자연 속에서 오감을 만족시키는 다양한 활동을 통해 경제 개념을 쉽고 재미있게 이해할 수 있습니다.
+    </p>
+    <div class="highlight-box">
+     <h3>
+      프로그램 특징
+     </h3>
+     <div class="icon-feature">
+      <svg fill="none" height="24" stroke="#4caf50" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+       <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z">
+       </path>
+      </svg>
+      <span>
+       안전하고 건강한 농촌 체험 환경
+      </span>
+     </div>
+     <div class="icon-feature">
+      <svg fill="none" height="24" stroke="#4caf50" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+       <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2">
+       </path>
+       <circle cx="9" cy="7" r="4">
+       </circle>
+       <path d="M23 21v-2a4 4 0 0 0-3-3.87">
+       </path>
+       <path d="M16 3.13a4 4 0 0 1 0 7.75">
+       </path>
+      </svg>
+      <span>
+       가족 간 소통과 협력을 강화하는 활동
+      </span>
+     </div>
+     <div class="icon-feature">
+      <svg fill="none" height="24" stroke="#4caf50" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+       <circle cx="12" cy="12" r="10">
+       </circle>
+       <line x1="12" x2="12" y1="8" y2="12">
+       </line>
+       <line x1="12" x2="12.01" y1="16" y2="16">
+       </line>
+      </svg>
+      <span>
+       실생활에 적용 가능한 경제 교육
+      </span>
+     </div>
+    </div>
+   </div>
+   <div style="text-align: center; margin: 40px 0;">
+    <a href="apply.html" style="display: inline-block; background-color: #2a7ae2; color: white; padding: 16px 36px; font-size: 1.2em; font-weight: bold;
             border-radius: 50px; text-decoration: none; box-shadow: 0 6px 18px rgba(0,0,0,0.15); transition: all 0.3s ease;" target="_blank">
-    참가 신청하기
-  </a>
-</div>
-</div>
-<div class="footer">
-<p>오감만족 농촌 체험 경제학교 | 전북 장수군 원흥마을</p>
-<p>연락처: 010-9882-2605 | 이메일: thank120jj@hanmail.net
-<p>© 2025 오감만족 농촌 체험 경제학교. All Rights Reserved.</p>
-</p></div>
-<script>
-    // Make the intro box visible after page load
+     참가 신청하기
+    </a>
+   </div>
+  </div>
+  <div class="footer">
+   <p>
+    오감만족 농촌 체험 경제학교 | 전북 장수군 원흥마을
+   </p>
+   <p>
+    연락처: 010-9882-2605 | 이메일: thank120jj@hanmail.net
+    <p>
+     © 2025 오감만족 농촌 체험 경제학교. All Rights Reserved.
+    </p>
+   </p>
+  </div>
+  <script>
+   // Make the intro box visible after page load
     window.addEventListener('DOMContentLoaded', function() {
       setTimeout(function() {
         document.getElementById('introBox').classList.add('visible');
@@ -508,14 +603,23 @@
       });
     });
   </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'952bbc5f14adaa3b',t:'MTc1MDQyNzQzMy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
-<audio autoplay="" id="bg-music" loop="">
-<source src="game_background_music.mp3" type="audio/mpeg"/>
-  브라우저가 오디오를 지원하지 않습니다.
-</audio>
-<button id="music-toggle" onclick="toggleMusic()" onmouseout="this.style.transform='scale(1)'" onmouseover="this.style.transform='scale(1.05)'" style="position: fixed;top: 10px;right: 20px;background-color: #2a7ae2;color: white;border: none;padding: 8px 16px;font-size: 0.95em;border-radius: 25px;box-shadow: 0 4px 10px rgba(0,0,0,0.2);cursor: pointer;z-index: 9999;display: flex;align-items: center;gap: 8px;"><span>🎵</span><span>배경음악 켜기</span></button>
-<script>
-  const music = document.getElementById('bg-music');
+  <script>
+   (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'952bbc5f14adaa3b',t:'MTc1MDQyNzQzMy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();
+  </script>
+  <audio autoplay="" id="bg-music" loop="">
+   <source src="game_background_music.mp3" type="audio/mpeg"/>
+   브라우저가 오디오를 지원하지 않습니다.
+  </audio>
+  <button id="music-toggle" onclick="toggleMusic()" onmouseout="this.style.transform='scale(1)'" onmouseover="this.style.transform='scale(1.05)'" style="position: fixed;top: 10px;right: 20px;background-color: #2a7ae2;color: white;border: none;padding: 8px 16px;font-size: 0.95em;border-radius: 25px;box-shadow: 0 4px 10px rgba(0,0,0,0.2);cursor: pointer;z-index: 9999;display: flex;align-items: center;gap: 8px;">
+   <span>
+    🎵
+   </span>
+   <span>
+    배경음악 켜기
+   </span>
+  </button>
+  <script>
+   const music = document.getElementById('bg-music');
   const toggleBtn = document.getElementById('music-toggle');
 
   function toggleMusic() {
@@ -533,33 +637,50 @@
     music.volume = 1;
     music.muted = false;
   };
-</script>
-
-<!-- 안내 팝업 -->
-<div id="notice-popup" style="display:none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+  </script>
+  <!-- 안내 팝업 -->
+  <div id="notice-popup" style="display:none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
     background-color: rgba(0,0,0,0.6); z-index: 9999; justify-content: center; align-items: center;">
-  <div style="background: white; padding: 30px 40px; border-radius: 12px; max-width: 600px; width: 90%; box-shadow: 0 4px 20px rgba(0,0,0,0.3); text-align: center; position: relative;">
-    <h2 style="color: #2a7ae2;">📢 프로그램 안내</h2>
+   <div style="background: white; padding: 30px 40px; border-radius: 12px; max-width: 600px; width: 90%; box-shadow: 0 4px 20px rgba(0,0,0,0.3); text-align: center; position: relative;">
+    <h2 style="color: #2a7ae2;">
+     📢 프로그램 안내
+    </h2>
     <p style="font-size: 1.05em; color: #333; line-height: 1.8;">
-      오감만족 농촌 체험 경제학교는 매월 <strong>마지막 주 토요일</strong>에 운영됩니다.<br/>
-      <strong>이번 달 일정:</strong><br/>
-      ▶️ <strong>6월 29일(토) 오전 10시 ~ 오후 4시</strong><br/><br/>
-      계절과 수확 상황에 따라 세부 프로그램이 달라질 수 있습니다.<br/>
-      자세한 내용은 <a href="program.html" style="color: #2a7ae2; font-weight: bold;">체험 프로그램</a>에서 확인해주세요!
+     오감만족 농촌 체험 경제학교는 매월
+     <strong>
+      마지막 주 토요일
+     </strong>
+     에 운영됩니다.
+     <br/>
+     <strong>
+      이번 달 일정:
+     </strong>
+     <br/>
+     ▶️
+     <strong>
+      6월 29일(토) 오전 10시 ~ 오후 4시
+     </strong>
+     <br/>
+     <br/>
+     계절과 수확 상황에 따라 세부 프로그램이 달라질 수 있습니다.
+     <br/>
+     자세한 내용은
+     <a href="program.html" style="color: #2a7ae2; font-weight: bold;">
+      체험 프로그램
+     </a>
+     에서 확인해주세요!
     </p>
-    <button onclick="document.getElementById('notice-popup').style.display='none';" 
-            style="margin-top: 20px; padding: 10px 24px; font-size: 1em; background-color: #2a7ae2; color: white; border: none; border-radius: 8px; cursor: pointer;">
-      확인했어요
+    <button onclick="document.getElementById('notice-popup').style.display='none';" style="margin-top: 20px; padding: 10px 24px; font-size: 1em; background-color: #2a7ae2; color: white; border: none; border-radius: 8px; cursor: pointer;">
+     확인했어요
     </button>
+   </div>
   </div>
-</div>
-<script>
-  window.addEventListener('load', function() {
+  <script>
+   window.addEventListener('load', function() {
     setTimeout(function() {
       document.getElementById('notice-popup').style.display = 'flex';
     }, 1000);
   });
-</script>
-
-</body>
+  </script>
+ </body>
 </html>
