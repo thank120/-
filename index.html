@@ -448,7 +448,7 @@ nav a.highlight {
 <a href="gallery.html">갤러리</a>
 <a href="about.html">마을 이야기</a>
 <a href="contact.html">오시는 길</a>
-<a class="highlight" href="apply.html" target="_blank">참가 신청</a>
+<a class="highlight" href="apply.html">참가 신청</a>
 </nav>
 <div style="height: 60px;">
 </div>
@@ -639,7 +639,7 @@ nav a.highlight {
 </div>
 <div style="text-align: center; margin: 40px 0;">
 <a href="apply.html" style="display: inline-block; background-color: #2a7ae2; color: white; padding: 16px 36px; font-size: 1.2em; font-weight: bold;
-            border-radius: 50px; text-decoration: none; box-shadow: 0 6px 18px rgba(0,0,0,0.15); transition: all 0.3s ease;" target="_blank">
+            border-radius: 50px; text-decoration: none; box-shadow: 0 6px 18px rgba(0,0,0,0.15); transition: all 0.3s ease;">
      참가 신청하기
     </a>
 </div>
@@ -688,7 +688,7 @@ nav a.highlight {
 <source src="game_background_music.mp3" type="audio/mpeg"/>
    브라우저가 오디오를 지원하지 않습니다.
   </audio>
-<button id="music-toggle" onclick="toggleMusic()" onmouseout="this.style.transform='scale(1)'" onmouseover="this.style.transform='scale(1.05)'" style="position: fixed;right: 20px;background-color: #2a7ae2;color: white;border: none;padding: 8px 16px;font-size: 0.95em;border-radius: 25px;box-shadow: 0 4px 10px rgba(0,0,0,0.2);cursor: pointer;z-index: 9999;display: flex;align-items: center;gap: 8px;;bottom: 20px;right: 20px;">
+<button id="music-toggle" onclick="toggleMusic()" onmouseout="this.style.transform='scale(1)'" onmouseover="this.style.transform='scale(1.05)'" style="position: fixed;right: 20px;background-color: #2a7ae2;color: white;border: none;padding: 8px 16px;font-size: 0.95em;border-radius: 25px;box-shadow: 0 4px 10px rgba(0,0,0,0.2);cursor: pointer;z-index: 9999;display: flex;align-items: center;gap: 8px;right: 20px;bottom: 20px;right: 20px;">
 <span>
     🎵
    </span>
@@ -736,5 +736,9 @@ nav a.highlight {
     }, 1000);
   });
 </script>
-</body>
+<script>
+document.querySelector(".menu-toggle").addEventListener("click", function() {
+  document.querySelector("nav.main-nav").classList.toggle("show");
+});
+</script></body>
 </html>
