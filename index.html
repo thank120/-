@@ -386,6 +386,7 @@ nav a.highlight {
       }
     }
   </style>
+
 <style id="main-nav-style">
   nav.main-nav {
     position: fixed;
@@ -439,17 +440,20 @@ nav a.highlight {
     }
   }
 </style>
+
 </head>
-<body><div id="popup" style="position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#fff8e1;color:#333;padding:20px 30px;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,0.2);z-index:2000;">📢 이번 달 프로그램은 6월 29일(토) 오전 10시부터 오후 4시까지 진행됩니다. 신청은 참가 신청 페이지를 확인해주세요!</div>
+<body>
+
 <nav class="main-nav">
-<button class="menu-toggle" onclick="document.querySelector('nav').classList.toggle('show')">☰ 메뉴</button>
-<a href="index.html">홈</a>
-<a href="program.html">체험 프로그램</a>
-<a href="gallery.html">갤러리</a>
-<a href="about.html">마을 이야기</a>
-<a href="contact.html">오시는 길</a>
-<a class="highlight" href="apply.html" target="_blank">참가 신청</a>
+  <button class="menu-toggle" onclick="document.querySelector('nav').classList.toggle('show')">☰ 메뉴</button>
+  <a href="index.html">홈</a>
+  <a href="program.html">체험 프로그램</a>
+  <a href="gallery.html">갤러리</a>
+  <a href="about.html">마을 이야기</a>
+  <a href="contact.html">오시는 길</a>
+  <a href="apply.html" class="highlight" target="_blank">참가 신청</a>
 </nav>
+    
 <div style="height: 60px;">
 </div>
 <div class="header">
@@ -688,7 +692,14 @@ nav a.highlight {
 <source src="game_background_music.mp3" type="audio/mpeg"/>
    브라우저가 오디오를 지원하지 않습니다.
   </audio>
-
+<button id="music-toggle" onclick="toggleMusic()" onmouseout="this.style.transform='scale(1)'" onmouseover="this.style.transform='scale(1.05)'" style="position: fixed;top: 10px;right: 20px;background-color: #2a7ae2;color: white;border: none;padding: 8px 16px;font-size: 0.95em;border-radius: 25px;box-shadow: 0 4px 10px rgba(0,0,0,0.2);cursor: pointer;z-index: 9999;display: flex;align-items: center;gap: 8px;">
+<span>
+    🎵
+   </span>
+<span>
+    배경음악 켜기
+   </span>
+</button>
 <script>
    const music = document.getElementById('bg-music');
   const toggleBtn = document.getElementById('music-toggle');
@@ -709,20 +720,28 @@ nav a.highlight {
     music.muted = false;
   };
   </script>
-<button id="bgm-button" style="position:fixed; bottom:20px; right:20px; z-index:1000; background:#ff9800; color:white; border:none; padding:10px 20px; border-radius:8px; font-weight:bold;">🎵 배경음악 재생/정지</button><script>
-let bgm = new Audio("bgm.mp3");
-bgm.loop = true;
-document.getElementById("bgm-button").onclick = function() {
-  if (bgm.paused) {
-    bgm.play();
-  } else {
-    bgm.pause();
-  }
-};
-</script><script>
-setTimeout(() => {
-  const popup = document.getElementById("popup");
-  if (popup) popup.style.display = "none";
-}, 10000);
-</script></body>
+
+<!-- 📌 안내 팝업창 -->
+<div id="popup-notice" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); z-index:9999;">
+  <div style="position:relative; top:50%; left:50%; transform:translate(-50%,-50%); background:#fff; padding:30px 25px; border-radius:12px; width:90%; max-width:400px; box-shadow:0 10px 30px rgba(0,0,0,0.3); text-align:center; font-family:'Noto Sans KR',sans-serif;">
+    <h3 style="color:#2a7ae2; margin-top:0;">📅 6월 체험 프로그램 안내</h3>
+    <p style="margin:10px 0 20px; line-height:1.6;">
+      매월 마지막 주 토요일마다 진행되는 프로그램!<br><br>
+      ✅ 이번 달 일정: <strong>6월 29일(토)</strong><br>
+      🕙 시간: <strong>오전 10시 ~ 오후 4시</strong><br><br>
+      일자가 변경될 수 있으니 신청 전 꼭 확인해주세요!
+    </p>
+    <button onclick="document.getElementById('popup-notice').style.display='none'" style="padding:10px 20px; background:#2a7ae2; color:white; border:none; border-radius:8px; font-size:1em; cursor:pointer;">확인했어요</button>
+  </div>
+</div>
+
+<script>
+  window.addEventListener('load', function() {
+    setTimeout(function() {
+      document.getElementById('popup-notice').style.display = 'block';
+    }, 1000);
+  });
+</script>
+
+</body>
 </html>
