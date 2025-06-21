@@ -689,7 +689,8 @@ function toggleMusic() {
     music.play().then(() => {
       toggleBtn.innerHTML = '🔈 음악 끄기';
     }).catch((e) => {
-      alert('브라우저 정책상 클릭 후에만 재생이 가능합니다.');
+      toggleBtn.innerHTML = '🔇 음악 켜기';
+      console.warn('브라우저 정책상 클릭 후에만 재생이 가능합니다.');
     });
   } else {
     music.pause();
@@ -698,7 +699,19 @@ function toggleMusic() {
 }
 
 window.onload = function () {
-  toggleBtn.innerHTML = '🔇 음악 켜기';
+  // 메뉴바 숨김/보임 토글 (모바일 대응)
+  const menuBtn = document.querySelector('.menu-toggle');
+  const nav = document.querySelector('nav.main-nav');
+  if (menuBtn && nav) {
+    menuBtn.addEventListener('click', function () {
+      nav.classList.toggle('show');
+    });
+  }
+
+  // 오디오 버튼 초기화 (명확하게 설정)
+  toggleBtn.innerHTML = music.paused ? '🔇 음악 켜기' : '🔈 음악 끄기';
+
+  // 팝업 표시
   setTimeout(() => {
     const popup = document.getElementById('popup-notice');
     if (popup) {
