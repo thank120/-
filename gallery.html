@@ -8,6 +8,65 @@
   </title>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <style>
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 12px;
+  background: #2db7a3;
+  font-size: 1.05em;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+nav a {
+  padding: 8px 16px;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+}
+nav a.highlight {
+  color: yellow;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.menu-toggle {
+  display: none;
+  background-color: #2db7a3;
+  border: none;
+  color: white;
+  font-size: 1.2em;
+  padding: 10px;
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 1001;
+}
+@media (max-width: 768px) {
+  nav {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    background: #2db7a3;
+  }
+  nav.show {
+    display: flex;
+  }
+  .menu-toggle {
+    display: block;
+  }
+  body {
+    padding-top: 80px;
+  }
+}
+body {
+  padding-top: 80px;
+}
+
+
    nav {
   display: flex;
   flex-wrap: wrap;
@@ -48,9 +107,7 @@ nav a.highlight {
       background-color: #f5f8fb;
       margin: 0;
       padding: 20px;
-    
-  padding-top: 80px;
-}
+    }
 
     h1 {
       text-align: center;
@@ -137,7 +194,7 @@ nav a.highlight {
     }
   </style>
 </head>
-<body>
+<body><button class="menu-toggle" onclick="document.querySelector('nav').classList.toggle('show')">☰ 메뉴</button>
 <nav>
 <a href="index.html">
     홈
@@ -154,26 +211,10 @@ nav a.highlight {
 <a href="contact.html">
     오시는 길
    </a>
-<a class="highlight" href="apply.html">
+<a class="highlight" href="apply.html" style="color: yellow;" target="_blank">
     참가 신청
    </a>
 </nav>
-<a href="index.html" style="
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    background-color: #2a7ae2;
-    color: white;
-    padding: 8px 16px;
-    border-radius: 20px;
-    text-decoration: none;
-    font-weight: bold;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-    font-size: 0.9em;
-    z-index: 10000;
-  ">
-   🏠 홈으로
-  </a>
 <h1>
    📸 원흥마을 갤러리
   </h1>
