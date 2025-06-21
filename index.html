@@ -7,30 +7,13 @@
   <title>오감만족 농촌 체험 경제학교</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet"/>
   <style>
-    /* 기존 스타일은 그대로 유지 (생략 가능) */
-    nav.main-nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: #2db7a3;
-      z-index: 1000;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 14px;
-      padding: 12px;
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      margin: 0;
+      background-color: #f5f8fb;
+      color: #333;
     }
-    nav.main-nav a {
-      color: white;
-      font-weight: bold;
-      padding: 8px 14px;
-      text-decoration: none;
-      border-radius: 6px;
-    }
-    nav.main-nav a.highlight {
-      color: yellow;
-      background-color: rgba(255,255,255,0.1);
-    }
+
     .menu-toggle {
       display: none;
       background-color: #2db7a3;
@@ -43,6 +26,33 @@
       right: 10px;
       z-index: 1001;
     }
+
+    nav.main-nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: #2db7a3;
+      z-index: 1000;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px;
+      padding: 12px;
+    }
+
+    nav.main-nav a {
+      color: white;
+      font-weight: bold;
+      padding: 8px 14px;
+      text-decoration: none;
+      border-radius: 6px;
+    }
+
+    nav.main-nav a.highlight {
+      color: yellow;
+      background-color: rgba(255,255,255,0.1);
+    }
+
     @media (max-width: 768px) {
       nav.main-nav {
         display: none;
@@ -59,9 +69,50 @@
         padding-top: 80px;
       }
     }
+
+    .header {
+      background: linear-gradient(to right, #2db7a3, #1e5799);
+      color: white;
+      text-align: center;
+      padding: 60px 20px;
+      margin-top: 60px;
+    }
+
+    .main-content {
+      padding: 40px 20px;
+      max-width: 900px;
+      margin: 0 auto;
+      background: white;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      border-radius: 16px;
+    }
+
+    .footer {
+      background-color: #2a3f54;
+      color: #fff;
+      text-align: center;
+      padding: 30px 20px;
+      margin-top: 60px;
+    }
+
+    #music-toggle {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      background-color: #2a7ae2;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      font-size: 0.95em;
+      border-radius: 25px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      cursor: pointer;
+      z-index: 9999;
+    }
   </style>
 </head>
 <body>
+
   <button class="menu-toggle" onclick="document.querySelector('.main-nav').classList.toggle('show')">☰ 메뉴</button>
   <nav class="main-nav">
     <a href="index.html">홈</a>
@@ -72,23 +123,43 @@
     <a class="highlight" href="apply.html">참가 신청</a>
   </nav>
 
-  <!-- 콘텐츠 생략 -->
+  <div class="header">
+    <h1>오감만족 농촌 체험 경제학교</h1>
+    <p>자연에서 배우는 경제 이야기! 가족과 함께 오감만족 체험을 즐겨보세요.</p>
+  </div>
+
+  <div class="main-content">
+    <h2>프로그램 소개</h2>
+    <p>
+      오감만족 농촌 체험 경제학교는 가족 단위로 참여하여 농촌 생활과 경제 원리를 함께 배우는 체험형 교육 프로그램입니다.
+      자연 속에서 오감을 만족시키는 다양한 활동을 통해 경제 개념을 쉽고 재미있게 이해할 수 있습니다.
+    </p>
+  </div>
+
+  <div class="footer">
+    <p>오감만족 농촌 체험 경제학교 | 전북 장수군 원흥마을</p>
+    <p>연락처: 010-9882-2605 | 이메일: thank120jj@hanmail.net</p>
+    <p>© 2025 오감만족 농촌 체험 경제학교. All Rights Reserved.</p>
+  </div>
 
   <audio id="bg-music" loop>
-    <source src="game_background_music.mp3" type="audio/mpeg"/>
+    <source src="game_background_music.mp3" type="audio/mpeg">
     브라우저가 오디오를 지원하지 않습니다.
   </audio>
-  <button id="music-toggle" onclick="toggleMusic()" style="position: fixed; right: 20px; bottom: 20px; background-color: #2a7ae2; color: white; border: none; padding: 8px 16px; font-size: 0.95em; border-radius: 25px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); cursor: pointer; z-index: 9999;">
-    🎵 배경음악 켜기
-  </button>
+  <button id="music-toggle" onclick="toggleMusic()">🔇 음악 켜기</button>
+
   <script>
     const music = document.getElementById('bg-music');
     const toggleBtn = document.getElementById('music-toggle');
 
     function toggleMusic() {
       if (music.paused) {
-        music.play();
-        toggleBtn.innerHTML = '🔈 음악 끄기';
+        music.play().then(() => {
+          toggleBtn.innerHTML = '🔈 음악 끄기';
+        }).catch(err => {
+          alert("음악을 재생하려면 사용자 클릭이 필요합니다.");
+          console.log(err);
+        });
       } else {
         music.pause();
         toggleBtn.innerHTML = '🔇 음악 켜기';
@@ -99,5 +170,6 @@
       toggleBtn.innerHTML = '🔇 음악 켜기';
     };
   </script>
+
 </body>
 </html>
