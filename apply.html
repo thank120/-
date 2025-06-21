@@ -7,7 +7,41 @@
   </title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <style>
-   body {
+   nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      padding: 10px;
+      background: #2db7a3;
+      font-size: 0.95em;
+    }
+    nav a {
+      padding: 6px 12px;
+      white-space: nowrap;
+      font-weight: bold;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      background: transparent;
+    }
+    nav a.highlight {
+      color: yellow;
+      font-weight: bold;
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+    @media (max-width: 480px) {
+      nav {
+        font-size: 0.85em;
+        gap: 6px;
+      }
+      nav a {
+        padding: 5px 8px;
+      }
+    }
+    
+    body {
       font-family: 'Noto Sans KR', sans-serif;
       background-color: #f5f8fb;
       margin: 0;
@@ -68,13 +102,6 @@
   </style>
  </head>
  <body>
-  <nav style="position: fixed; top: 0; width: 100%; background: #2db7a3; z-index: 1000; padding: 10px 20px; display: flex; justify-content: center;">
-   <a href="index.html" style="color: white; text-decoration: none; font-weight: bold;">
-    🏠 홈으로
-   </a>
-  </nav>
-  <div style="height: 60px;">
-  </div>
   <div class="container">
    <h1>
     🌿 참가 신청서
@@ -84,7 +111,7 @@
     <br/>
     자연 속 경제 체험, 가족의 특별한 하루가 기다립니다.
    </p>
-   <form action="https://formspree.io/f/mdkzeqja" method="POST" onsubmit="return handleSubmit(event);">
+   <form action="https://formspree.io/f/your-form-id" method="POST" onsubmit="return handleSubmit(event);">
     <label for="name">
      신청자 성함
     </label>
