@@ -1,90 +1,325 @@
-
 <!DOCTYPE html>
+
 <html lang="ko">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>오감만족 농촌 체험 경제학교</title>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet"/>
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>
+   오감만족 농촌 체험 경제학교
+  </title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+<style>
+   nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 10px;
+  background: #2db7a3;
+  font-size: 1.05em;
+}
+nav a {
+  padding: 8px 14px;
+  white-space: nowrap;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  background: transparent;
+}
+nav a.highlight {
+  color: yellow;
+  font-weight: bold;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+@media (max-width: 480px) {
+  nav {
+    font-size: 0.95em;
+    gap: 8px;
+    padding: 10px 8px;
+  }
+  nav a {
+    padding: 6px 10px;
+  }
+}
+
     body {
       font-family: 'Noto Sans KR', sans-serif;
       margin: 0;
       background-color: #f5f8fb;
       color: #333;
-    }
-
-    .menu-toggle {
-      display: none;
-      background-color: #2db7a3;
-      color: white;
-      border: none;
-      font-size: 1.2em;
-      padding: 10px;
-      position: fixed;
-      top: 10px;
-      right: 10px;
-      z-index: 1001;
-    }
-
-    nav.main-nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: #2db7a3;
-      z-index: 1000;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 14px;
-      padding: 12px;
-    }
-
-    nav.main-nav a {
-      color: white;
-      font-weight: bold;
-      padding: 8px 14px;
-      text-decoration: none;
-      border-radius: 6px;
-    }
-
-    nav.main-nav a.highlight {
-      color: yellow;
-      background-color: rgba(255,255,255,0.1);
-    }
-
-    @media (max-width: 768px) {
-      nav.main-nav {
-        display: none;
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      nav.main-nav.show {
-        display: flex;
-      }
-      .menu-toggle {
-        display: block;
-      }
-      body {
-        padding-top: 80px;
-      }
+      line-height: 1.6;
     }
 
     .header {
       background: linear-gradient(to right, #2db7a3, #1e5799);
       color: white;
       text-align: center;
-      padding: 60px 20px;
-      margin-top: 60px;
+      padding: 40px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E") repeat;
+      opacity: 0.3;
+    }
+
+    .header h1 {
+      margin: 0 0 10px;
+      font-size: 2.5rem;
+      position: relative;
+    }
+
+    .header p {
+      margin: 0;
+      font-size: 1.2rem;
+      position: relative;
+    }
+
+    .banner-container {
+      position: relative;
+      text-align: center;
+      background-color: #000;
+      overflow: hidden;
+      max-height: 500px;
+    }
+
+    .banner-image {
+      width: 100%;
+      max-height: 500px;
+      object-fit: cover;
+      display: block;
+      opacity: 0.85;
+      transition: transform 0.5s ease;
+    }
+
+    .banner-container:hover .banner-image {
+      transform: scale(1.02);
+    }
+
+    .overlay-box {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: rgba(0, 0, 0, 0.65);
+      padding: 40px 60px;
+      color: #fff;
+      font-size: 1.2em;
+      line-height: 1.8;
+      text-align: left;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 2s ease-out, transform 2s ease-out;
+    }
+
+    .overlay-box.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .overlay-box p {
+      margin-bottom: 15px;
+    }
+
+    .overlay-box strong {
+      color: #4fc3f7;
+      font-weight: 700;
     }
 
     .main-content {
-      padding: 40px 20px;
-      max-width: 900px;
+      max-width: 1200px;
       margin: 0 auto;
+      padding: 20px;
+    }
+
+    .poster-container {
+      text-align: center;
+      margin: 40px auto;
+      position: relative;
+    }
+
+    .poster-image {
+      width: 100%;
+      max-width: 800px;
+      height: auto;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+      border-radius: 12px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .poster-image:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.25);
+    }
+
+    .buttons-container {
+      margin: 30px 0;
+      text-align: center;
+    }
+
+    .gallery-button, .video-button {
+      display: inline-block;
+      padding: 12px 28px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.05em;
+      margin: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .gallery-button::before, .video-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 100%;
+      background-color: rgba(255,255,255,0.2);
+      transition: width 0.3s ease;
+      z-index: -1;
+    }
+
+    .gallery-button:hover::before, .video-button:hover::before {
+      width: 100%;
+    }
+
+    .gallery-button {
+      background-color: #2a7ae2;
+      color: white;
+    }
+
+    .gallery-button:hover {
+      background-color: #1e63d3;
+      transform: scale(1.05);
+      box-shadow: 0 6px 16px rgba(42, 122, 226, 0.3);
+    }
+
+    .video-button {
+      background-color: #f57c00;
+      color: white;
+    }
+
+    .video-button:hover {
+      background-color: #e66a00;
+      transform: scale(1.05);
+      box-shadow: 0 6px 16px rgba(245, 124, 0, 0.3);
+    }
+
+    .section {
+      max-width: 900px;
+      margin: 40px auto;
       background: white;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      padding: 35px;
       border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+    }
+
+    h2 {
+      color: #2a7ae2;
+      margin-top: 0;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #e8f0fe;
+      position: relative;
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 80px;
+      height: 2px;
+      background-color: #2a7ae2;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+
+    th, td {
+      border: 1px solid #e0e0e0;
+      padding: 12px 15px;
+      text-align: center;
+      font-size: 0.95em;
+    }
+
+    th {
+      background-color: #e8f0fe;
+      color: #2a7ae2;
+      font-weight: 600;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    tr:hover {
+      background-color: #f0f7ff;
+    }
+
+    .apply-button {
+      display: inline-block;
+      margin-top: 30px;
+      background-color: #2a7ae2;
+      color: white;
+      padding: 14px 32px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: 1.1em;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(42, 122, 226, 0.3);
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .apply-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 100%;
+      background-color: rgba(255,255,255,0.2);
+      transition: width 0.3s ease;
+      z-index: -1;
+    }
+
+    .apply-button:hover::before {
+      width: 100%;
+    }
+
+    .apply-button:hover {
+      background-color: #1e5799;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(42, 122, 226, 0.4);
     }
 
     .footer {
@@ -95,81 +330,381 @@
       margin-top: 60px;
     }
 
-    #music-toggle {
-      position: fixed;
-      right: 20px;
-      bottom: 20px;
-      background-color: #2a7ae2;
-      color: white;
-      border: none;
-      padding: 8px 16px;
-      font-size: 0.95em;
-      border-radius: 25px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      cursor: pointer;
-      z-index: 9999;
+    .footer p {
+      margin: 5px 0;
+      font-size: 0.9em;
+      color: rgba(255,255,255,0.8);
     }
-  </style>
-</head>
-<body>
 
-  <button class="menu-toggle" onclick="document.querySelector('.main-nav').classList.toggle('show')">☰ 메뉴</button>
-  <nav class="main-nav">
-    <a href="index.html">홈</a>
-    <a href="program.html">체험 프로그램</a>
-    <a href="gallery.html">갤러리</a>
-    <a href="about.html">마을 이야기</a>
-    <a href="contact.html">오시는 길</a>
-    <a class="highlight" href="apply.html">참가 신청</a>
-  </nav>
+    .highlight-box {
+      background-color: #e8f5e9;
+      border-left: 4px solid #4caf50;
+      padding: 15px 20px;
+      margin: 20px 0;
+      border-radius: 4px;
+    }
 
-  <div class="header">
-    <h1>오감만족 농촌 체험 경제학교</h1>
-    <p>자연에서 배우는 경제 이야기! 가족과 함께 오감만족 체험을 즐겨보세요.</p>
-  </div>
+    .highlight-box h3 {
+      margin-top: 0;
+      color: #2e7d32;
+    }
 
-  <div class="main-content">
-    <h2>프로그램 소개</h2>
-    <p>
-      오감만족 농촌 체험 경제학교는 가족 단위로 참여하여 농촌 생활과 경제 원리를 함께 배우는 체험형 교육 프로그램입니다.
-      자연 속에서 오감을 만족시키는 다양한 활동을 통해 경제 개념을 쉽고 재미있게 이해할 수 있습니다.
-    </p>
-  </div>
+    .icon-feature {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+    }
 
-  <div class="footer">
-    <p>오감만족 농촌 체험 경제학교 | 전북 장수군 원흥마을</p>
-    <p>연락처: 010-9882-2605 | 이메일: thank120jj@hanmail.net</p>
-    <p>© 2025 오감만족 농촌 체험 경제학교. All Rights Reserved.</p>
-  </div>
+    .icon-feature svg {
+      margin-right: 15px;
+      min-width: 24px;
+    }
 
-  <audio id="bg-music" loop>
-    <source src="game_background_music.mp3" type="audio/mpeg">
-    브라우저가 오디오를 지원하지 않습니다.
-  </audio>
-  <button id="music-toggle" onclick="toggleMusic()">🔇 음악 켜기</button>
+    @media (max-width: 768px) {
+      .header h1 {
+        font-size: 1.8rem;
+      }
+      
+      .header p {
+        font-size: 1rem;
+      }
+      
+      .overlay-box {
+        font-size: 1em;
+        padding: 20px;
+      }
 
-  <script>
-    const music = document.getElementById('bg-music');
-    const toggleBtn = document.getElementById('music-toggle');
-
-    function toggleMusic() {
-      if (music.paused) {
-        music.play().then(() => {
-          toggleBtn.innerHTML = '🔈 음악 끄기';
-        }).catch(err => {
-          alert("음악을 재생하려면 사용자 클릭이 필요합니다.");
-          console.log(err);
-        });
-      } else {
-        music.pause();
-        toggleBtn.innerHTML = '🔇 음악 켜기';
+      .section {
+        margin: 20px 10px;
+        padding: 20px;
+      }
+      
+      .gallery-button, .video-button {
+        display: block;
+        margin: 10px auto;
+        max-width: 80%;
       }
     }
+  </style>
+<style id="main-nav-style">
+  nav.main-nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: #2db7a3;
+    z-index: 1000;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+    padding: 12px;
+  }
+  nav.main-nav a {
+    color: white;
+    font-weight: bold;
+    padding: 8px 14px;
+    text-decoration: none;
+    border-radius: 6px;
+  }
+  nav.main-nav a.highlight {
+    color: yellow;
+    background-color: rgba(255,255,255,0.1);
+  }
+  .menu-toggle {
+    display: none;
+    background-color: #2db7a3;
+    color: white;
+    border: none;
+    font-size: 1.2em;
+    padding: 10px;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 1001;
+  }
+  @media (max-width: 768px) {
+    nav.main-nav {
+      display: none;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    nav.main-nav.show {
+      display: flex;
+    }
+    .menu-toggle {
+      display: block;
+    }
+    body {
+      padding-top: 80px;
+    }
+  }
+</style>
+</head>
+<body>
+<nav class="main-nav main-nav">
+<button class="menu-toggle" onclick="document.querySelector('nav').classList.toggle('show')">☰ 메뉴</button>
+<a href="index.html">홈</a>
+<a href="program.html">체험 프로그램</a>
+<a href="gallery.html">갤러리</a>
+<a href="about.html">마을 이야기</a>
+<a href="contact.html">오시는 길</a>
+<a class="highlight" href="apply.html">참가 신청</a>
+</nav>
+<div style="height: 60px;">
+</div>
+<div class="header">
+<h1>
+    오감만족 농촌 체험 경제학교
+   </h1>
+<p>
+    자연에서 배우는 경제 이야기! 가족과 함께 오감만족 체험을 즐겨보세요.
+   </p>
+</div>
+<div class="banner-container">
+<!-- Using a placeholder farm image since the original image isn't available -->
+<svg class="banner-image" viewbox="0 0 1200 500" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<lineargradient id="skyGradient" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" style="stop-color:#64b5f6;stop-opacity:1">
+</stop>
+<stop offset="100%" style="stop-color:#bbdefb;stop-opacity:1">
+</stop>
+</lineargradient>
+</defs>
+<!-- Sky -->
+<rect fill="url(#skyGradient)" height="300" width="1200">
+</rect>
+<!-- Sun -->
+<circle cx="900" cy="100" fill="#ffeb3b" r="60">
+</circle>
+<!-- Mountains -->
+<polygon fill="#4caf50" points="0,300 200,150 400,250 600,100 800,200 1000,150 1200,250 1200,300">
+</polygon>
+<!-- Fields -->
+<rect fill="#8bc34a" height="200" width="1200" x="0" y="300">
+</rect>
+<!-- Farm house -->
+<rect fill="#d7ccc8" height="100" width="150" x="300" y="250">
+</rect>
+<polygon fill="#795548" points="275,250 475,250 375,180">
+</polygon>
+<rect fill="#5d4037" height="50" width="40" x="340" y="300">
+</rect>
+<rect fill="#90caf9" height="30" width="30" x="360" y="270">
+</rect>
+<!-- Trees -->
+<circle cx="150" cy="280" fill="#2e7d32" r="40">
+</circle>
+<rect fill="#5d4037" height="50" width="10" x="145" y="280">
+</rect>
+<circle cx="600" cy="280" fill="#2e7d32" r="35">
+</circle>
+<rect fill="#5d4037" height="45" width="10" x="595" y="280">
+</rect>
+<circle cx="900" cy="290" fill="#2e7d32" r="45">
+</circle>
+<rect fill="#5d4037" height="55" width="10" x="895" y="290">
+</rect>
+<!-- Rice fields -->
+<rect fill="#81c784" height="100" stroke="#4caf50" stroke-width="2" width="200" x="50" y="350">
+</rect>
+<line stroke="#4caf50" stroke-width="2" x1="50" x2="250" y1="370" y2="370">
+</line>
+<line stroke="#4caf50" stroke-width="2" x1="50" x2="250" y1="390" y2="390">
+</line>
+<line stroke="#4caf50" stroke-width="2" x1="50" x2="250" y1="410" y2="410">
+</line>
+<line stroke="#4caf50" stroke-width="2" x1="50" x2="250" y1="430" y2="430">
+</line>
+<!-- People -->
+<circle cx="500" cy="400" fill="#ffcc80" r="15">
+</circle>
+<rect fill="#1976d2" height="20" width="10" x="495" y="415">
+</rect>
+<line stroke="#1976d2" stroke-width="3" x1="505" x2="520" y1="420" y2="410">
+</line>
+<line stroke="#1976d2" stroke-width="3" x1="495" x2="480" y1="420" y2="410">
+</line>
+<circle cx="540" cy="410" fill="#ffcc80" r="12">
+</circle>
+<rect fill="#e91e63" height="15" width="8" x="536" y="422">
+</rect>
+<line stroke="#e91e63" stroke-width="2" x1="544" x2="555" y1="425" y2="418">
+</line>
+<line stroke="#e91e63" stroke-width="2" x1="536" x2="525" y1="425" y2="418">
+</line>
+</svg>
+</div>
+<div class="main-content">
+<div class="poster-container">
+<!-- Using a placeholder poster image -->
+<svg class="poster-image" viewbox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#f5f5f5" height="500" width="800">
+</rect>
+<rect fill="#fff" height="460" rx="10" stroke="#2a7ae2" stroke-width="3" width="760" x="20" y="20">
+</rect>
+<!-- Title -->
+<text fill="#2a7ae2" font-family="'Noto Sans KR', sans-serif" font-size="36" font-weight="bold" text-anchor="middle" x="400" y="80">
+      오감만족 농촌 체험 경제학교
+     </text>
+<!-- Subtitle -->
+<text fill="#333" font-family="'Noto Sans KR', sans-serif" font-size="20" text-anchor="middle" x="400" y="120">
+      자연에서 배우는 경제 이야기
+     </text>
+<!-- Divider -->
+<line stroke="#2a7ae2" stroke-width="2" x1="200" x2="600" y1="140" y2="140">
+</line>
+<!-- Farm illustration -->
+<rect fill="#d7ccc8" height="120" width="200" x="300" y="180">
+</rect>
+<polygon fill="#795548" points="280,180 520,180 400,120">
+</polygon>
+<rect fill="#5d4037" height="80" width="40" x="350" y="220">
+</rect>
+<rect fill="#90caf9" height="40" width="40" x="380" y="200">
+</rect>
+<circle cx="200" fill="#2e7d32" r="40" y="220">
+</circle>
+<rect fill="#5d4037" height="50" width="10" x="195" y="220">
+</rect>
+<circle cx="600" fill="#2e7d32" r="40" y="220">
+</circle>
+<rect fill="#5d4037" height="50" width="10" x="595" y="220">
+</rect>
+<!-- Details -->
+<text fill="#333" font-family="'Noto Sans KR', sans-serif" font-size="18" text-anchor="middle" x="400" y="350">
+      일시: 2023년 봄~가을 시즌
+     </text>
+<text fill="#333" font-family="'Noto Sans KR', sans-serif" font-size="18" text-anchor="middle" x="400" y="380">
+      장소: 전북 장수 원흥마을
+     </text>
+<text fill="#333" font-family="'Noto Sans KR', sans-serif" font-size="18" text-anchor="middle" x="400" y="410">
+      대상: 가족 단위 참가자
+     </text>
+<!-- Contact -->
+<text fill="#2a7ae2" font-family="'Noto Sans KR', sans-serif" font-size="16" text-anchor="middle" x="400" y="450">
+      문의: 063-123-4567
+     </text>
+</svg>
+</div>
+<div class="section">
+<h2>
+     프로그램 소개
+    </h2>
+<p>
+     오감만족 농촌 체험 경제학교는 가족 단위로 참여하여 농촌 생활과 경제 원리를 함께 배우는 체험형 교육 프로그램입니다. 자연 속에서 오감을 만족시키는 다양한 활동을 통해 경제 개념을 쉽고 재미있게 이해할 수 있습니다.
+    </p>
+<div class="highlight-box">
+<h3>
+      프로그램 특징
+     </h3>
+<div class="icon-feature">
+<svg fill="none" height="24" stroke="#4caf50" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z">
+</path>
+</svg>
+<span>
+       안전하고 건강한 농촌 체험 환경
+      </span>
+</div>
+<div class="icon-feature">
+<svg fill="none" height="24" stroke="#4caf50" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2">
+</path>
+<circle cx="9" cy="7" r="4">
+</circle>
+<path d="M23 21v-2a4 4 0 0 0-3-3.87">
+</path>
+<path d="M16 3.13a4 4 0 0 1 0 7.75">
+</path>
+</svg>
+<span>
+       가족 간 소통과 협력을 강화하는 활동
+      </span>
+</div>
+<div class="icon-feature">
+<svg fill="none" height="24" stroke="#4caf50" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+<circle cx="12" cy="12" r="10">
+</circle>
+<line x1="12" x2="12" y1="8" y2="12">
+</line>
+<line x1="12" x2="12.01" y1="16" y2="16">
+</line>
+</svg>
+<span>
+       실생활에 적용 가능한 경제 교육
+      </span>
+</div>
+</div>
+</div>
+<div style="text-align: center; margin: 40px 0;">
+<a href="apply.html" style="display: inline-block; background-color: #2a7ae2; color: white; padding: 16px 36px; font-size: 1.2em; font-weight: bold;
+            border-radius: 50px; text-decoration: none; box-shadow: 0 6px 18px rgba(0,0,0,0.15); transition: all 0.3s ease;">
+     참가 신청하기
+    </a>
+</div>
+</div>
+<div class="footer">
+<p>
+    오감만족 농촌 체험 경제학교 | 전북 장수군 원흥마을
+   </p>
+<p>
+    연락처: 010-9882-2605 | 이메일: thank120jj@hanmail.net
+    <p>
+     © 2025 오감만족 농촌 체험 경제학교. All Rights Reserved.
+    </p>
+</p>
+</div>
+<audio autoplay="" id="bg-music" loop="">
+<source src="game_background_music.mp3" type="audio/mpeg"/>
+   브라우저가 오디오를 지원하지 않습니다.
+  </audio>
+<button id="music-toggle" onclick="toggleMusic()" onmouseout="this.style.transform='scale(1)'" onmouseover="this.style.transform='scale(1.05)'" style="position: fixed;right: 20px;background-color: #2a7ae2;color: white;border: none;padding: 8px 16px;font-size: 0.95em;border-radius: 25px;box-shadow: 0 4px 10px rgba(0,0,0,0.2);cursor: pointer;z-index: 9999;display: flex;align-items: center;gap: 8px;right: 20px;bottom: 20px;right: 20px;">
+<span>
+    🎵
+   </span>
+<span>
+    배경음악 켜기
+   </span>
+</button>
+<!-- 📌 안내 팝업창 -->
+<div id="popup-notice" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); z-index:9999;">
+<div style="position:relative; top:50%; left:50%; transform:translate(-50%,-50%); background:#fff; padding:30px 25px; border-radius:12px; width:90%; max-width:400px; box-shadow:0 10px 30px rgba(0,0,0,0.3); text-align:center; font-family:'Noto Sans KR',sans-serif;">
+<h3 style="color:#2a7ae2; margin-top:0;">📅 6월 체험 프로그램 안내</h3>
+<p style="margin:10px 0 20px; line-height:1.6;">
+      매월 마지막 주 토요일마다 진행되는 프로그램!<br/><br/>
+      ✅ 이번 달 일정: <strong>6월 29일(토)</strong><br/>
+      🕙 시간: <strong>오전 10시 ~ 오후 4시</strong><br/><br/>
+      일자가 변경될 수 있으니 신청 전 꼭 확인해주세요!
+    </p>
+<button onclick="document.getElementById('popup-notice').style.display='none'" style="padding:10px 20px; background:#2a7ae2; color:white; border:none; border-radius:8px; font-size:1em; cursor:pointer;">확인했어요</button>
+</div>
+</div>
+<script>
+const music = document.getElementById('bg-music');
+const toggleBtn = document.getElementById('music-toggle');
 
-    window.onload = function () {
-      toggleBtn.innerHTML = '🔇 음악 켜기';
-    };
-  </script>
+function toggleMusic() {
+  if (music.paused) {
+    music.play().then(() => {
+      toggleBtn.innerHTML = '🔈 음악 끄기';
+    }).catch((e) => {
+      alert('브라우저 정책상 클릭 후에만 재생이 가능합니다.');
+    });
+  } else {
+    music.pause();
+    toggleBtn.innerHTML = '🔇 음악 켜기';
+  }
+}
 
-</body>
+window.onload = function () {
+  toggleBtn.innerHTML = '🔇 음악 켜기';
+  setTimeout(() => {
+    const popup = document.getElementById('popup-notice');
+    if (popup) {
+      popup.style.display = 'block';
+    }
+  }, 1000);
+};
+</script></body>
 </html>
