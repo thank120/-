@@ -8,7 +8,41 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
   <style>
-   :root {
+   nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      padding: 10px;
+      background: #2db7a3;
+      font-size: 0.95em;
+    }
+    nav a {
+      padding: 6px 12px;
+      white-space: nowrap;
+      font-weight: bold;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      background: transparent;
+    }
+    nav a.highlight {
+      color: yellow;
+      font-weight: bold;
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+    @media (max-width: 480px) {
+      nav {
+        font-size: 0.85em;
+        gap: 6px;
+      }
+      nav a {
+        padding: 5px 8px;
+      }
+    }
+    
+    :root {
       --primary: #2db7a3;
       --primary-dark: #1e8b7b;
       --accent: #2a7ae2;
