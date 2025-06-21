@@ -1,13 +1,13 @@
-
 <!DOCTYPE html>
-
 <html lang="ko">
-<head>
-<meta charset="utf-8"/>
-<title>원흥마을 참가 신청</title>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<style>
-    body {
+ <head>
+  <meta charset="utf-8"/>
+  <title>
+   원흥마을 참가 신청
+  </title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <style>
+   body {
       font-family: 'Noto Sans KR', sans-serif;
       background-color: #f5f8fb;
       margin: 0;
@@ -66,39 +66,63 @@
       color: #888;
     }
   </style>
-</head>
-<body>
-
-<nav style="position: fixed; top: 0; width: 100%; background: #2db7a3; z-index: 1000; padding: 10px 20px; display: flex; justify-content: center;">
-  <a href="index.html" style="color: white; text-decoration: none; font-weight: bold;">🏠 홈으로</a>
-</nav>
-<div style="height: 60px;"></div>
-
-<div class="container">
-<h1>🌿 참가 신청서</h1>
-<p class="description">원흥마을 오감만족 경제학교에 지금 신청하세요!<br/>자연 속 경제 체험, 가족의 특별한 하루가 기다립니다.</p>
-<form action="https://formspree.io/f/mdkzeqja" method="POST" onsubmit="return handleSubmit(event);">
-<label for="name">신청자 성함</label>
-<input id="name" name="name" required="" style="max-width: 400px; margin: 0 auto; display: block;" type="text"/>
-<label for="phone">연락처</label>
-<input id="phone" name="phone" placeholder="010-1234-5678" required="" type="tel"/>
-<label for="email">이메일</label>
-<input id="email" name="email" required="" type="email"/>
-<label for="people">참여 인원</label>
-<input id="people" name="people" placeholder="예: 보호자 2명 / 초3, 초6 각 1명" required="" type="text"/>
-<label for="date">희망 날짜</label>
-<input id="date" name="date" required="" type="date"/>
-<label for="motivation">신청 동기 / 전하고 싶은 말</label>
-<textarea id="motivation" name="motivation" placeholder="예: 아이들과 농촌 체험을 해보고 싶어요!" rows="4"></textarea>
-<label>
-<input name="agree" required="" type="checkbox"/> 개인정보 수집 및 이용에 동의합니다.
-      </label>
-<button type="submit">📨 신청하기</button>
-</form>
-<p class="footer-msg">제출 후 담당자가 개별 연락을 드립니다. 감사합니다!</p>
-</div>
-<script>
-function handleSubmit(event) {
+ </head>
+ <body>
+  <nav style="position: fixed; top: 0; width: 100%; background: #2db7a3; z-index: 1000; padding: 10px 20px; display: flex; justify-content: center;">
+   <a href="index.html" style="color: white; text-decoration: none; font-weight: bold;">
+    🏠 홈으로
+   </a>
+  </nav>
+  <div style="height: 60px;">
+  </div>
+  <div class="container">
+   <h1>
+    🌿 참가 신청서
+   </h1>
+   <p class="description">
+    원흥마을 오감만족 경제학교에 지금 신청하세요!
+    <br/>
+    자연 속 경제 체험, 가족의 특별한 하루가 기다립니다.
+   </p>
+   <form action="https://formspree.io/f/mdkzeqja" method="POST" onsubmit="return handleSubmit(event);">
+    <label for="name">
+     신청자 성함
+    </label>
+    <input id="name" name="name" required="" style="max-width: 400px; margin: 0 auto; display: block;" type="text"/>
+    <label for="phone">
+     연락처
+    </label>
+    <input id="phone" name="phone" placeholder="010-1234-5678" required="" type="tel"/>
+    <label for="email">
+     이메일
+    </label>
+    <input id="email" name="email" required="" type="email"/>
+    <label for="people">
+     참여 인원
+    </label>
+    <input id="people" name="people" placeholder="예: 보호자 2명 / 초3, 초6 각 1명" required="" type="text"/>
+    <label for="date">
+     희망 날짜
+    </label>
+    <input id="date" name="date" required="" type="date"/>
+    <label for="motivation">
+     신청 동기 / 전하고 싶은 말
+    </label>
+    <textarea id="motivation" name="motivation" placeholder="예: 아이들과 농촌 체험을 해보고 싶어요!" rows="4"></textarea>
+    <label>
+     <input name="agree" required="" type="checkbox"/>
+     개인정보 수집 및 이용에 동의합니다.
+    </label>
+    <button type="submit">
+     📨 신청하기
+    </button>
+   </form>
+   <p class="footer-msg">
+    제출 후 담당자가 개별 연락을 드립니다. 감사합니다!
+   </p>
+  </div>
+  <script>
+   function handleSubmit(event) {
   event.preventDefault();
   const form = event.target;
   form.style.display = "none";
@@ -118,5 +142,6 @@ function handleSubmit(event) {
   });
   return false;
 }
-</script></body>
+  </script>
+ </body>
 </html>
