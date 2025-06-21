@@ -48,7 +48,9 @@ nav a.highlight {
       margin: 0;
       padding: 0;
       background-color: #f5f8fb;
-    }
+    
+  padding-top: 80px;
+}
     nav {
       position: fixed;
       top: 0;
@@ -83,63 +85,8 @@ nav a.highlight {
       color: #2a7ae2;
     }
   </style>
-<style>
-    body {
-        font-family: 'Noto Sans KR', sans-serif;
-        font-size: 17px;
-    }
-    nav {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
-        gap: 14px;
-        padding: 16px 12px;
-        background: #2db7a3;
-        font-size: 1.05em;
-        position: fixed;
-        top: 0;
-        width: 100%;
-        z-index: 1000;
-    }
-    nav a {
-        padding: 8px 16px;
-        font-weight: bold;
-        color: white;
-        text-decoration: none;
-        border-radius: 6px;
-    }
-    nav a.highlight {
-        color: yellow;
-        background-color: rgba(255, 255, 255, 0.1);
-    }
-    .menu-toggle {
-        display: none;
-        background-color: #2db7a3;
-        border: none;
-        color: white;
-        font-size: 1.2em;
-        padding: 10px;
-        position: absolute;
-        right: 10px;
-        top: 10px;
-        z-index: 1001;
-    }
-    @media (max-width: 768px) {
-        nav {
-            flex-direction: column;
-            align-items: flex-start;
-            display: none;
-        }
-        nav.show {
-            display: flex;
-        }
-        .menu-toggle {
-            display: block;
-        }
-    }
-    </style></head>
-<body><button class="menu-toggle" onclick="document.querySelector('nav').classList.toggle('show')">☰ 메뉴</button>
+</head>
+<body>
 <nav>
 <a href="index.html">
     홈
@@ -156,7 +103,7 @@ nav a.highlight {
 <a href="contact.html">
     오시는 길
    </a>
-<a href="https://naver.me/x4GzMCaT" style="color: yellow;" target="_blank">
+<a href="apply.html" style="color: yellow;" target="_blank">
     참가 신청
    </a>
 </nav>
