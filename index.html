@@ -470,13 +470,10 @@ nav a.highlight {
   </style>
  </head>
  <body>
-  <button class="menu-toggle" onclick="document.querySelector('nav.main-nav').classList.toggle('show')">
+  <button class="menu-toggle" id="menu-toggle">
    ☰ 메뉴
   </button>
-  <nav class="main-nav main-nav">
-   <button class="menu-toggle" onclick="document.querySelector('nav').classList.toggle('show')">
-    ☰ 메뉴
-   </button>
+  <nav class="main-nav">
    <a href="index.html">
     홈
    </a>
@@ -763,9 +760,9 @@ window.onload = function () {
   const menuBtn = document.querySelector('.menu-toggle');
   const nav = document.querySelector('nav.main-nav');
   if (menuBtn && nav) {
-    menuBtn.addEventListener('click', function () {
-      nav.classList.toggle('show');
-    });
+    document.getElementById('menu-toggle').addEventListener('click', function () {
+    document.querySelector('nav.main-nav').classList.toggle('show');
+  });
   }
 
   toggleBtn.innerHTML = music.paused ? '🔇 음악 켜기' : '🔈 음악 끄기';
