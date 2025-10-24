@@ -8,158 +8,60 @@
   <style>
     :root { color-scheme: light; }
     * { box-sizing: border-box; }
-    body {
-      font-family: 'Noto Sans KR', sans-serif;
-      background-color: #f5f8fb;
-      margin: 0;
-      padding-top: 80px;
-      color: #333;
-    }
-    .menu-toggle {
-      display: none;
-      position: fixed;
-      top: 10px;
-      right: 10px;
-      background-color: #2db7a3;
-      color: white;
-      border: none;
-      padding: 10px 16px;
-      font-size: 1.2em;
-      border-radius: 6px;
-      z-index: 1001;
-    }
-    nav.main-nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: #2db7a3;
-      z-index: 1000;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 14px;
-      padding: 12px;
-    }
-    nav.main-nav a {
-      color: white;
-      font-weight: bold;
-      padding: 8px 14px;
-      text-decoration: none;
-      border-radius: 6px;
-    }
-    nav.main-nav a.highlight {
-      color: yellow;
-      background-color: rgba(255,255,255,0.1);
-    }
-    @media (max-width: 768px) {
-      .menu-toggle { display: block; }
-      nav.main-nav {
-        display: none;
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 12px 20px;
-      }
-      nav.main-nav.show { display: flex !important; }
-    }
+    body { font-family:'Noto Sans KR',sans-serif; background:#f5f8fb; margin:0; padding-top:80px; color:#333; }
+    .menu-toggle{ display:none; position:fixed; top:10px; right:10px; background:#2db7a3; color:#fff; border:none; padding:10px 16px; font-size:1.2em; border-radius:6px; z-index:1001; }
+    nav.main-nav{ position:fixed; top:0; width:100%; background:#2db7a3; z-index:1000; display:flex; flex-wrap:wrap; justify-content:center; gap:14px; padding:12px; }
+    nav.main-nav a{ color:#fff; font-weight:bold; padding:8px 14px; text-decoration:none; border-radius:6px; }
+    nav.main-nav a.highlight{ color:yellow; background:rgba(255,255,255,.1); }
+    @media (max-width:768px){ .menu-toggle{display:block;} nav.main-nav{display:none; flex-direction:column; align-items:flex-start; padding:12px 20px;} nav.main-nav.show{display:flex!important;} }
 
-    .container {
-      max-width: 700px;
-      margin: 30px auto;
-      background: white;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
+    .container{ max-width:700px; margin:30px auto; background:#fff; padding:30px; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,.1); }
+    h1{ text-align:center; color:#2a7ae2; font-size:1.8em; margin:0 0 6px; }
+    p.description{ text-align:center; font-size:1.05em; color:#555; margin:0 0 24px; }
 
-    h1 {
-      text-align: center;
-      color: #2a7ae2;
-      font-size: 1.8em;
-      margin: 0 0 6px;
-    }
-    p.description {
-      text-align: center;
-      font-size: 1.05em;
-      color: #555;
-      margin: 0 0 24px;
-    }
+    form{ display:flex; flex-direction:column; gap:16px; }
+    label{ font-weight:700; }
+    input,textarea,select{ padding:12px; border:1px solid #ccc; border-radius:8px; font-size:1em; width:100%; }
+    input:focus,textarea:focus,select:focus{ outline:none; border-color:#2a7ae2; box-shadow:0 0 0 3px rgba(42,122,226,.15); }
+    .helper{ font-size:.9em; color:#777; margin-top:-10px; }
 
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-    label { font-weight: 700; }
-    input, select, textarea {
-      padding: 12px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      font-size: 1em;
-      width: 100%;
-    }
-    input:focus, textarea:focus, select:focus {
-      outline: none;
-      border-color: #2a7ae2;
-      box-shadow: 0 0 0 3px rgba(42,122,226,0.15);
-    }
+    .agree-wrap{ display:flex; align-items:center; gap:10px; padding:10px 12px; border:1px solid #e5e7eb; border-radius:10px; background:#fafafa; cursor:pointer; user-select:none; }
+    .agree-wrap input[type="checkbox"]{ width:18px; height:18px; cursor:pointer; accent-color:#2a7ae2; margin:0; flex:0 0 auto; }
+    .agree-text{ font-weight:600; color:#333; cursor:pointer; }
 
-    .agree-wrap {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 12px;
-      border: 1px solid #e5e7eb;
-      border-radius: 10px;
-      background: #fafafa;
-      cursor: pointer;
-      user-select: none;
-    }
-    .agree-wrap input[type="checkbox"] {
-      width: 18px; height: 18px; cursor: pointer;
-      accent-color: #2a7ae2;
-      margin: 0;
-      flex: 0 0 auto;
-    }
-    .agree-text { font-weight: 600; color: #333; cursor: pointer; }
+    button[type="submit"]{ background:#2a7ae2; color:#fff; padding:14px; font-size:1.1em; border:none; border-radius:8px; cursor:pointer; transition:background .2s; }
+    button[type="submit"]:hover{ background:#1e5799; }
 
-    button[type="submit"] {
-      background-color: #2a7ae2;
-      color: white;
-      padding: 14px;
-      font-size: 1.1em;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background-color 0.2s ease;
-    }
-    button[type="submit"]:hover { background-color: #1e5799; }
+    .footer-msg{ text-align:center; font-size:.95em; margin-top:20px; color:#888; }
 
-    .footer-msg {
-      text-align: center;
-      font-size: 0.95em;
-      margin-top: 20px;
-      color: #888;
-    }
-    .helper {
-      font-size: 0.9em; color: #777;
-      margin-top: -10px;
-    }
+    .status{ margin-top:16px; padding:14px; border-radius:10px; text-align:center; display:none; }
+    .status.ok{ display:block; background:#eaf6ef; color:#1f7a4d; border:1px solid #bfe5cd; }
+    .status.err{ display:block; background:#fdecea; color:#b42318; border:1px solid #f5c2be; }
+    .status.loading{ display:block; background:#eef3fb; color:#2a7ae2; border:1px solid #cfe0fb; }
 
-    .status {
-      margin-top: 16px;
-      padding: 14px;
-      border-radius: 10px;
-      text-align: center;
-      display: none;
+    /* ✅ 성공 오버레이 */
+    .overlay{
+      position:fixed; inset:0; background:rgba(0,0,0,.4);
+      display:none; align-items:center; justify-content:center; z-index:2000;
     }
-    .status.ok { display:block; background:#eaf6ef; color:#1f7a4d; border:1px solid #bfe5cd; }
-    .status.err { display:block; background:#fdecea; color:#b42318; border:1px solid #f5c2be; }
-    .status.loading { display:block; background:#eef3fb; color:#2a7ae2; border:1px solid #cfe0fb; }
-
-    @media (max-width: 480px) {
-      .container { margin: 20px 10px; padding: 20px; }
-      h1 { font-size: 1.5em; }
+    .overlay.show{ display:flex; }
+    .card{
+      width:min(560px, 92vw); background:#fff; border-radius:16px; padding:28px 24px;
+      box-shadow:0 20px 60px rgba(0,0,0,.25); text-align:center; animation:pop .25s ease-out;
     }
+    @keyframes pop{ from{ transform:scale(.98); opacity:.0 } to{ transform:scale(1); opacity:1 } }
+    .big-emoji{ font-size:42px; margin-bottom:10px; }
+    .title{ font-size:1.4em; font-weight:800; color:#1f7a4d; margin:4px 0 6px; }
+    .subtitle{ color:#444; margin:0 0 14px; }
+    .pill{
+      display:inline-block; padding:6px 12px; border-radius:999px; background:#f1f8ff; color:#2a7ae2;
+      font-weight:700; font-size:.9em; margin-bottom:10px;
+    }
+    .btn-row{ display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-top:8px; }
+    .btn{ padding:12px 16px; border-radius:10px; border:1px solid #e5e7eb; background:#fff; cursor:pointer; font-weight:700; }
+    .btn.primary{ background:#2a7ae2; color:#fff; border:none; }
+    .btn:active{ transform:translateY(1px); }
+    .tiny{ color:#777; font-size:.9em; margin-top:10px; }
   </style>
 </head>
 <body>
@@ -176,16 +78,17 @@
   <div class="container">
     <h1>🌿 참가 신청서</h1>
     <p class="description">
-      원흥마을 오감만족 경제학교에 지금 신청하세요!<br/>
-      자연 속 경제 체험, 가족의 특별한 하루가 기다립니다.
+      원흥마을 오감만족 경제학교에 지금 신청하세요!<br/>자연 속 경제 체험, 가족의 특별한 하루가 기다립니다.
     </p>
 
-    <!-- ✅ Formspree 연동 -->
+    <!-- ✅ Formspree 연동 (폴백 리다이렉트 포함) -->
     <form id="applyForm" action="https://formspree.io/f/movwwobl" method="POST" novalidate>
       <!-- Formspree 메타 -->
       <input type="hidden" name="_subject" value="원흥마을 참가신청서 접수"/>
       <input type="hidden" name="_template" value="table"/>
-      <!-- 스팸 방지 허니팟 -->
+      <!-- JS가 안되면 thanks.html로 이동 -->
+      <input type="hidden" name="_redirect" value="thanks.html"/>
+      <!-- 스팸 방지 -->
       <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off"/>
 
       <label for="name">신청자 성함</label>
@@ -193,13 +96,8 @@
 
       <label for="phone">연락처</label>
       <input
-        id="phone"
-        name="phone"
-        inputmode="tel"
-        autocomplete="tel"
-        placeholder="010-1234-5678"
-        required
-        maxlength="13"
+        id="phone" name="phone" inputmode="tel" autocomplete="tel"
+        placeholder="010-1234-5678" required maxlength="13"
         pattern="^(01[0-9]-\d{3,4}-\d{4}|02-\d{3,4}-\d{4}|0\d{2}-\d{3,4}-\d{4})$"
       />
       <span class="helper">하이픈 포함: 010-1234-5678</span>
@@ -216,7 +114,7 @@
       <label for="motivation">신청 동기 / 전하고 싶은 말</label>
       <textarea id="motivation" name="motivation" placeholder="예: 아이들과 농촌 체험을 해보고 싶어요!" rows="4"></textarea>
 
-      <!-- ✅ 체크박스 정렬/클릭 영역 개선 -->
+      <!-- 동의 체크박스 (정렬/클릭 영역 개선) -->
       <label class="agree-wrap" for="agree">
         <input id="agree" name="agree" type="checkbox" required />
         <span class="agree-text">개인정보 수집 및 이용에 동의합니다.</span>
@@ -224,11 +122,26 @@
 
       <button type="submit">📨 신청하기</button>
 
-      <!-- 상태 메시지 -->
       <div id="status" class="status" aria-live="polite"></div>
     </form>
 
     <p class="footer-msg">제출 후 담당자가 개별 연락을 드립니다. 감사합니다!</p>
+  </div>
+
+  <!-- ✅ 성공 오버레이 (브랜드형) -->
+  <div id="successOverlay" class="overlay" role="dialog" aria-modal="true" aria-labelledby="successTitle">
+    <div class="card">
+      <div class="big-emoji">🎉</div>
+      <div class="pill">접수 완료</div>
+      <h2 id="successTitle" class="title">신청이 성공적으로 접수되었습니다!</h2>
+      <p class="subtitle">담당자가 확인 후 <strong>개별 연락</strong>을 드릴게요. 참여해 주셔서 감사합니다 🌿</p>
+      <div class="btn-row">
+        <button class="btn primary" id="goHome">홈으로 이동</button>
+        <button class="btn" id="goProgram">체험 프로그램 보기</button>
+        <button class="btn" id="newApply">추가 신청하기</button>
+      </div>
+      <div class="tiny">자동으로 메일 확인 안내가 발송될 수 있습니다.</div>
+    </div>
   </div>
 
   <script>
@@ -237,104 +150,86 @@
     const nav = document.querySelector('nav.main-nav');
     menuBtn.addEventListener('click', () => nav.classList.toggle('show'));
 
-    // 오늘보다 이전 날짜 선택 방지 (현지 기준)
+    // 오늘 이전 날짜 방지
     (function setMinDate(){
       const d = document.getElementById('date');
-      const tzOffsetMs = new Date().getTimezoneOffset() * 60000;
-      const todayLocalISO = new Date(Date.now() - tzOffsetMs).toISOString().slice(0,10);
+      const tzOffsetMs = new Date().getTimezoneOffset()*60000;
+      const todayLocalISO = new Date(Date.now()-tzOffsetMs).toISOString().slice(0,10);
       d.min = todayLocalISO;
     })();
 
-    // ---------- 전화번호 입력 포맷터 ----------
+    // 전화번호 포맷
     const phone = document.getElementById('phone');
-
-    function formatKRPhoneProgressive(v) {
-      const d = v.replace(/\D/g, '').slice(0, 11); // 숫자만, 최대 11자리
-
-      // 서울(02) 지역번호
-      if (d.startsWith('02')) {
-        if (d.length <= 2) return d;
-        if (d.length <= 5) return d.replace(/(02)(\d+)/, '$1-$2');
-        if (d.length <= 9) return d.replace(/(02)(\d{3,4})(\d+)/, '$1-$2-$3');
-        return d.slice(0,10).replace(/(02)(\d{4})(\d{4})/, '$1-$2-$3');
+    function formatKRPhoneProgressive(v){
+      const d = v.replace(/\D/g,'').slice(0,11);
+      if (d.startsWith('02')){
+        if (d.length<=2) return d;
+        if (d.length<=5) return d.replace(/(02)(\d+)/,'$1-$2');
+        if (d.length<=9) return d.replace(/(02)(\d{3,4})(\d+)/,'$1-$2-$3');
+        return d.slice(0,10).replace(/(02)(\d{4})(\d{4})/,'$1-$2-$3');
       }
-
-      // 휴대폰(01x)
-      if (d.startsWith('01')) {
-        if (d.length <= 3) return d;                               // 01x
-        if (d.length <= 7) return d.replace(/(01\d)(\d+)/, '$1-$2'); // 01x-xxxx(입력중)
-        if (d.length === 10) return d.replace(/(01\d)(\d{3})(\d{4})/, '$1-$2-$3'); // 3-3-4
-        if (d.length >= 11) return d.slice(0,11).replace(/(01\d)(\d{4})(\d{4})/, '$1-$2-$3'); // 3-4-4
-        // 8~9자리 입력중: 두 번째 하이픈까지 표현
-        return d.replace(/(01\d)(\d{3,4})(\d+)/, '$1-$2-$3');
+      if (d.startsWith('01')){
+        if (d.length<=3) return d;
+        if (d.length<=7) return d.replace(/(01\d)(\d+)/,'$1-$2');
+        if (d.length===10) return d.replace(/(01\d)(\d{3})(\d{4})/,'$1-$2-$3');
+        if (d.length>=11) return d.slice(0,11).replace(/(01\d)(\d{4})(\d{4})/,'$1-$2-$3');
+        return d.replace(/(01\d)(\d{3,4})(\d+)/,'$1-$2-$3');
       }
-
-      // 그 외 지역번호(0xx)
-      if (d.length <= 3) return d;
-      if (d.length <= 7) return d.replace(/(0\d{2})(\d+)/, '$1-$2');
-      if (d.length <= 11) return d.replace(/(0\d{2})(\d{3,4})(\d+)/, '$1-$2-$3');
-      return d.slice(0,11).replace(/(0\d{2})(\d{4})(\d{4})/, '$1-$2-$3');
+      if (d.length<=3) return d;
+      if (d.length<=7) return d.replace(/(0\d{2})(\d+)/,'$1-$2');
+      if (d.length<=11) return d.replace(/(0\d{2})(\d{3,4})(\d+)/,'$1-$2-$3');
+      return d.slice(0,11).replace(/(0\d{2})(\d{4})(\d{4})/,'$1-$2-$3');
     }
-
-    phone.addEventListener('input', (e) => {
-      const cur = e.target.value;
-      const formatted = formatKRPhoneProgressive(cur);
-      e.target.value = formatted;
-    });
-
-    // 포커스 아웃 시 최종 검증(필요시 안내)
+    phone.addEventListener('input', e => e.target.value = formatKRPhoneProgressive(e.target.value));
     phone.addEventListener('blur', () => {
-      const val = phone.value;
-      const ok = /^(01[0-9]-\d{3,4}-\d{4}|02-\d{3,4}-\d{4}|0\d{2}-\d{3,4}-\d{4})$/.test(val);
-      if (!ok && val.trim() !== '') {
-        phone.setCustomValidity('전화번호 형식이 올바르지 않습니다. 예: 010-1234-5678');
-      } else {
-        phone.setCustomValidity('');
-      }
+      const ok = /^(01[0-9]-\d{3,4}-\d{4}|02-\d{3,4}-\d{4}|0\d{2}-\d{3,4}-\d{4})$/.test(phone.value);
+      phone.setCustomValidity(ok || phone.value.trim()==='' ? '' : '전화번호 형식이 올바르지 않습니다. 예: 010-1234-5678');
     });
 
-    // ---------- 제출 처리 ----------
+    // 제출 처리 (AJAX + 예쁜 완료 오버레이)
     const form = document.getElementById('applyForm');
     const statusEl = document.getElementById('status');
+    const overlay = document.getElementById('successOverlay');
 
-    function setStatus(type, html) {
-      statusEl.className = 'status ' + type;
-      statusEl.innerHTML = html;
-    }
+    function setStatus(type, html){ statusEl.className='status '+type; statusEl.innerHTML=html; }
 
-    form.addEventListener('submit', async (event) => {
-      event.preventDefault();
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
       if (!form.reportValidity()) return;
+      setStatus('loading','⏳ 신청서를 전송 중입니다...');
 
-      setStatus('loading', '⏳ 신청서를 전송 중입니다...');
       const formData = new FormData(form);
-
-      try {
+      try{
         const res = await fetch(form.action, {
-          method: 'POST',
-          body: formData,
-          headers: { 'Accept': 'application/json' }
+          method:'POST',
+          body:formData,
+          headers:{ 'Accept':'application/json' } // ← JSON 응답으로 리다이렉트 방지
         });
-
-        if (res.ok) {
+        if(res.ok){
           form.reset();
-          setStatus('ok', "<strong>✅ 신청이 완료되었습니다!</strong><br/>확인 후 담당자가 연락드릴 예정입니다. 감사합니다 🌿");
-        } else {
-          const data = await res.json().catch(()=> ({}));
-          const msg = (data && data.errors && data.errors[0] && data.errors[0].message)
-                      ? data.errors[0].message
-                      : '일시적인 문제로 전송에 실패했습니다.';
-          setStatus('err', "⚠️ " + msg + "<br/>잠시 후 다시 시도해주세요.");
+          statusEl.style.display = 'none';
+          overlay.classList.add('show');               // ✅ 예쁜 오버레이 표시
+        }else{
+          const data = await res.json().catch(()=>({}));
+          const msg = data?.errors?.[0]?.message || '일시적인 문제로 전송에 실패했습니다.';
+          setStatus('err', '⚠️ '+msg+'<br/>잠시 후 다시 시도해주세요.');
         }
-      } catch (e) {
-        setStatus('err', "⚠️ 네트워크 오류로 전송되지 않았습니다.<br/>인터넷 연결을 확인 후 다시 시도해주세요.");
+      }catch(err){
+        setStatus('err','⚠️ 네트워크 오류로 전송되지 않았습니다.<br/>인터넷 연결을 확인 후 다시 시도해주세요.');
       }
+    });
+
+    // 오버레이 버튼들
+    document.getElementById('goHome').addEventListener('click', () => location.href = 'index.html');
+    document.getElementById('goProgram').addEventListener('click', () => location.href = 'program.html');
+    document.getElementById('newApply').addEventListener('click', () => {
+      overlay.classList.remove('show');
+      window.scrollTo({ top:0, behavior:'smooth' });
     });
 
     // 모바일 메뉴 토글
-    const menuBtn = document.getElementById('menu-toggle');
     const navEl = document.querySelector('nav.main-nav');
-    menuBtn.addEventListener('click', () => navEl.classList.toggle('show'));
+    document.getElementById('menu-toggle').addEventListener('click', () => navEl.classList.toggle('show'));
   </script>
 </body>
 </html>
