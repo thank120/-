@@ -180,7 +180,7 @@
       자연 속 경제 체험, 가족의 특별한 하루가 기다립니다.
     </p>
 
-    <!-- ✅ Formspree 연동 (새 엔드포인트) -->
+    <!-- ✅ Formspree 연동 -->
     <form id="applyForm" action="https://formspree.io/f/movwwobl" method="POST" novalidate>
       <!-- Formspree 메타 -->
       <input type="hidden" name="_subject" value="원흥마을 참가신청서 접수"/>
@@ -192,9 +192,16 @@
       <input id="name" name="name" required type="text" autocomplete="name" placeholder="홍길동"/>
 
       <label for="phone">연락처</label>
-      <input id="phone" name="phone" inputmode="tel" autocomplete="tel"
-             placeholder="010-1234-5678" required
-             pattern="^01[0-9]-\\d{3,4}-\\d{4}$" />
+      <input
+        id="phone"
+        name="phone"
+        inputmode="tel"
+        autocomplete="tel"
+        placeholder="010-1234-5678"
+        required
+        maxlength="13"
+        pattern="^(01[0-9]-\d{3,4}-\d{4}|02-\d{3,4}-\d{4}|0\d{2}-\d{3,4}-\d{4})$"
+      />
       <span class="helper">하이픈 포함: 010-1234-5678</span>
 
       <label for="email">이메일</label>
@@ -238,16 +245,55 @@
       d.min = todayLocalISO;
     })();
 
-    // 전화번호 자동 하이픈
-    document.getElementById('phone').addEventListener('input', (e) => {
-      const digits = e.target.value.replace(/\\D/g,'').slice(0,11);
-      let out = digits;
-      if (digits.length >= 11) out = digits.replace(/(^01[0-9])(\\d{4})(\\d{4}).*/, '$1-$2-$3');
-      else if (digits.length >= 10) out = digits.replace(/(^01[0-9])(\\d{3,4})(\\d{4}).*/, '$1-$2-$3');
-      e.target.value = out;
+    // ---------- 전화번호 입력 포맷터 ----------
+    const phone = document.getElementById('phone');
+
+    function formatKRPhoneProgressive(v) {
+      const d = v.replace(/\D/g, '').slice(0, 11); // 숫자만, 최대 11자리
+
+      // 서울(02) 지역번호
+      if (d.startsWith('02')) {
+        if (d.length <= 2) return d;
+        if (d.length <= 5) return d.replace(/(02)(\d+)/, '$1-$2');
+        if (d.length <= 9) return d.replace(/(02)(\d{3,4})(\d+)/, '$1-$2-$3');
+        return d.slice(0,10).replace(/(02)(\d{4})(\d{4})/, '$1-$2-$3');
+      }
+
+      // 휴대폰(01x)
+      if (d.startsWith('01')) {
+        if (d.length <= 3) return d;                               // 01x
+        if (d.length <= 7) return d.replace(/(01\d)(\d+)/, '$1-$2'); // 01x-xxxx(입력중)
+        if (d.length === 10) return d.replace(/(01\d)(\d{3})(\d{4})/, '$1-$2-$3'); // 3-3-4
+        if (d.length >= 11) return d.slice(0,11).replace(/(01\d)(\d{4})(\d{4})/, '$1-$2-$3'); // 3-4-4
+        // 8~9자리 입력중: 두 번째 하이픈까지 표현
+        return d.replace(/(01\d)(\d{3,4})(\d+)/, '$1-$2-$3');
+      }
+
+      // 그 외 지역번호(0xx)
+      if (d.length <= 3) return d;
+      if (d.length <= 7) return d.replace(/(0\d{2})(\d+)/, '$1-$2');
+      if (d.length <= 11) return d.replace(/(0\d{2})(\d{3,4})(\d+)/, '$1-$2-$3');
+      return d.slice(0,11).replace(/(0\d{2})(\d{4})(\d{4})/, '$1-$2-$3');
+    }
+
+    phone.addEventListener('input', (e) => {
+      const cur = e.target.value;
+      const formatted = formatKRPhoneProgressive(cur);
+      e.target.value = formatted;
     });
 
-    // 제출 처리
+    // 포커스 아웃 시 최종 검증(필요시 안내)
+    phone.addEventListener('blur', () => {
+      const val = phone.value;
+      const ok = /^(01[0-9]-\d{3,4}-\d{4}|02-\d{3,4}-\d{4}|0\d{2}-\d{3,4}-\d{4})$/.test(val);
+      if (!ok && val.trim() !== '') {
+        phone.setCustomValidity('전화번호 형식이 올바르지 않습니다. 예: 010-1234-5678');
+      } else {
+        phone.setCustomValidity('');
+      }
+    });
+
+    // ---------- 제출 처리 ----------
     const form = document.getElementById('applyForm');
     const statusEl = document.getElementById('status');
 
@@ -284,6 +330,11 @@
         setStatus('err', "⚠️ 네트워크 오류로 전송되지 않았습니다.<br/>인터넷 연결을 확인 후 다시 시도해주세요.");
       }
     });
+
+    // 모바일 메뉴 토글
+    const menuBtn = document.getElementById('menu-toggle');
+    const navEl = document.querySelector('nav.main-nav');
+    menuBtn.addEventListener('click', () => navEl.classList.toggle('show'));
   </script>
 </body>
 </html>
