@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -7,6 +6,8 @@
   <title>원흥마을 참가 신청</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet"/>
   <style>
+    :root { color-scheme: light; }
+    * { box-sizing: border-box; }
     body {
       font-family: 'Noto Sans KR', sans-serif;
       background-color: #f5f8fb;
@@ -51,18 +52,14 @@
       background-color: rgba(255,255,255,0.1);
     }
     @media (max-width: 768px) {
-      .menu-toggle {
-        display: block;
-      }
+      .menu-toggle { display: block; }
       nav.main-nav {
         display: none;
         flex-direction: column;
         align-items: flex-start;
         padding: 12px 20px;
       }
-      nav.main-nav.show {
-        display: flex !important;
-      }
+      nav.main-nav.show { display: flex !important; }
     }
 
     .container {
@@ -78,13 +75,13 @@
       text-align: center;
       color: #2a7ae2;
       font-size: 1.8em;
+      margin: 0 0 6px;
     }
-
     p.description {
       text-align: center;
       font-size: 1.05em;
       color: #555;
-      margin-bottom: 30px;
+      margin: 0 0 24px;
     }
 
     form {
@@ -92,19 +89,21 @@
       flex-direction: column;
       gap: 16px;
     }
-
-    label {
-      font-weight: bold;
-    }
-
+    label { font-weight: 700; }
     input, select, textarea {
       padding: 12px;
       border: 1px solid #ccc;
       border-radius: 8px;
       font-size: 1em;
+      width: 100%;
+    }
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      border-color: #2a7ae2;
+      box-shadow: 0 0 0 3px rgba(42,122,226,0.15);
     }
 
-    button {
+    button[type="submit"] {
       background-color: #2a7ae2;
       color: white;
       padding: 14px;
@@ -112,13 +111,9 @@
       border: none;
       border-radius: 8px;
       cursor: pointer;
-      transition: background-color 0.3s;
+      transition: background-color 0.2s ease;
     }
-
-    button:hover {
-      background-color: #1e5799;
-    }
-
+    button[type="submit"]:hover { background-color: #1e5799; }
     .footer-msg {
       text-align: center;
       font-size: 0.95em;
@@ -126,14 +121,25 @@
       color: #888;
     }
 
+    .helper {
+      font-size: 0.9em; color: #777;
+      margin-top: -10px;
+    }
+
+    .status {
+      margin-top: 16px;
+      padding: 14px;
+      border-radius: 10px;
+      text-align: center;
+      display: none;
+    }
+    .status.ok { display:block; background:#eaf6ef; color:#1f7a4d; border:1px solid #bfe5cd; }
+    .status.err { display:block; background:#fdecea; color:#b42318; border:1px solid #f5c2be; }
+    .status.loading { display:block; background:#eef3fb; color:#2a7ae2; border:1px solid #cfe0fb; }
+
     @media (max-width: 480px) {
-      .container {
-        margin: 20px 10px;
-        padding: 20px;
-      }
-      h1 {
-        font-size: 1.5em;
-      }
+      .container { margin: 20px 10px; padding: 20px; }
+      h1 { font-size: 1.5em; }
     }
   </style>
 </head>
@@ -151,19 +157,30 @@
   <div class="container">
     <h1>🌿 참가 신청서</h1>
     <p class="description">
-      원흥마을 오감만족 경제학교에 지금 신청하세요!
-      <br/>
+      원흥마을 오감만족 경제학교에 지금 신청하세요!<br/>
       자연 속 경제 체험, 가족의 특별한 하루가 기다립니다.
     </p>
-    <form action="https://formspree.io/f/your-form-id" method="POST" onsubmit="return handleSubmit(event);">
+
+    <!-- ✅ Formspree 연동 -->
+    <form id="applyForm" action="https://formspree.io/f/movvwob1" method="POST" novalidate>
+      <!-- Formspree 메타 -->
+      <input type="hidden" name="_subject" value="원흥마을 참가신청서 접수"/>
+      <input type="hidden" name="_template" value="table"/>
+      <!-- 스팸 방지 허니팟 -->
+      <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off"/>
+
       <label for="name">신청자 성함</label>
-      <input id="name" name="name" required type="text"/>
+      <input id="name" name="name" required type="text" autocomplete="name" placeholder="홍길동"/>
 
       <label for="phone">연락처</label>
-      <input id="phone" name="phone" placeholder="010-1234-5678" required type="tel"/>
+      <input id="phone" name="phone" inputmode="tel" autocomplete="tel"
+             placeholder="010-1234-5678" required
+             pattern="^01[0-9]-\d{3,4}-\d{4}$" />
+
+      <span class="helper">하이픈 포함: 010-1234-5678</span>
 
       <label for="email">이메일</label>
-      <input id="email" name="email" required type="email"/>
+      <input id="email" name="email" required type="email" autocomplete="email" placeholder="you@example.com"/>
 
       <label for="people">참여 인원</label>
       <input id="people" name="people" placeholder="예: 보호자 2명 / 초3, 초6 각 1명" required type="text"/>
@@ -174,44 +191,85 @@
       <label for="motivation">신청 동기 / 전하고 싶은 말</label>
       <textarea id="motivation" name="motivation" placeholder="예: 아이들과 농촌 체험을 해보고 싶어요!" rows="4"></textarea>
 
-      <label>
+      <label style="display:flex; gap:8px; align-items:center;">
         <input name="agree" type="checkbox" required />
         개인정보 수집 및 이용에 동의합니다.
       </label>
 
       <button type="submit">📨 신청하기</button>
+
+      <!-- 상태 메시지 -->
+      <div id="status" class="status" aria-live="polite"></div>
     </form>
+
     <p class="footer-msg">제출 후 담당자가 개별 연락을 드립니다. 감사합니다!</p>
   </div>
 
   <script>
+    // 모바일 메뉴
     const menuBtn = document.getElementById('menu-toggle');
     const nav = document.querySelector('nav.main-nav');
-    menuBtn.addEventListener('click', function () {
-      nav.classList.toggle('show');
+    menuBtn.addEventListener('click', () => nav.classList.toggle('show'));
+
+    // 오늘보다 이전 날짜 선택 방지
+    (function setMinDate(){
+      const d = document.getElementById('date');
+      const tzOffsetMs = new Date().getTimezoneOffset() * 60000;
+      const todayLocalISO = new Date(Date.now() - tzOffsetMs).toISOString().slice(0,10);
+      d.min = todayLocalISO;
+    })();
+
+    // 전화번호 자동 하이픈
+    document.getElementById('phone').addEventListener('input', (e) => {
+      const digits = e.target.value.replace(/\D/g,'').slice(0,11);
+      let out = digits;
+      if (digits.startsWith('02')) {
+        // not typical for mobile, but keep generic
+      }
+      if (digits.length >= 11) out = digits.replace(/(^01[0-9])(\d{4})(\d{4}).*/, '$1-$2-$3');
+      else if (digits.length >= 10) out = digits.replace(/(^01[0-9])(\d{3,4})(\d{4}).*/, '$1-$2-$3');
+      e.target.value = out;
     });
 
-    function handleSubmit(event) {
-      event.preventDefault();
-      const form = event.target;
-      form.style.display = "none";
-      const message = document.createElement("div");
-      message.style.padding = "30px";
-      message.style.textAlign = "center";
-      message.innerHTML = `
-        <h2 style='color: #2a7ae2;'>✅ 신청이 완료되었습니다!</h2>
-        <p>확인 후 담당자가 연락드릴 예정입니다.<br>참여해 주셔서 감사합니다 🌿</p>
-      `;
-      form.parentNode.appendChild(message);
+    // 제출 처리
+    const form = document.getElementById('applyForm');
+    const statusEl = document.getElementById('status');
 
-      fetch(form.action, {
-        method: "POST",
-        body: new FormData(form),
-        headers: { 'Accept': 'application/json' }
-      });
-
-      return false;
+    function setStatus(type, html) {
+      statusEl.className = 'status ' + type;
+      statusEl.innerHTML = html;
     }
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      // 브라우저 기본 검증
+      if (!form.reportValidity()) return;
+
+      setStatus('loading', '⏳ 신청서를 전송 중입니다...');
+      const formData = new FormData(form);
+
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (res.ok) {
+          form.reset();
+          setStatus('ok', "<strong>✅ 신청이 완료되었습니다!</strong><br/>확인 후 담당자가 연락드릴 예정입니다. 감사합니다 🌿");
+        } else {
+          const data = await res.json().catch(()=> ({}));
+          const msg = (data && data.errors && data.errors[0] && data.errors[0].message)
+                      ? data.errors[0].message
+                      : '일시적인 문제로 전송에 실패했습니다.';
+          setStatus('err', "⚠️ " + msg + "<br/>잠시 후 다시 시도해주세요.");
+        }
+      } catch (e) {
+        setStatus('err', "⚠️ 네트워크 오류로 전송되지 않았습니다.<br/>인터넷 연결을 확인 후 다시 시도해주세요.");
+      }
+    });
   </script>
 </body>
 </html>
