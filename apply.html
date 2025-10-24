@@ -103,6 +103,25 @@
       box-shadow: 0 0 0 3px rgba(42,122,226,0.15);
     }
 
+    .agree-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      background: #fafafa;
+      cursor: pointer;
+      user-select: none;
+    }
+    .agree-wrap input[type="checkbox"] {
+      width: 18px; height: 18px; cursor: pointer;
+      accent-color: #2a7ae2;
+      margin: 0;
+      flex: 0 0 auto;
+    }
+    .agree-text { font-weight: 600; color: #333; cursor: pointer; }
+
     button[type="submit"] {
       background-color: #2a7ae2;
       color: white;
@@ -114,13 +133,13 @@
       transition: background-color 0.2s ease;
     }
     button[type="submit"]:hover { background-color: #1e5799; }
+
     .footer-msg {
       text-align: center;
       font-size: 0.95em;
       margin-top: 20px;
       color: #888;
     }
-
     .helper {
       font-size: 0.9em; color: #777;
       margin-top: -10px;
@@ -161,8 +180,8 @@
       자연 속 경제 체험, 가족의 특별한 하루가 기다립니다.
     </p>
 
-    <!-- ✅ Formspree 연동 -->
-    <form id="applyForm" action="https://formspree.io/f/movvwob1" method="POST" novalidate>
+    <!-- ✅ Formspree 연동 (새 엔드포인트) -->
+    <form id="applyForm" action="https://formspree.io/f/movwwobl" method="POST" novalidate>
       <!-- Formspree 메타 -->
       <input type="hidden" name="_subject" value="원흥마을 참가신청서 접수"/>
       <input type="hidden" name="_template" value="table"/>
@@ -175,8 +194,7 @@
       <label for="phone">연락처</label>
       <input id="phone" name="phone" inputmode="tel" autocomplete="tel"
              placeholder="010-1234-5678" required
-             pattern="^01[0-9]-\d{3,4}-\d{4}$" />
-
+             pattern="^01[0-9]-\\d{3,4}-\\d{4}$" />
       <span class="helper">하이픈 포함: 010-1234-5678</span>
 
       <label for="email">이메일</label>
@@ -191,9 +209,10 @@
       <label for="motivation">신청 동기 / 전하고 싶은 말</label>
       <textarea id="motivation" name="motivation" placeholder="예: 아이들과 농촌 체험을 해보고 싶어요!" rows="4"></textarea>
 
-      <label style="display:flex; gap:8px; align-items:center;">
-        <input name="agree" type="checkbox" required />
-        개인정보 수집 및 이용에 동의합니다.
+      <!-- ✅ 체크박스 정렬/클릭 영역 개선 -->
+      <label class="agree-wrap" for="agree">
+        <input id="agree" name="agree" type="checkbox" required />
+        <span class="agree-text">개인정보 수집 및 이용에 동의합니다.</span>
       </label>
 
       <button type="submit">📨 신청하기</button>
@@ -211,7 +230,7 @@
     const nav = document.querySelector('nav.main-nav');
     menuBtn.addEventListener('click', () => nav.classList.toggle('show'));
 
-    // 오늘보다 이전 날짜 선택 방지
+    // 오늘보다 이전 날짜 선택 방지 (현지 기준)
     (function setMinDate(){
       const d = document.getElementById('date');
       const tzOffsetMs = new Date().getTimezoneOffset() * 60000;
@@ -221,13 +240,10 @@
 
     // 전화번호 자동 하이픈
     document.getElementById('phone').addEventListener('input', (e) => {
-      const digits = e.target.value.replace(/\D/g,'').slice(0,11);
+      const digits = e.target.value.replace(/\\D/g,'').slice(0,11);
       let out = digits;
-      if (digits.startsWith('02')) {
-        // not typical for mobile, but keep generic
-      }
-      if (digits.length >= 11) out = digits.replace(/(^01[0-9])(\d{4})(\d{4}).*/, '$1-$2-$3');
-      else if (digits.length >= 10) out = digits.replace(/(^01[0-9])(\d{3,4})(\d{4}).*/, '$1-$2-$3');
+      if (digits.length >= 11) out = digits.replace(/(^01[0-9])(\\d{4})(\\d{4}).*/, '$1-$2-$3');
+      else if (digits.length >= 10) out = digits.replace(/(^01[0-9])(\\d{3,4})(\\d{4}).*/, '$1-$2-$3');
       e.target.value = out;
     });
 
@@ -242,8 +258,6 @@
 
     form.addEventListener('submit', async (event) => {
       event.preventDefault();
-
-      // 브라우저 기본 검증
       if (!form.reportValidity()) return;
 
       setStatus('loading', '⏳ 신청서를 전송 중입니다...');
