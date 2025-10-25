@@ -92,9 +92,9 @@
       <input
         id="phone" name="phone" inputmode="tel" autocomplete="tel"
         placeholder="010-1234-5678" required maxlength="13"
-        pattern="^(01[0-9]-?\\d{3,4}-?\\d{4}|02-?\\d{3,4}-?\\d{4}|0\\d{2}-?\\d{3,4}-?\\d{4})$"
+        pattern="^(01[0-9]-?\d{3,4}-?\d{4}|02-?\d{3,4}-?\d{4}|0\d{2}-?\d{3,4}-?\d{4})$"
       />
-      <span class="helper">하이픈 포함: 010-1234-5678 (붙여넣기해도 자동 보정돼요)</span>
+      <span class="helper">하이픈은 생략해도 됩니다. 예: 01098822605 또는 010-9882-2605</span>
 
       <label for="email">이메일</label>
       <input id="email" name="email" required type="email" autocomplete="email" placeholder="you@example.com"/>
@@ -154,28 +154,36 @@
     // 전화번호 포맷 (자동 하이픈)
     const phone = document.getElementById('phone');
     function formatKRPhoneProgressive(v){
-      const d = v.replace(/\\D/g,'').slice(0,11);
+      const d = v.replace(/\D/g,'').slice(0,11);
       if (d.startsWith('02')){
         if (d.length<=2) return d;
-        if (d.length<=5) return d.replace(/(02)(\\d+)/,'$1-$2');
-        if (d.length<=9) return d.replace(/(02)(\\d{3,4})(\\d+)/,'$1-$2-$3');
-        return d.slice(0,10).replace(/(02)(\\d{4})(\\d{4})/,'$1-$2-$3');
+        if (d.length<=5) return d.replace(/(02)(\d+)/,'$1-$2');
+        if (d.length<=9) return d.replace(/(02)(\d{3,4})(\d+)/,'$1-$2-$3');
+        return d.slice(0,10).replace(/(02)(\d{4})(\d{4})/,'$1-$2-$3');
       }
       if (d.startsWith('01')){
         if (d.length<=3) return d;
-        if (d.length<=7) return d.replace(/(01\\d)(\\d+)/,'$1-$2');
-        if (d.length===10) return d.replace(/(01\\d)(\\d{3})(\\d{4})/,'$1-$2-$3');
-        if (d.length>=11) return d.slice(0,11).replace(/(01\\d)(\\d{4})(\\d{4})/,'$1-$2-$3');
-        return d.replace(/(01\\d)(\\d{3,4})(\\d+)/,'$1-$2-$3');
+        if (d.length<=7) return d.replace(/(01\d)(\d+)/,'$1-$2');
+        if (d.length===10) return d.replace(/(01\d)(\d{3})(\d{4})/,'$1-$2-$3');
+        if (d.length>=11) return d.slice(0,11).replace(/(01\d)(\d{4})(\d{4})/,'$1-$2-$3');
+        return d.replace(/(01\d)(\d{3,4})(\d+)/,'$1-$2-$3');
       }
       if (d.length<=3) return d;
-      if (d.length<=7) return d.replace(/(0\\d{2})(\\d+)/,'$1-$2');
-      if (d.length<=11) return d.replace(/(0\\d{2})(\\d{3,4})(\\d+)/,'$1-$2-$3');
-      return d.slice(0,11).replace(/(0\\d{2})(\\d{4})(\\d{4})/,'$1-$2-$3');
+      if (d.length<=7) return d.replace(/(0\d{2})(\d+)/,'$1-$2');
+      if (d.length<=11) return d.replace(/(0\d{2})(\d{3,4})(\d+)/,'$1-$2-$3');
+      return d.slice(0,11).replace(/(0\d{2})(\d{4})(\d{4})/,'$1-$2-$3');
     }
+
+    // 입력 중 자동 하이픈
     phone.addEventListener('input', e => e.target.value = formatKRPhoneProgressive(e.target.value));
+
+    // blur 시: 하이픈 자동 삽입 후 검증
     phone.addEventListener('blur', () => {
-      const ok = /^(01[0-9]-?\\d{3,4}-?\\d{4}|02-?\\d{3,4}-?\\d{4}|0\\d{2}-?\\d{3,4}-?\\d{4})$/.test(phone.value);
+      const raw = phone.value.trim();
+      if (raw && /^\d{9,11}$/.test(raw.replace(/\D/g,''))) {
+        phone.value = formatKRPhoneProgressive(raw);
+      }
+      const ok = /^(01[0-9]-?\d{3,4}-?\d{4}|02-?\d{3,4}-?\d{4}|0\d{2}-?\d{3,4}-?\d{4})$/.test(phone.value);
       phone.setCustomValidity(ok || phone.value.trim()==='' ? '' : '전화번호 형식이 올바르지 않습니다. 예: 010-1234-5678');
     });
 
@@ -211,7 +219,7 @@
           '희망 날짜: ' + date,
           '신청 동기/메모: ' + (motivation || '-'),
           '개인정보 동의: ' + (document.getElementById('agree').checked ? '예' : '아니오')
-        ].join('\\n');
+        ].join('\n');
 
       const formData = new FormData(form);
 
