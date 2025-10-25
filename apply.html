@@ -21,7 +21,7 @@
 
     form{ display:flex; flex-direction:column; gap:16px; }
     label{ font-weight:700; }
-    input,textarea,select{ padding:12px; border:1px solid #ccc; border-radius:8px; font-size:1em; width:100%; }
+    input,textarea,select{ padding:12px; border:1px solid #ccc; border-radius:8px; font-size:1em; width:100%; background:#fff; }
     input:focus,textarea:focus,select:focus{ outline:none; border-color:#2a7ae2; box-shadow:0 0 0 3px rgba(42,122,226,.15); }
     .helper{ font-size:.9em; color:#777; margin-top:-10px; }
 
@@ -39,7 +39,7 @@
     .status.err{ display:block; background:#fdecea; color:#b42318; border:1px solid #f5c2be; }
     .status.loading{ display:block; background:#eef3fb; color:#2a7ae2; border:1px solid #cfe0fb; }
 
-    /* ✅ 성공 오버레이 */
+    /* 성공 오버레이 */
     .overlay{
       position:fixed; inset:0; background:rgba(0,0,0,.4);
       display:none; align-items:center; justify-content:center; z-index:2000;
@@ -53,10 +53,7 @@
     .big-emoji{ font-size:42px; margin-bottom:10px; }
     .title{ font-size:1.4em; font-weight:800; color:#1f7a4d; margin:4px 0 6px; }
     .subtitle{ color:#444; margin:0 0 14px; }
-    .pill{
-      display:inline-block; padding:6px 12px; border-radius:999px; background:#f1f8ff; color:#2a7ae2;
-      font-weight:700; font-size:.9em; margin-bottom:10px;
-    }
+    .pill{ display:inline-block; padding:6px 12px; border-radius:999px; background:#f1f8ff; color:#2a7ae2; font-weight:700; font-size:.9em; margin-bottom:10px; }
     .btn-row{ display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-top:8px; }
     .btn{ padding:12px 16px; border-radius:10px; border:1px solid #e5e7eb; background:#fff; cursor:pointer; font-weight:700; }
     .btn.primary{ background:#2a7ae2; color:#fff; border:none; }
@@ -66,7 +63,7 @@
 </head>
 <body>
   <button class="menu-toggle" id="menu-toggle">☰ 메뉴</button>
-  <nav class="main-nav">
+  <nav class="main-nav" id="main-nav">
     <a href="index.html">홈</a>
     <a href="program.html">체험 프로그램</a>
     <a href="gallery.html">갤러리</a>
@@ -81,15 +78,12 @@
       원흥마을 오감만족 경제학교에 지금 신청하세요!<br/>자연 속 경제 체험, 가족의 특별한 하루가 기다립니다.
     </p>
 
-    <!-- ✅ Formspree 연동 (폴백 리다이렉트 포함) -->
+    <!-- Formspree 연동 (AJAX) -->
     <form id="applyForm" action="https://formspree.io/f/movwwobl" method="POST" novalidate>
       <!-- Formspree 메타 -->
-      <input type="hidden" name="_subject" value="원흥마을 참가신청서 접수"/>
-      <input type="hidden" name="_template" value="table"/>
-      <!-- JS가 안되면 thanks.html로 이동 -->
-      <input type="hidden" name="_redirect" value="thanks.html"/>
-      <!-- 스팸 방지 -->
-      <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off"/>
+      <input type="hidden" name="subject" value="원흥마을 참가신청서 접수"/>
+      <!-- 제출 직전 채워질 본문 -->
+      <textarea name="message" id="__message" hidden></textarea>
 
       <label for="name">신청자 성함</label>
       <input id="name" name="name" required type="text" autocomplete="name" placeholder="홍길동"/>
@@ -98,9 +92,9 @@
       <input
         id="phone" name="phone" inputmode="tel" autocomplete="tel"
         placeholder="010-1234-5678" required maxlength="13"
-        pattern="^(01[0-9]-\d{3,4}-\d{4}|02-\d{3,4}-\d{4}|0\d{2}-\d{3,4}-\d{4})$"
+        pattern="^(01[0-9]-?\\d{3,4}-?\\d{4}|02-?\\d{3,4}-?\\d{4}|0\\d{2}-?\\d{3,4}-?\\d{4})$"
       />
-      <span class="helper">하이픈 포함: 010-1234-5678</span>
+      <span class="helper">하이픈 포함: 010-1234-5678 (붙여넣기해도 자동 보정돼요)</span>
 
       <label for="email">이메일</label>
       <input id="email" name="email" required type="email" autocomplete="email" placeholder="you@example.com"/>
@@ -114,21 +108,20 @@
       <label for="motivation">신청 동기 / 전하고 싶은 말</label>
       <textarea id="motivation" name="motivation" placeholder="예: 아이들과 농촌 체험을 해보고 싶어요!" rows="4"></textarea>
 
-      <!-- 동의 체크박스 (정렬/클릭 영역 개선) -->
+      <!-- 동의 체크박스 -->
       <label class="agree-wrap" for="agree">
         <input id="agree" name="agree" type="checkbox" required />
         <span class="agree-text">개인정보 수집 및 이용에 동의합니다.</span>
       </label>
 
       <button type="submit">📨 신청하기</button>
-
       <div id="status" class="status" aria-live="polite"></div>
     </form>
 
     <p class="footer-msg">제출 후 담당자가 개별 연락을 드립니다. 감사합니다!</p>
   </div>
 
-  <!-- ✅ 성공 오버레이 (브랜드형) -->
+  <!-- 성공 오버레이 -->
   <div id="successOverlay" class="overlay" role="dialog" aria-modal="true" aria-labelledby="successTitle">
     <div class="card">
       <div class="big-emoji">🎉</div>
@@ -145,10 +138,10 @@
   </div>
 
   <script>
-    // 모바일 메뉴
-    const menuBtn = document.getElementById('menu-toggle');
-    const nav = document.querySelector('nav.main-nav');
-    menuBtn.addEventListener('click', () => nav.classList.toggle('show'));
+    // 모바일 메뉴 토글
+    document.getElementById('menu-toggle').addEventListener('click', () => {
+      document.getElementById('main-nav').classList.toggle('show');
+    });
 
     // 오늘 이전 날짜 방지
     (function setMinDate(){
@@ -158,38 +151,39 @@
       d.min = todayLocalISO;
     })();
 
-    // 전화번호 포맷
+    // 전화번호 포맷 (자동 하이픈)
     const phone = document.getElementById('phone');
     function formatKRPhoneProgressive(v){
-      const d = v.replace(/\D/g,'').slice(0,11);
+      const d = v.replace(/\\D/g,'').slice(0,11);
       if (d.startsWith('02')){
         if (d.length<=2) return d;
-        if (d.length<=5) return d.replace(/(02)(\d+)/,'$1-$2');
-        if (d.length<=9) return d.replace(/(02)(\d{3,4})(\d+)/,'$1-$2-$3');
-        return d.slice(0,10).replace(/(02)(\d{4})(\d{4})/,'$1-$2-$3');
+        if (d.length<=5) return d.replace(/(02)(\\d+)/,'$1-$2');
+        if (d.length<=9) return d.replace(/(02)(\\d{3,4})(\\d+)/,'$1-$2-$3');
+        return d.slice(0,10).replace(/(02)(\\d{4})(\\d{4})/,'$1-$2-$3');
       }
       if (d.startsWith('01')){
         if (d.length<=3) return d;
-        if (d.length<=7) return d.replace(/(01\d)(\d+)/,'$1-$2');
-        if (d.length===10) return d.replace(/(01\d)(\d{3})(\d{4})/,'$1-$2-$3');
-        if (d.length>=11) return d.slice(0,11).replace(/(01\d)(\d{4})(\d{4})/,'$1-$2-$3');
-        return d.replace(/(01\d)(\d{3,4})(\d+)/,'$1-$2-$3');
+        if (d.length<=7) return d.replace(/(01\\d)(\\d+)/,'$1-$2');
+        if (d.length===10) return d.replace(/(01\\d)(\\d{3})(\\d{4})/,'$1-$2-$3');
+        if (d.length>=11) return d.slice(0,11).replace(/(01\\d)(\\d{4})(\\d{4})/,'$1-$2-$3');
+        return d.replace(/(01\\d)(\\d{3,4})(\\d+)/,'$1-$2-$3');
       }
       if (d.length<=3) return d;
-      if (d.length<=7) return d.replace(/(0\d{2})(\d+)/,'$1-$2');
-      if (d.length<=11) return d.replace(/(0\d{2})(\d{3,4})(\d+)/,'$1-$2-$3');
-      return d.slice(0,11).replace(/(0\d{2})(\d{4})(\d{4})/,'$1-$2-$3');
+      if (d.length<=7) return d.replace(/(0\\d{2})(\\d+)/,'$1-$2');
+      if (d.length<=11) return d.replace(/(0\\d{2})(\\d{3,4})(\\d+)/,'$1-$2-$3');
+      return d.slice(0,11).replace(/(0\\d{2})(\\d{4})(\\d{4})/,'$1-$2-$3');
     }
     phone.addEventListener('input', e => e.target.value = formatKRPhoneProgressive(e.target.value));
     phone.addEventListener('blur', () => {
-      const ok = /^(01[0-9]-\d{3,4}-\d{4}|02-\d{3,4}-\d{4}|0\d{2}-\d{3,4}-\d{4})$/.test(phone.value);
+      const ok = /^(01[0-9]-?\\d{3,4}-?\\d{4}|02-?\\d{3,4}-?\\d{4}|0\\d{2}-?\\d{3,4}-?\\d{4})$/.test(phone.value);
       phone.setCustomValidity(ok || phone.value.trim()==='' ? '' : '전화번호 형식이 올바르지 않습니다. 예: 010-1234-5678');
     });
 
-    // 제출 처리 (AJAX + 예쁜 완료 오버레이)
+    // 폼 제출 처리 (AJAX + 완료 오버레이)
     const form = document.getElementById('applyForm');
     const statusEl = document.getElementById('status');
     const overlay = document.getElementById('successOverlay');
+    const msgEl = document.getElementById('__message');
 
     function setStatus(type, html){ statusEl.className='status '+type; statusEl.innerHTML=html; }
 
@@ -198,23 +192,54 @@
       if (!form.reportValidity()) return;
       setStatus('loading','⏳ 신청서를 전송 중입니다...');
 
+      // 전송 본문(message) 구성
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const phoneVal = document.getElementById('phone').value.trim();
+      const people = document.getElementById('people').value.trim();
+      const date = document.getElementById('date').value;
+      const motivation = document.getElementById('motivation').value.trim();
+
+      msgEl.value =
+        [
+          '📝 원흥마을 참가 신청 요약',
+          '--------------------------------',
+          '신청자: ' + name,
+          '이메일: ' + email,
+          '연락처: ' + phoneVal,
+          '참여 인원: ' + people,
+          '희망 날짜: ' + date,
+          '신청 동기/메모: ' + (motivation || '-'),
+          '개인정보 동의: ' + (document.getElementById('agree').checked ? '예' : '아니오')
+        ].join('\\n');
+
       const formData = new FormData(form);
+
       try{
         const res = await fetch(form.action, {
           method:'POST',
           body:formData,
-          headers:{ 'Accept':'application/json' } // ← JSON 응답으로 리다이렉트 방지
+          headers:{ 'Accept':'application/json' }
         });
+
+        // 디버깅 로그
+        console.log('[Formspree] status:', res.status);
+        let data = {};
+        try { data = await res.json(); } catch(_) {}
+        console.log('[Formspree] body:', data);
+
         if(res.ok){
           form.reset();
           statusEl.style.display = 'none';
-          overlay.classList.add('show');               // ✅ 예쁜 오버레이 표시
+          overlay.classList.add('show');
         }else{
-          const data = await res.json().catch(()=>({}));
-          const msg = data?.errors?.[0]?.message || '일시적인 문제로 전송에 실패했습니다.';
-          setStatus('err', '⚠️ '+msg+'<br/>잠시 후 다시 시도해주세요.');
+          const msg = (data && data.errors && data.errors[0] && data.errors[0].message)
+            ? data.errors[0].message
+            : '일시적인 문제로 전송에 실패했습니다. (HTTP '+res.status+')';
+          setStatus('err', '⚠️ '+msg+'<br/>도메인 제한/이메일 인증/알림 설정을 확인해주세요.');
         }
       }catch(err){
+        console.error('[Formspree] fetch error:', err);
         setStatus('err','⚠️ 네트워크 오류로 전송되지 않았습니다.<br/>인터넷 연결을 확인 후 다시 시도해주세요.');
       }
     });
@@ -226,10 +251,6 @@
       overlay.classList.remove('show');
       window.scrollTo({ top:0, behavior:'smooth' });
     });
-
-    // 모바일 메뉴 토글
-    const navEl = document.querySelector('nav.main-nav');
-    document.getElementById('menu-toggle').addEventListener('click', () => navEl.classList.toggle('show'));
   </script>
 </body>
 </html>
