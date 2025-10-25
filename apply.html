@@ -17,7 +17,44 @@
 
     .container{ max-width:700px; margin:30px auto; background:#fff; padding:30px; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,.1); }
     h1{ text-align:center; color:#2a7ae2; font-size:1.8em; margin:0 0 6px; }
-    p.description{ text-align:center; font-size:1.05em; color:#555; margin:0 0 24px; }
+    p.description{ text-align:center; font-size:1.05em; color:#555; margin:0 0 16px; }
+
+    /* 요금 안내 박스 */
+    .price-box{
+      margin: 14px 0 16px;
+      padding: 16px 18px;
+      border:1px solid #d6e9ff;
+      border-left:6px solid #2a7ae2;
+      background:#f7fbff;
+      border-radius:12px;
+      box-shadow:0 2px 8px rgba(0,0,0,.04);
+    }
+    .price-title{ font-size:1.05em; font-weight:800; color:#0f5fc2; margin:0 0 8px; display:flex; align-items:center; gap:8px; }
+    .price-badge{ display:inline-block; background:#2db7a3; color:#fff; font-weight:700; padding:4px 10px; border-radius:999px; font-size:.9em; }
+    .price-list{ list-style:none; padding:0; margin:0; }
+    .price-list li{ margin:6px 0; line-height:1.6; }
+    .muted{ color:#666; font-size:.92em; }
+
+    /* 입금 계좌 안내 박스 */
+    .pay-box{
+      margin: 10px 0 24px;
+      padding: 16px 18px;
+      border:1px solid #e5f3e9;
+      border-left:6px solid #1f7a4d;
+      background:#f5fbf7;
+      border-radius:12px;
+      box-shadow:0 2px 8px rgba(0,0,0,.04);
+    }
+    .pay-title{ font-size:1.05em; font-weight:800; color:#1f7a4d; margin:0 0 10px; display:flex; align-items:center; gap:8px; }
+    .pay-list{ list-style:none; padding:0; margin:0; }
+    .pay-list li{ margin:6px 0; line-height:1.6; }
+    .account-line{ display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
+    .account{ font-weight:800; letter-spacing:.3px; }
+    .copy-btn{
+      border:1px solid #dbe7ff; background:#fff; color:#2a7ae2;
+      padding:6px 10px; border-radius:8px; cursor:pointer; font-weight:700;
+    }
+    .copy-btn:active{ transform:translateY(1px); }
 
     form{ display:flex; flex-direction:column; gap:16px; }
     label{ font-weight:700; }
@@ -78,6 +115,31 @@
       원흥마을 오감만족 경제학교에 지금 신청하세요!<br/>자연 속 경제 체험, 가족의 특별한 하루가 기다립니다.
     </p>
 
+    <!-- 💰 요금 안내 -->
+    <div class="price-box" aria-label="요금 안내">
+      <p class="price-title">💰 참가비 안내 <span class="price-badge">식사 1식 포함</span></p>
+      <ul class="price-list">
+        <li><strong>1인 기준</strong> : <strong>30,000원</strong></li>
+        <li><strong>4인 가족 패키지</strong> : <strong>100,000원</strong></li>
+        <li class="muted">※ 포함: 전일 체험 프로그램, 점심 1식(피자/뷔페) · 진행비</li>
+      </ul>
+    </div>
+
+    <!-- 🏦 입금 계좌 안내 -->
+    <div class="pay-box" aria-label="입금 계좌 안내">
+      <p class="pay-title">🏦 무통장 입금 안내</p>
+      <ul class="pay-list">
+        <li class="account-line">
+          <span class="account">NH농협&nbsp;312-0233-1492-71</span>
+          <span>(예금주:&nbsp;황의옥)</span>
+          <button type="button" class="copy-btn" id="copyAccount">계좌번호 복사</button>
+        </li>
+        <li>입금자명 표기: <strong>신청자명 + 휴대폰 뒤 4자리</strong> (예: 홍길동2605)</li>
+        <li>입금 기한: <strong>신청 후 24시간 이내</strong> (미입금 시 자동 취소될 수 있어요)</li>
+        <li class="muted">현장 결제도 가능하지만, 원활한 운영을 위해 사전 입금을 권장합니다.</li>
+      </ul>
+    </div>
+
     <!-- Formspree 연동 (AJAX) -->
     <form id="applyForm" action="https://formspree.io/f/movwwobl" method="POST" novalidate>
       <!-- Formspree 메타 -->
@@ -133,7 +195,7 @@
         <button class="btn" id="goProgram">체험 프로그램 보기</button>
         <button class="btn" id="newApply">추가 신청하기</button>
       </div>
-      <div class="tiny">자동으로 메일 확인 안내가 발송될 수 있습니다.</div>
+      <div class="tiny">💳 입금 계좌: NH농협 312-0233-1492-71 (예금주: 황의옥) — 신청자명+휴대폰 뒤4자리로 입금해주세요.</div>
     </div>
   </div>
 
@@ -173,11 +235,7 @@
       if (d.length<=11) return d.replace(/(0\d{2})(\d{3,4})(\d+)/,'$1-$2-$3');
       return d.slice(0,11).replace(/(0\d{2})(\d{4})(\d{4})/,'$1-$2-$3');
     }
-
-    // 입력 중 자동 하이픈
     phone.addEventListener('input', e => e.target.value = formatKRPhoneProgressive(e.target.value));
-
-    // blur 시: 하이픈 자동 삽입 후 검증
     phone.addEventListener('blur', () => {
       const raw = phone.value.trim();
       if (raw && /^\d{9,11}$/.test(raw.replace(/\D/g,''))) {
@@ -186,6 +244,29 @@
       const ok = /^(01[0-9]-?\d{3,4}-?\d{4}|02-?\d{3,4}-?\d{4}|0\d{2}-?\d{3,4}-?\d{4})$/.test(phone.value);
       phone.setCustomValidity(ok || phone.value.trim()==='' ? '' : '전화번호 형식이 올바르지 않습니다. 예: 010-1234-5678');
     });
+
+    // 계좌번호 복사
+    document.getElementById('copyAccount').addEventListener('click', async () => {
+      const text = 'NH농협 312-0233-1492-71 (예금주: 황의옥)';
+      try{
+        await navigator.clipboard.writeText(text);
+        toast('계좌번호가 복사되었습니다.');
+      }catch(_){
+        // clipboard API 실패 시 대체
+        const ta = document.createElement('textarea');
+        ta.value = text; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
+        toast('계좌번호가 복사되었습니다.');
+      }
+    });
+
+    // 간단 토스트 메시지
+    function toast(msg){
+      const s = document.getElementById('status');
+      s.className = 'status ok';
+      s.innerHTML = '✅ ' + msg;
+      s.style.display = 'block';
+      setTimeout(()=>{ s.style.display='none'; }, 2000);
+    }
 
     // 폼 제출 처리 (AJAX + 완료 오버레이)
     const form = document.getElementById('applyForm');
@@ -218,7 +299,11 @@
           '참여 인원: ' + people,
           '희망 날짜: ' + date,
           '신청 동기/메모: ' + (motivation || '-'),
-          '개인정보 동의: ' + (document.getElementById('agree').checked ? '예' : '아니오')
+          '개인정보 동의: ' + (document.getElementById('agree').checked ? '예' : '아니오'),
+          '',
+          '💰 참가비: 1인 30,000원 / 4인 가족 100,000원 (식사 1식 포함)',
+          '🏦 입금계좌: NH농협 312-0233-1492-71 (예금주: 황의옥)',
+          '입금자명 규칙: 신청자명+휴대폰 뒤4자리 (예: 홍길동2605)'
         ].join('\n');
 
       const formData = new FormData(form);
